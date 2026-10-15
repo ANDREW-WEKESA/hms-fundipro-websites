@@ -14,15 +14,15 @@
         <div class="top-bar-content">
             <div class="top-bar-item">
                 <span>📞</span>
-                <span>Emergency: +1-800-HMS-CARE</span>
+                <span>Emergency: 999 / 112 | <a href="tel:+254700911911" style="color: inherit; text-decoration: none;">+254 700 911 911</a></span>
             </div>
             <div class="top-bar-item">
                 <span>📍</span>
-                <span>123 Healthcare Ave, Medical District, City 12345</span>
+                <span>Ngong Road, Upper Hill, Nairobi, Kenya</span>
             </div>
             <div class="top-bar-item">
                 <a href="#" aria-label="Facebook">📘</a>
-                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="X (Twitter)">🐦</a>
                 <a href="#" aria-label="Instagram">📷</a>
                 <a href="#" aria-label="LinkedIn">💼</a>
             </div>
@@ -242,7 +242,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+1-234-567-8900" required>
+                                <input type="tel" id="phone" name="phone" placeholder="+254 700 000 000" required>
                                 <span class="error-message">Please enter valid phone number</span>
                             </div>
 
@@ -255,19 +255,21 @@
 
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea id="address" name="address" rows="3" placeholder="Street address, City, State, ZIP"></textarea>
+                            <textarea id="address" name="address" rows="3" placeholder="Street address, City, County"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="insurance">Insurance Provider</label>
                             <select id="insurance" name="insurance">
                                 <option value="">Select insurance (if applicable)</option>
-                                <option value="bcbs">Blue Cross Blue Shield</option>
-                                <option value="united">United Healthcare</option>
-                                <option value="aetna">Aetna</option>
-                                <option value="cigna">Cigna</option>
-                                <option value="medicare">Medicare</option>
-                                <option value="medicaid">Medicaid</option>
+                                <option value="sha">SHA (Social Health Authority)</option>
+                                <option value="nhif">NHIF</option>
+                                <option value="aar">AAR Insurance</option>
+                                <option value="jubilee">Jubilee Insurance</option>
+                                <option value="britam">Britam</option>
+                                <option value="cic">CIC Insurance</option>
+                                <option value="madison">Madison Insurance</option>
+                                <option value="resolution">Resolution Health</option>
                                 <option value="other">Other</option>
                                 <option value="none">No Insurance</option>
                             </select>
@@ -354,14 +356,14 @@
                 <div class="contact-card">
                     <div class="contact-card-icon">📞</div>
                     <h3>Call Us</h3>
-                    <p><a href="tel:+18004672273">+1-800-HMS-CARE</a></p>
-                    <p style="font-size: 0.9rem;">Mon-Fri: 8 AM - 8 PM<br>Sat-Sun: 9 AM - 5 PM</p>
+                    <p><a href="tel:+254207001234">+254 20 700 1234</a></p>
+                    <p style="font-size: 0.9rem;">Mon-Fri: 7 AM - 9 PM<br>Sat-Sun: 8 AM - 6 PM</p>
                 </div>
                 
                 <div class="contact-card">
                     <div class="contact-card-icon">📧</div>
                     <h3>Email Us</h3>
-                    <p><a href="mailto:appointments@hms-hospital.com">appointments@hms-hospital.com</a></p>
+                    <p><a href="mailto:appointments@hms.co.ke">appointments@hms.co.ke</a></p>
                     <p style="font-size: 0.9rem;">We respond within 24 hours</p>
                 </div>
                 
@@ -369,14 +371,14 @@
                     <div class="contact-card-icon">💬</div>
                     <h3>Live Chat</h3>
                     <p>Chat with our support team</p>
-                    <p style="font-size: 0.9rem;">Available 24/7</p>
+                    <p style="font-size: 0.9rem;">Available Mon-Fri: 8 AM - 8 PM</p>
                 </div>
                 
                 <div class="contact-card">
                     <div class="contact-card-icon">🏥</div>
                     <h3>Walk-In</h3>
                     <p>Visit our reception desk</p>
-                    <p style="font-size: 0.9rem;">123 Healthcare Ave<br>Medical District, City 12345</p>
+                    <p style="font-size: 0.9rem;">Ngong Road, Upper Hill<br>Nairobi, Kenya</p>
                 </div>
             </div>
         </div>
@@ -422,15 +424,15 @@
             
             <div class="footer-section">
                 <h3>Contact Info</h3>
-                <p>📍 123 Healthcare Ave<br>Medical District, City 12345</p>
-                <p>📞 Emergency: +1-800-HMS-CARE</p>
-                <p>📧 info@hms-hospital.com</p>
+                <p>📍 Ngong Road, Upper Hill<br>Nairobi, Kenya</p>
+                <p>📞 Emergency: <a href="tel:999" style="color: inherit;">999</a> / <a href="tel:112" style="color: inherit;">112</a></p>
+                <p>📧 <a href="mailto:info@hms.co.ke" style="color: inherit;">info@hms.co.ke</a></p>
                 <p>🕐 24/7 Emergency Services</p>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 HMS - Hospital Management System. All rights reserved. | Privacy Policy | Terms of Service</p>
+            <p>&copy; <span id="currentYear">2024</span> HMS - Hospital Management System. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy (Kenya Data Protection Act 2019)</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
         </div>
     </footer>
 

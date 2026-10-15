@@ -554,7 +554,15 @@ if (emergencyBtn) {
     emergencyBtn.addEventListener('click', function(e) {
         if (this.getAttribute('href') === '#emergency') {
             e.preventDefault();
-            alert('Emergency Hotline: +1-800-HMS-CARE\n\nFor life-threatening emergencies, please call 911 immediately.');
+            alert('Emergency Hotline: 999 / 112 / +254 700 911 911\n\nFor life-threatening emergencies, call immediately.');
         }
     });
 }
+
+// Set dynamic copyright year
+document.addEventListener('DOMContentLoaded', function() {
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+});

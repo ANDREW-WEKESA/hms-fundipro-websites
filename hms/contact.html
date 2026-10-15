@@ -14,15 +14,15 @@
         <div class="top-bar-content">
             <div class="top-bar-item">
                 <span>📞</span>
-                <span>Emergency: +1-800-HMS-CARE</span>
+                <span>Emergency: 999 / 112 | <a href="tel:+254700911911" style="color: inherit; text-decoration: none;">+254 700 911 911</a></span>
             </div>
             <div class="top-bar-item">
                 <span>📍</span>
-                <span>123 Healthcare Ave, Medical District, City 12345</span>
+                <span>Ngong Road, Upper Hill, Nairobi, Kenya</span>
             </div>
             <div class="top-bar-item">
                 <a href="#" aria-label="Facebook">📘</a>
-                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="X (Twitter)">🐦</a>
                 <a href="#" aria-label="Instagram">📷</a>
                 <a href="#" aria-label="LinkedIn">💼</a>
             </div>
@@ -76,34 +76,34 @@
                 <div class="contact-card">
                     <div class="contact-card-icon">📞</div>
                     <h3>Main Reception</h3>
-                    <p><a href="tel:+18004672273">+1-800-HMS-CARE</a></p>
-                    <p><a href="tel:+15551234567">+1-555-123-4567</a></p>
-                    <p style="font-size: 0.9rem; margin-top: 10px;">Mon-Fri: 8 AM - 8 PM<br>Sat-Sun: 9 AM - 5 PM</p>
+                    <p><a href="tel:+254207001234">+254 20 700 1234</a></p>
+                    <p><a href="tel:+254733456789">+254 733 456 789</a></p>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">Mon-Fri: 7 AM - 9 PM<br>Sat-Sun: 8 AM - 6 PM</p>
                 </div>
                 
-                <div class="contact-card">
-                    <div class="contact-card-icon">🚑</div>
-                    <h3>Emergency</h3>
-                    <p><a href="tel:911" style="color: var(--emergency-red); font-weight: bold;">911</a></p>
-                    <p><a href="tel:+15559111111">+1-555-911-1111</a></p>
-                    <p style="font-size: 0.9rem; margin-top: 10px;">24/7 Emergency Services<br>Always Available</p>
+                <div class="contact-card" style="border: 2px solid #dc3545; background: #ffe5e5;">
+                    <div class="contact-card-icon" style="color: #dc3545; font-size: 2.5rem;">🚑</div>
+                    <h3 style="color: #dc3545;">Emergency</h3>
+                    <p><a href="tel:999" style="color: #dc3545; font-weight: bold; font-size: 1.3rem;">999</a> / <a href="tel:112" style="color: #dc3545; font-weight: bold; font-size: 1.3rem;">112</a></p>
+                    <p><a href="tel:+254700911911" style="color: #dc3545; font-weight: bold;">+254 700 911 911</a></p>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #721c24;">24/7 Emergency Services<br>Always Available</p>
                 </div>
                 
                 <div class="contact-card">
                     <div class="contact-card-icon">📧</div>
                     <h3>Email</h3>
-                    <p><a href="mailto:info@hms-hospital.com">info@hms-hospital.com</a></p>
-                    <p><a href="mailto:appointments@hms-hospital.com">appointments@hms-hospital.com</a></p>
-                    <p style="font-size: 0.9rem; margin-top: 10px;">Response within 24 hours<br>during business days</p>
+                    <p><a href="mailto:info@hms.co.ke">info@hms.co.ke</a></p>
+                    <p><a href="mailto:appointments@hms.co.ke">appointments@hms.co.ke</a></p>
+                    <p style="font-size: 0.9rem; margin-top: 10px;"><strong>Response within 24 hours</strong><br>on business days</p>
                 </div>
                 
                 <div class="contact-card">
                     <div class="contact-card-icon">🕐</div>
                     <h3>Hours</h3>
-                    <p><strong>OPD:</strong> 8 AM - 8 PM</p>
+                    <p><strong>OPD:</strong> 7 AM - 9 PM</p>
                     <p><strong>Emergency:</strong> 24/7</p>
-                    <p><strong>Pharmacy:</strong> 24/7</p>
-                    <p><strong>Lab:</strong> 6 AM - 10 PM</p>
+                    <p><strong>Pharmacy:</strong> 8 AM - 10 PM</p>
+                    <p><strong>Lab:</strong> 7 AM - 7 PM</p>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+1-234-567-8900" required>
+                            <input type="tel" id="phone" name="phone" placeholder="+254 700 000 000" required>
                             <span class="error-message">Please enter a valid phone number</span>
                         </div>
 
@@ -144,28 +144,48 @@
                                 <option value="">Select department (optional)</option>
                                 <option value="general">General Inquiry</option>
                                 <option value="appointments">Appointments</option>
-                                <option value="billing">Billing</option>
+                                <option value="billing">Billing & Insurance</option>
                                 <option value="medical-records">Medical Records</option>
                                 <option value="cardiology">Cardiology</option>
                                 <option value="neurology">Neurology</option>
                                 <option value="orthopedics">Orthopedics</option>
                                 <option value="pediatrics">Pediatrics</option>
                                 <option value="oncology">Oncology</option>
+                                <option value="gynecology">Gynecology</option>
                                 <option value="emergency">Emergency</option>
+                                <option value="laboratory">Laboratory</option>
+                                <option value="radiology">Radiology</option>
+                                <option value="pharmacy">Pharmacy</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="subject">Subject *</label>
-                        <input type="text" id="subject" name="subject" placeholder="Brief subject of your inquiry" required>
+                        <input type="text" id="subject" name="subject" placeholder="Brief subject of your inquiry" maxlength="150" required>
                         <span class="error-message">Please enter a subject</span>
                     </div>
 
                     <div class="form-group">
                         <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help you..." required></textarea>
-                        <span class="error-message">Please enter your message</span>
+                        <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help you..." minlength="10" maxlength="2000" required></textarea>
+                        <span class="error-message">Please enter your message (10-2000 characters)</span>
+                    </div>
+
+                    <!-- Honeypot field for spam prevention -->
+                    <input type="text" name="website" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" autocomplete="off">
+
+                    <!-- Emergency disclaimer -->
+                    <div style="color: #dc3545; font-weight: 600; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; margin-bottom: 20px; border-radius: 4px;">
+                        <strong>⚠️ NOT for emergencies:</strong> For medical emergencies call 999, 112, or +254 700 911 911 immediately.
+                    </div>
+
+                    <!-- Consent checkbox -->
+                    <div class="form-group">
+                        <label style="display: flex; align-items: start; cursor: pointer;">
+                            <input type="checkbox" name="consent" required style="margin-right: 10px; margin-top: 4px; width: auto; min-width: 18px; min-height: 18px;">
+                            <span>I consent to HMS collecting and processing my personal data in accordance with the Kenya Data Protection Act, 2019. <a href="#" style="color: var(--primary-blue);">Privacy Policy</a> *</span>
+                        </label>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">Send Message</button>
@@ -178,17 +198,24 @@
     <section>
         <div class="container">
             <h2 class="section-title">Find Us</h2>
-            <p class="section-subtitle">Our location in the Medical District</p>
+            <p class="section-subtitle">Our location in Upper Hill, Nairobi</p>
             
-            <div class="map-container">
-                🗺️ Map Placeholder<br>
-                <span style="font-size: 1rem;">123 Healthcare Ave, Medical District, City 12345</span>
+            <div class="map-container" style="position: relative; overflow: hidden; border-radius: 10px;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.277444357952!2d36.80730585!3d-1.28632695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d0f3cc6f31%3A0x8c5a0c99e4d6d5d5!2sNairobi!5e0!3m2!1sen!2ske!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://maps.google.com/?q=-1.286389,36.817223" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block;">📍 Open in Google Maps</a>
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
                 <h3 style="color: var(--dark-blue); margin-bottom: 15px;">How to Reach Us</h3>
                 <p style="max-width: 700px; margin: 0 auto; line-height: 1.8; color: var(--text-light);">
-                    We are conveniently located in the heart of the Medical District, easily accessible by public transportation and with ample parking facilities. From downtown, take Highway 45 South and exit at Medical District. The hospital is a 2-minute drive from the exit.
+                    <strong>Address:</strong> Ngong Road, Upper Hill, Nairobi, Kenya<br>
+                    <strong>Near:</strong> Kenya National Hospital<br>
+                    <strong>Matatu Routes:</strong> Routes 23 and 125 stop at Upper Hill<br>
+                    <strong>Parking:</strong> Available on-site<br>
+                    <strong>Accessibility:</strong> Step-free entry, wheelchair accessible, ambulance bay
                 </p>
             </div>
         </div>
@@ -211,68 +238,104 @@
                 <tbody>
                     <tr>
                         <td><strong>Cardiology</strong></td>
-                        <td>+1-555-123-4501</td>
+                        <td><a href="tel:+254207001251">+254 20 700 1251</a></td>
                         <td>Mon-Fri: 8 AM - 6 PM</td>
                     </tr>
                     <tr>
                         <td><strong>Neurology</strong></td>
-                        <td>+1-555-123-4502</td>
+                        <td><a href="tel:+254207001252">+254 20 700 1252</a></td>
                         <td>Mon-Sat: 9 AM - 6 PM</td>
                     </tr>
                     <tr>
                         <td><strong>Orthopedics</strong></td>
-                        <td>+1-555-123-4503</td>
+                        <td><a href="tel:+254207001253">+254 20 700 1253</a></td>
                         <td>Tue-Sat: 8 AM - 5 PM</td>
                     </tr>
                     <tr>
                         <td><strong>Pediatrics</strong></td>
-                        <td>+1-555-123-4504</td>
+                        <td><a href="tel:+254207001254">+254 20 700 1254</a></td>
                         <td>Mon-Fri: 8 AM - 7 PM</td>
                     </tr>
                     <tr>
                         <td><strong>Oncology</strong></td>
-                        <td>+1-555-123-4505</td>
+                        <td><a href="tel:+254207001255">+254 20 700 1255</a></td>
                         <td>Mon-Fri: 9 AM - 6 PM</td>
                     </tr>
                     <tr>
                         <td><strong>Gynecology</strong></td>
-                        <td>+1-555-123-4506</td>
+                        <td><a href="tel:+254207001256">+254 20 700 1256</a></td>
                         <td>Mon-Sat: 9 AM - 7 PM</td>
                     </tr>
                     <tr>
                         <td><strong>Emergency</strong></td>
-                        <td>+1-555-911-1111</td>
+                        <td><a href="tel:+254700911911" style="color: #dc3545; font-weight: bold;">+254 700 911 911</a></td>
                         <td>24/7 Available</td>
                     </tr>
                     <tr>
                         <td><strong>Laboratory</strong></td>
-                        <td>+1-555-123-4510</td>
-                        <td>6 AM - 10 PM Daily</td>
+                        <td><a href="tel:+254207001260">+254 20 700 1260</a></td>
+                        <td>7 AM - 7 PM Daily</td>
                     </tr>
                     <tr>
                         <td><strong>Radiology</strong></td>
-                        <td>+1-555-123-4511</td>
-                        <td>7 AM - 9 PM Daily</td>
+                        <td><a href="tel:+254207001261">+254 20 700 1261</a></td>
+                        <td>7 AM - 8 PM Daily</td>
                     </tr>
                     <tr>
                         <td><strong>Pharmacy</strong></td>
-                        <td>+1-555-123-4512</td>
-                        <td>24/7 Available</td>
+                        <td><a href="tel:+254207001262">+254 20 700 1262</a></td>
+                        <td>8 AM - 10 PM Daily</td>
                     </tr>
                     <tr>
                         <td><strong>Billing & Insurance</strong></td>
-                        <td>+1-555-123-4520</td>
-                        <td>Mon-Fri: 9 AM - 5 PM</td>
+                        <td><a href="tel:+254207001270">+254 20 700 1270</a></td>
+                        <td>Mon-Fri: 8 AM - 5 PM</td>
                     </tr>
                     <tr>
                         <td><strong>Medical Records</strong></td>
-                        <td>+1-555-123-4521</td>
-                        <td>Mon-Fri: 9 AM - 5 PM</td>
+                        <td><a href="tel:+254207001271">+254 20 700 1271</a></td>
+                        <td>Mon-Fri: 8 AM - 5 PM</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
+
+    <script>
+        // Add open/closed badges based on Africa/Nairobi time
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date().toLocaleString('en-US', {timeZone: 'Africa/Nairobi'});
+            const nairobiTime = new Date(now);
+            const hours = nairobiTime.getHours();
+            const day = nairobiTime.getDay(); // 0 = Sunday, 6 = Saturday
+            
+            document.querySelectorAll('.department-table tbody tr').forEach(row => {
+                const hoursCell = row.cells[2];
+                const hoursText = hoursCell.textContent;
+                const badge = document.createElement('span');
+                
+                let isOpen = false;
+                
+                if (hoursText.includes('24/7')) {
+                    isOpen = true;
+                } else if (hoursText.includes('Mon-Fri') && day >= 1 && day <= 5) {
+                    isOpen = hours >= 8 && hours < 18;
+                } else if (hoursText.includes('Mon-Sat') && day >= 1 && day <= 6) {
+                    isOpen = hours >= 8 && hours < 18;
+                } else if (hoursText.includes('Tue-Sat') && day >= 2 && day <= 6) {
+                    isOpen = hours >= 8 && hours < 17;
+                } else if (hoursText.includes('Daily')) {
+                    isOpen = hours >= 7 && hours < 20;
+                }
+                
+                badge.textContent = isOpen ? ' OPEN' : ' CLOSED';
+                badge.style.cssText = isOpen ? 
+                    'color: #28a745; font-weight: bold; margin-left: 10px;' : 
+                    'color: #dc3545; font-weight: bold; margin-left: 10px;';
+                hoursCell.appendChild(badge);
+            });
+        });
+    </script>
 
     <!-- FAQ Quick Section -->
     <section>
@@ -285,7 +348,7 @@
                         <h3>How do I book an appointment?</h3>
                     </div>
                     <div class="card-body">
-                        <p>You can book an appointment online through our website, call our appointment line at +1-800-HMS-CARE, or visit our reception desk in person.</p>
+                        <p>You can book an appointment online through our <a href="appointments.html" style="color: var(--primary-blue);">appointments page</a>, call our appointment line at <a href="tel:+254207001234" style="color: var(--primary-blue);">+254 20 700 1234</a>, or visit our reception desk in person.</p>
                     </div>
                 </div>
 
@@ -312,7 +375,7 @@
                         <h3>What insurance do you accept?</h3>
                     </div>
                     <div class="card-body">
-                        <p>We work with most major insurance providers including Blue Cross Blue Shield, United Healthcare, Aetna, Cigna, Medicare, and Medicaid. Please contact our billing department for specific inquiries.</p>
+                        <p>We accept SHA (Social Health Authority), NHIF (for existing members), AAR Insurance, Jubilee Insurance, Britam, CIC Insurance, Madison Insurance, Resolution Health, and other private insurers. We also accept M-Pesa and cash payments. Contact our Billing & Insurance department at <a href="tel:+254207001270" style="color: var(--primary-blue);">+254 20 700 1270</a> for specific inquiries.</p>
                     </div>
                 </div>
             </div>
@@ -326,7 +389,7 @@
             <p style="margin-bottom: 30px; font-size: 1.1rem;">Book an appointment with our expert medical team</p>
             <div class="cta-buttons">
                 <a href="appointments.html" class="btn btn-primary">Book Appointment</a>
-                <a href="tel:+18004672273" class="btn btn-secondary">Call Us Now</a>
+                <a href="tel:+254207001234" class="btn btn-secondary">Call Us Now</a>
             </div>
         </div>
     </section>
@@ -371,15 +434,15 @@
             
             <div class="footer-section">
                 <h3>Contact Info</h3>
-                <p>📍 123 Healthcare Ave<br>Medical District, City 12345</p>
-                <p>📞 Emergency: +1-800-HMS-CARE</p>
-                <p>📧 info@hms-hospital.com</p>
+                <p>📍 Ngong Road, Upper Hill<br>Nairobi, Kenya</p>
+                <p>📞 Emergency: <a href="tel:999" style="color: inherit;">999</a> / <a href="tel:112" style="color: inherit;">112</a></p>
+                <p>📧 <a href="mailto:info@hms.co.ke" style="color: inherit;">info@hms.co.ke</a></p>
                 <p>🕐 24/7 Emergency Services</p>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 HMS - Hospital Management System. All rights reserved. | Privacy Policy | Terms of Service</p>
+            <p>&copy; <span id="currentYear">2024</span> HMS - Hospital Management System. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy (Kenya Data Protection Act 2019)</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
         </div>
     </footer>
 
