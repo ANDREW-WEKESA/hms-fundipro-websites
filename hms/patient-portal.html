@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HMS Patient Portal - Access your medical records, appointments, lab results, prescriptions, and billing information securely online.">
+    <meta name="keywords" content="patient portal, medical records, lab results, online appointments, healthcare portal">
+    <title>Patient Portal - HMS Hospital Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-item">
+                <span>📞</span>
+                <span>Emergency: +1-800-HMS-CARE</span>
+            </div>
+            <div class="top-bar-item">
+                <span>📍</span>
+                <span>123 Healthcare Ave, Medical District, City 12345</span>
+            </div>
+            <div class="top-bar-item">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="LinkedIn">💼</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav role="navigation">
+        <div class="nav-content">
+            <div class="logo">
+                <div>
+                    <div class="logo-text">HMS</div>
+                    <span class="logo-tagline">Quality Healthcare</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="patient-portal.html" class="active">Patient Portal</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#emergency" class="emergency-btn">Emergency</a></li>
+            </ul>
+            
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <h1>Patient Portal</h1>
+            <p>Your health information at your fingertips</p>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Access Your Health Records</h2>
+            <p class="section-subtitle">Secure login to manage your healthcare</p>
+            
+            <div class="login-container">
+                <!-- Login Form -->
+                <div class="login-form">
+                    <h2>Patient Login</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address *</label>
+                            <input type="email" id="loginEmail" name="email" placeholder="your.email@example.com" required>
+                            <span class="error-message">Please enter a valid email</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Password *</label>
+                            <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                            <span class="error-message">Please enter your password</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" name="remember" style="margin-right: 10px; width: auto;">
+                                <span>Remember me</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; margin-bottom: 15px;">Login</button>
+
+                        <div class="forgot-password">
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Registration CTA -->
+                <div class="login-form" style="background: var(--lighter-blue); border: 2px solid var(--primary-blue);">
+                    <h2>New Patient?</h2>
+                    <p style="margin-bottom: 25px; color: var(--text-light); line-height: 1.7;">
+                        Register for the patient portal to access your medical records, book appointments, view test results, and communicate with your healthcare team.
+                    </p>
+                    
+                    <ul style="list-style: none; margin-bottom: 30px;">
+                        <li style="padding: 8px 0; color: var(--text-dark);">✓ View medical records anytime</li>
+                        <li style="padding: 8px 0; color: var(--text-dark);">✓ Book and manage appointments</li>
+                        <li style="padding: 8px 0; color: var(--text-dark);">✓ Access lab results instantly</li>
+                        <li style="padding: 8px 0; color: var(--text-dark);">✓ Request prescription refills</li>
+                        <li style="padding: 8px 0; color: var(--text-dark);">✓ Pay bills online</li>
+                    </ul>
+
+                    <button type="button" class="btn btn-primary" style="width: 100%; padding: 15px;">Create Account</button>
+                    
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">
+                        Need help registering? <a href="contact.html" style="color: var(--primary-blue); font-weight: 500;">Contact support</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portal Features -->
+    <section style="background: var(--lighter-blue);">
+        <div class="container">
+            <h2 class="section-title">Patient Portal Features</h2>
+            <p class="section-subtitle">Everything you need to manage your health</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📅</div>
+                        <h3>Appointments</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>View upcoming appointments, schedule new visits, reschedule or cancel appointments, and receive automatic reminders via email and SMS.</p>
+                        <ul>
+                            <li>Book appointments online</li>
+                            <li>View appointment history</li>
+                            <li>Download appointment summaries</li>
+                            <li>Video consultation links</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📋</div>
+                        <h3>Medical Records</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Access your complete medical history including diagnoses, treatments, medications, allergies, immunizations, and surgical history anytime, anywhere.</p>
+                        <ul>
+                            <li>View visit summaries</li>
+                            <li>Download medical documents</li>
+                            <li>Track your health metrics</li>
+                            <li>Share records securely</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔬</div>
+                        <h3>Lab Results</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Get instant access to your laboratory test results as soon as they're available, with easy-to-understand explanations and historical trends.</p>
+                        <ul>
+                            <li>View results immediately</li>
+                            <li>Compare historical values</li>
+                            <li>Download lab reports</li>
+                            <li>Track health trends</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💊</div>
+                        <h3>Prescriptions</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Manage your medications, request prescription refills, view medication instructions, check for drug interactions, and set medication reminders.</p>
+                        <ul>
+                            <li>Request refills online</li>
+                            <li>View active prescriptions</li>
+                            <li>Medication reminders</li>
+                            <li>Home delivery options</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💳</div>
+                        <h3>Billing & Payments</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>View and pay your medical bills online, set up payment plans, review insurance claims, and access itemized billing statements.</p>
+                        <ul>
+                            <li>Pay bills securely online</li>
+                            <li>View payment history</li>
+                            <li>Download invoices</li>
+                            <li>Manage payment methods</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💻</div>
+                        <h3>Telemedicine</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Connect with your doctor remotely through secure video consultations, get medical advice from home, and follow up on treatments virtually.</p>
+                        <ul>
+                            <li>Video consultations</li>
+                            <li>Chat with healthcare team</li>
+                            <li>Share photos and documents</li>
+                            <li>E-prescriptions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">How the Portal Works</h2>
+            <p class="section-subtitle">Getting started is simple</p>
+            
+            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>1. Register</h3>
+                    <p>Create your account using your email and patient information. You'll need your patient ID or date of birth to verify your identity. Registration takes less than 5 minutes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>2. Login Securely</h3>
+                    <p>Access the portal anytime using your email and password. Two-factor authentication provides additional security for your sensitive health information.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h3>3. Manage Your Health</h3>
+                    <p>View records, book appointments, access test results, request prescriptions, pay bills, and communicate with your healthcare team - all in one place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security & Privacy -->
+    <section style="background: var(--lighter-blue);">
+        <div class="container">
+            <h2 class="section-title">Your Privacy & Security</h2>
+            <p class="section-subtitle">HIPAA compliant and secure</p>
+            
+            <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔒</div>
+                        <h3>Bank-Level Security</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Your health information is protected with 256-bit encryption, the same security standard used by financial institutions. All data transmission is encrypted and secure.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🛡️</div>
+                        <h3>HIPAA Compliant</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>We fully comply with HIPAA regulations to ensure your protected health information (PHI) remains confidential and is only accessed by authorized healthcare professionals.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">✅</div>
+                        <h3>Two-Factor Authentication</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Optional two-factor authentication adds an extra layer of security to your account, requiring both your password and a verification code to login.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👁️</div>
+                        <h3>Access Control</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>You control who can access your health information. Grant or revoke access to family members or caregivers at any time through your account settings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 40px auto 0; padding: 25px; background: #d1ecf1; border-radius: 10px; border-left: 4px solid #0c5460;">
+                <p style="margin: 0; color: #0c5460; line-height: 1.7;">
+                    <strong>🔐 Your Privacy Matters:</strong> We never sell or share your personal health information with third parties for marketing purposes. Your data is used solely for your healthcare and is protected by strict privacy policies and federal law.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Need Help?</h2>
+            <p class="section-subtitle">We're here to assist you</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-card-icon">📞</div>
+                    <h3>Technical Support</h3>
+                    <p><a href="tel:+15551234580">+1-555-123-4580</a></p>
+                    <p style="font-size: 0.9rem;">Mon-Fri: 8 AM - 8 PM<br>Sat-Sun: 9 AM - 5 PM</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-icon">📧</div>
+                    <h3>Email Support</h3>
+                    <p><a href="mailto:portal@hms-hospital.com">portal@hms-hospital.com</a></p>
+                    <p style="font-size: 0.9rem;">Response within 24 hours</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-icon">❓</div>
+                    <h3>FAQ & Guides</h3>
+                    <p><a href="#" style="color: var(--primary-blue);">View Help Center</a></p>
+                    <p style="font-size: 0.9rem;">Step-by-step tutorials</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-icon">🏥</div>
+                    <h3>In-Person Help</h3>
+                    <p>Visit our reception desk</p>
+                    <p style="font-size: 0.9rem;">We'll help you register</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile App Promotion -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Access Your Health on the Go</h2>
+            <p style="margin-bottom: 30px; font-size: 1.1rem;">Download our mobile app for iOS and Android</p>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <div style="background: var(--white); padding: 15px 30px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
+                    <div style="font-size: 2.5rem;">📱</div>
+                    <div style="text-align: left;">
+                        <div style="font-size: 0.85rem; opacity: 0.8;">Download on the</div>
+                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--dark-blue);">App Store</div>
+                    </div>
+                </div>
+                
+                <div style="background: var(--white); padding: 15px 30px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
+                    <div style="font-size: 2.5rem;">📱</div>
+                    <div style="text-align: left;">
+                        <div style="font-size: 0.85rem; opacity: 0.8;">Get it on</div>
+                        <div style="font-size: 1.2rem; font-weight: 700; color: var(--dark-blue);">Google Play</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About HMS</h3>
+                <p>Leading healthcare provider dedicated to delivering exceptional medical services with compassion and excellence.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="doctors.html">Find a Doctor</a></li>
+                    <li><a href="appointments.html">Book Appointment</a></li>
+                    <li><a href="patient-portal.html">Patient Portal</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="services.html#cardiology">Cardiology</a></li>
+                    <li><a href="services.html#neurology">Neurology</a></li>
+                    <li><a href="services.html#orthopedics">Orthopedics</a></li>
+                    <li><a href="services.html#pediatrics">Pediatrics</a></li>
+                    <li><a href="services.html#oncology">Oncology</a></li>
+                    <li><a href="services.html#emergency">Emergency</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 123 Healthcare Ave<br>Medical District, City 12345</p>
+                <p>📞 Emergency: +1-800-HMS-CARE</p>
+                <p>📧 info@hms-hospital.com</p>
+                <p>🕐 24/7 Emergency Services</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 HMS - Hospital Management System. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

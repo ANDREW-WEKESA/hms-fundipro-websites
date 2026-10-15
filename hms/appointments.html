@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your appointment at HMS - Easy online appointment scheduling with our expert doctors across all specialties.">
+    <meta name="keywords" content="book appointment, hospital appointment, doctor appointment, medical consultation">
+    <title>Book Appointment - HMS Hospital Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-item">
+                <span>📞</span>
+                <span>Emergency: +1-800-HMS-CARE</span>
+            </div>
+            <div class="top-bar-item">
+                <span>📍</span>
+                <span>123 Healthcare Ave, Medical District, City 12345</span>
+            </div>
+            <div class="top-bar-item">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="LinkedIn">💼</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav role="navigation">
+        <div class="nav-content">
+            <div class="logo">
+                <div>
+                    <div class="logo-text">HMS</div>
+                    <span class="logo-tagline">Quality Healthcare</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointments.html" class="active">Appointments</a></li>
+                <li><a href="patient-portal.html">Patient Portal</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#emergency" class="emergency-btn">Emergency</a></li>
+            </ul>
+            
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <h1>Book Your Appointment</h1>
+            <p>Schedule a visit with our expert medical team</p>
+        </div>
+    </section>
+
+    <!-- Appointment Form -->
+    <section>
+        <div class="container">
+            <div class="form-container">
+                <h2 style="text-align: center; margin-bottom: 40px; color: var(--dark-blue);">Schedule Your Visit</h2>
+                
+                <form class="multi-step-form">
+                    <!-- Progress Steps -->
+                    <div class="form-steps">
+                        <div class="form-step active" data-step="1">
+                            <div class="step-indicator">1</div>
+                            <div class="step-label">Select Department & Doctor</div>
+                        </div>
+                        <div class="form-step" data-step="2">
+                            <div class="step-indicator">2</div>
+                            <div class="step-label">Choose Date & Time</div>
+                        </div>
+                        <div class="form-step" data-step="3">
+                            <div class="step-indicator">3</div>
+                            <div class="step-label">Patient Information</div>
+                        </div>
+                        <div class="form-step" data-step="4">
+                            <div class="step-indicator">4</div>
+                            <div class="step-label">Confirmation</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Select Department and Doctor -->
+                    <div class="step-content active" data-step="1">
+                        <h3 style="margin-bottom: 25px; color: var(--dark-blue);">Select Department & Doctor</h3>
+                        
+                        <div class="form-group">
+                            <label for="department">Department *</label>
+                            <select id="department" name="department" required>
+                                <option value="">Choose a department</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="pediatrics">Pediatrics</option>
+                                <option value="oncology">Oncology</option>
+                                <option value="gynecology">Gynecology & Obstetrics</option>
+                                <option value="dermatology">Dermatology</option>
+                                <option value="ophthalmology">Ophthalmology</option>
+                                <option value="ent">ENT</option>
+                                <option value="general">General Medicine</option>
+                            </select>
+                            <span class="error-message">Please select a department</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="doctor">Select Doctor *</label>
+                            <select id="doctor" name="doctor" required>
+                                <option value="">Choose a doctor</option>
+                                <option value="dr-john-davis">Dr. John Davis - Cardiologist</option>
+                                <option value="dr-anna-martinez">Dr. Anna Martinez - Interventional Cardiologist</option>
+                                <option value="dr-sarah-wilson">Dr. Sarah Wilson - Neurologist</option>
+                                <option value="dr-rajesh-kumar">Dr. Rajesh Kumar - Neurosurgeon</option>
+                                <option value="dr-michael-patel">Dr. Michael Patel - Orthopedic Surgeon</option>
+                                <option value="dr-lisa-thompson">Dr. Lisa Thompson - Sports Medicine</option>
+                                <option value="dr-emily-lee">Dr. Emily Lee - Pediatrician</option>
+                                <option value="dr-james-brown">Dr. James Brown - Pediatric Surgeon</option>
+                                <option value="dr-david-garcia">Dr. David Garcia - Medical Oncologist</option>
+                                <option value="dr-maria-johnson">Dr. Maria Johnson - Gynecologist</option>
+                            </select>
+                            <span class="error-message">Please select a doctor</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason">Reason for Visit</label>
+                            <textarea id="reason" name="reason" rows="4" placeholder="Brief description of your health concern or reason for appointment"></textarea>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn" disabled style="opacity: 0.5;">Back</button>
+                            <button type="button" class="btn btn-primary btn-next">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Choose Date and Time -->
+                    <div class="step-content" data-step="2">
+                        <h3 style="margin-bottom: 25px; color: var(--dark-blue);">Choose Date & Time</h3>
+                        
+                        <div class="form-group">
+                            <label for="appointmentDate">Preferred Date *</label>
+                            <input type="date" id="appointmentDate" name="appointmentDate" required>
+                            <span class="error-message">Please select a date</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Select Time Slot *</label>
+                            <div class="time-slots">
+                                <input type="radio" name="timeSlot" id="time1" value="09:00 AM" class="time-slot">
+                                <label for="time1" class="time-slot-label">09:00 AM</label>
+                                
+                                <input type="radio" name="timeSlot" id="time2" value="10:00 AM" class="time-slot">
+                                <label for="time2" class="time-slot-label">10:00 AM</label>
+                                
+                                <input type="radio" name="timeSlot" id="time3" value="11:00 AM" class="time-slot">
+                                <label for="time3" class="time-slot-label">11:00 AM</label>
+                                
+                                <input type="radio" name="timeSlot" id="time4" value="12:00 PM" class="time-slot">
+                                <label for="time4" class="time-slot-label">12:00 PM</label>
+                                
+                                <input type="radio" name="timeSlot" id="time5" value="02:00 PM" class="time-slot">
+                                <label for="time5" class="time-slot-label">02:00 PM</label>
+                                
+                                <input type="radio" name="timeSlot" id="time6" value="03:00 PM" class="time-slot">
+                                <label for="time6" class="time-slot-label">03:00 PM</label>
+                                
+                                <input type="radio" name="timeSlot" id="time7" value="04:00 PM" class="time-slot">
+                                <label for="time7" class="time-slot-label">04:00 PM</label>
+                                
+                                <input type="radio" name="timeSlot" id="time8" value="05:00 PM" class="time-slot">
+                                <label for="time8" class="time-slot-label">05:00 PM</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentType">Appointment Type *</label>
+                            <select id="appointmentType" name="appointmentType" required>
+                                <option value="">Select appointment type</option>
+                                <option value="new">New Consultation</option>
+                                <option value="followup">Follow-up Visit</option>
+                                <option value="routine">Routine Check-up</option>
+                                <option value="emergency">Urgent Care</option>
+                            </select>
+                            <span class="error-message">Please select appointment type</span>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-back">Back</button>
+                            <button type="button" class="btn btn-primary btn-next">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Patient Information -->
+                    <div class="step-content" data-step="3">
+                        <h3 style="margin-bottom: 25px; color: var(--dark-blue);">Patient Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                                <span class="error-message">Please enter first name</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                                <span class="error-message">Please enter last name</span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dob">Date of Birth *</label>
+                                <input type="date" id="dob" name="dob" required>
+                                <span class="error-message">Please enter date of birth</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender *</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                    <option value="prefer-not-to-say">Prefer not to say</option>
+                                </select>
+                                <span class="error-message">Please select gender</span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1-234-567-8900" required>
+                                <span class="error-message">Please enter valid phone number</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                                <span class="error-message">Please enter valid email</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address" rows="3" placeholder="Street address, City, State, ZIP"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="insurance">Insurance Provider</label>
+                            <select id="insurance" name="insurance">
+                                <option value="">Select insurance (if applicable)</option>
+                                <option value="bcbs">Blue Cross Blue Shield</option>
+                                <option value="united">United Healthcare</option>
+                                <option value="aetna">Aetna</option>
+                                <option value="cigna">Cigna</option>
+                                <option value="medicare">Medicare</option>
+                                <option value="medicaid">Medicaid</option>
+                                <option value="other">Other</option>
+                                <option value="none">No Insurance</option>
+                            </select>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-back">Back</button>
+                            <button type="button" class="btn btn-primary btn-next">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Confirmation -->
+                    <div class="step-content" data-step="4">
+                        <h3 style="margin-bottom: 25px; color: var(--dark-blue);">Confirm Your Appointment</h3>
+                        
+                        <div style="background: var(--lighter-blue); padding: 30px; border-radius: 10px; margin-bottom: 30px;">
+                            <h4 style="color: var(--dark-blue); margin-bottom: 20px;">Appointment Summary</h4>
+                            <p style="margin: 10px 0;"><strong>Department:</strong> <span id="summaryDepartment">-</span></p>
+                            <p style="margin: 10px 0;"><strong>Doctor:</strong> <span id="summaryDoctor">-</span></p>
+                            <p style="margin: 10px 0;"><strong>Date:</strong> <span id="summaryDate">-</span></p>
+                            <p style="margin: 10px 0;"><strong>Time:</strong> <span id="summaryTime">-</span></p>
+                            <p style="margin: 10px 0;"><strong>Patient:</strong> <span id="summaryPatient">-</span></p>
+                            <p style="margin: 10px 0;"><strong>Contact:</strong> <span id="summaryContact">-</span></p>
+                        </div>
+
+                        <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 4px solid #ffc107; margin-bottom: 25px;">
+                            <p style="margin: 0; color: #856404; line-height: 1.6;">
+                                <strong>Important:</strong> Please arrive 15 minutes before your scheduled appointment time. Bring a valid ID and your insurance card (if applicable).
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" name="terms" required style="margin-right: 10px; width: auto;">
+                                <span>I agree to the terms and conditions and acknowledge the cancellation policy *</span>
+                            </label>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-back">Back</button>
+                            <button type="button" class="btn btn-primary btn-submit">Confirm & Book</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Expect -->
+    <section style="background: var(--lighter-blue);">
+        <div class="container">
+            <h2 class="section-title">What to Expect</h2>
+            <p class="section-subtitle">Your appointment journey in three simple steps</p>
+            
+            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>1. Book Your Appointment</h3>
+                    <p>Complete the online booking form and select your preferred date, time, and doctor. You'll receive instant confirmation via email and SMS.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>2. Confirmation & Reminders</h3>
+                    <p>Our team will confirm your appointment and send you reminders. Feel free to call us if you need to reschedule or have questions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h3>3. Visit & Consultation</h3>
+                    <p>Arrive 15 minutes early for registration. Our staff will guide you through check-in, and you'll be seen by your doctor at the scheduled time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Need Help -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Need Help Booking?</h2>
+            <p class="section-subtitle">Our team is here to assist you</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-card-icon">📞</div>
+                    <h3>Call Us</h3>
+                    <p><a href="tel:+18004672273">+1-800-HMS-CARE</a></p>
+                    <p style="font-size: 0.9rem;">Mon-Fri: 8 AM - 8 PM<br>Sat-Sun: 9 AM - 5 PM</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-icon">📧</div>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:appointments@hms-hospital.com">appointments@hms-hospital.com</a></p>
+                    <p style="font-size: 0.9rem;">We respond within 24 hours</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-icon">💬</div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our support team</p>
+                    <p style="font-size: 0.9rem;">Available 24/7</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-icon">🏥</div>
+                    <h3>Walk-In</h3>
+                    <p>Visit our reception desk</p>
+                    <p style="font-size: 0.9rem;">123 Healthcare Ave<br>Medical District, City 12345</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About HMS</h3>
+                <p>Leading healthcare provider dedicated to delivering exceptional medical services with compassion and excellence.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="doctors.html">Find a Doctor</a></li>
+                    <li><a href="appointments.html">Book Appointment</a></li>
+                    <li><a href="patient-portal.html">Patient Portal</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="services.html#cardiology">Cardiology</a></li>
+                    <li><a href="services.html#neurology">Neurology</a></li>
+                    <li><a href="services.html#orthopedics">Orthopedics</a></li>
+                    <li><a href="services.html#pediatrics">Pediatrics</a></li>
+                    <li><a href="services.html#oncology">Oncology</a></li>
+                    <li><a href="services.html#emergency">Emergency</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 123 Healthcare Ave<br>Medical District, City 12345</p>
+                <p>📞 Emergency: +1-800-HMS-CARE</p>
+                <p>📧 info@hms-hospital.com</p>
+                <p>🕐 24/7 Emergency Services</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 HMS - Hospital Management System. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">↑</button>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Populate summary on step 4
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.multi-step-form');
+            if (!form) return;
+            
+            const nextButtons = form.querySelectorAll('.btn-next');
+            nextButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const currentStep = parseInt(form.querySelector('.form-step.active').dataset.step);
+                    if (currentStep === 3) {
+                        updateSummary();
+                    }
+                });
+            });
+            
+            function updateSummary() {
+                const department = form.querySelector('[name="department"]').selectedOptions[0]?.text || '-';
+                const doctor = form.querySelector('[name="doctor"]').selectedOptions[0]?.text || '-';
+                const date = form.querySelector('[name="appointmentDate"]').value || '-';
+                const time = form.querySelector('[name="timeSlot"]:checked')?.value || '-';
+                const firstName = form.querySelector('[name="firstName"]').value || '';
+                const lastName = form.querySelector('[name="lastName"]').value || '';
+                const phone = form.querySelector('[name="phone"]').value || '';
+                const email = form.querySelector('[name="email"]').value || '';
+                
+                document.getElementById('summaryDepartment').textContent = department;
+                document.getElementById('summaryDoctor').textContent = doctor;
+                document.getElementById('summaryDate').textContent = date;
+                document.getElementById('summaryTime').textContent = time;
+                document.getElementById('summaryPatient').textContent = `${firstName} ${lastName}`;
+                document.getElementById('summaryContact').textContent = `${phone} | ${email}`;
+            }
+        });
+    </script>
+</body>
+</html>
