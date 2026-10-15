@@ -312,11 +312,21 @@ function clearFormErrors() {
     });
 }
 
-function showSuccessModal() {
+function showSuccessModal(title, message) {
     const modal = document.getElementById('successModal');
     const closeBtn = document.getElementById('closeModal');
     
     if (modal) {
+        // Update modal content if custom title/message provided
+        if (title) {
+            const modalTitle = modal.querySelector('.modal-title');
+            if (modalTitle) modalTitle.textContent = title;
+        }
+        if (message) {
+            const modalText = modal.querySelector('.modal-text');
+            if (modalText) modalText.textContent = message;
+        }
+        
         modal.classList.add('active');
         
         // Close modal on button click
@@ -757,21 +767,35 @@ function initGeolocation() {
         useLocationBtn.addEventListener('click', function() {
             if ("geolocation" in navigator) {
                 this.disabled = true;
-                this.textContent = 'Getting location...';
+                const originalText = this.innerHTML;
+                this.innerHTML = 'Getting location...';
                 
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
                         const locationInput = document.getElementById('location');
                         if (locationInput) {
-                            locationInput.value = `Lat: ${position.coords.latitude.toFixed(2)}, Lng: ${position.coords.longitude.toFixed(2)}`;
+                            // Attempt reverse geocoding using OpenStreetMap Nominatim (free, no API key)
+                            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}&zoom=10`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    // Extract city/town from response
+                                    const city = data.address.city || data.address.town || data.address.county || 'Your Location';
+                                    locationInput.value = city;
+                                    this.disabled = false;
+                                    this.innerHTML = originalText;
+                                })
+                                .catch(error => {
+                                    // Fallback to approximate location based on coordinates
+                                    const approxLocation = getApproximateKenyanLocation(position.coords.latitude, position.coords.longitude);
+                                    locationInput.value = approxLocation;
+                                    this.disabled = false;
+                                    this.innerHTML = originalText;
+                                });
                         }
-                        this.disabled = false;
-                        this.textContent = '📍 Use My Location';
-                        alert('Location detected! In production, this would reverse-geocode to show your area name.');
                     },
                     (error) => {
                         this.disabled = false;
-                        this.textContent = '📍 Use My Location';
+                        this.innerHTML = originalText;
                         alert('Could not get location. Please enter manually or check your browser permissions.');
                     }
                 );
@@ -779,5 +803,54 @@ function initGeolocation() {
                 alert('Geolocation is not supported by your browser.');
             }
         });
+    }
+}
+
+// Helper function to approximate Kenyan location from coordinates
+function getApproximateKenyanLocation(lat, lon) {
+    // Simple approximation based on major Kenyan cities coordinates
+    const cities = [
+        { name: 'Nairobi', lat: -1.286389, lon: 36.817223 },
+        { name: 'Mombasa', lat: -4.043477, lon: 39.668206 },
+        { name: 'Kisumu', lat: -0.091702, lon: 34.767956 },
+        { name: 'Nakuru', lat: -0.303099, lon: 36.080026 },
+        { name: 'Eldoret', lat: 0.514277, lon: 35.269779 },
+        { name: 'Thika', lat: -1.033300, lon: 37.083300 },
+    ];
+    
+    let closestCity = cities[0];
+    let minDistance = Infinity;
+    
+    cities.forEach(city => {
+        const distance = Math.sqrt(Math.pow(lat - city.lat, 2) + Math.pow(lon - city.lon, 2));
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestCity = city;
+        }
+    });
+    
+    return closestCity.name;
+}
+
+// ===== PROFESSIONAL FORM DETECTION =====
+function initProfessionalFormDetection() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const formType = urlParams.get('type');
+    
+    if (formType === 'professional') {
+        const contactForm = document.getElementById('contactForm');
+        const professionalForm = document.getElementById('professionalForm');
+        const formTitle = document.getElementById('formTitle');
+        const formSubtitle = document.getElementById('formSubtitle');
+        const pageTitle = document.querySelector('.page-title');
+        
+        // Hide general contact form and show professional form
+        if (contactForm) contactForm.style.display = 'none';
+        if (professionalForm) professionalForm.style.display = 'block';
+        
+        // Update page headings
+        if (formTitle) formTitle.textContent = 'Register as a Professional';
+        if (formSubtitle) formSubtitle.textContent = 'Join FundiPro and connect with thousands of customers across Kenya.';
+        if (pageTitle) pageTitle.textContent = 'Join FundiPro';
     }
 }
