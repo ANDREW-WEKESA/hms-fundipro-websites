@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with FundiPro. Contact us for support, inquiries, or to join as a professional.">
+    <title>Contact Us - FundiPro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">FundiPro</a>
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="professionals.html" class="nav-link">Professionals</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                    <li><a href="contact.html" class="btn btn-primary btn-nav">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content animate-on-scroll">
+                <h1 class="page-title">Get in Touch</h1>
+                <p class="page-subtitle">We're here to help. Reach out with any questions or concerns.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="contact-info section">
+        <div class="container">
+            <div class="contact-info-grid">
+                <div class="contact-info-card animate-on-scroll">
+                    <div class="contact-icon">📍</div>
+                    <h3 class="contact-info-title">Our Address</h3>
+                    <p class="contact-info-text">FundiPro Headquarters<br>Westlands Square, 4th Floor<br>Nairobi, Kenya</p>
+                </div>
+                <div class="contact-info-card animate-on-scroll">
+                    <div class="contact-icon">📞</div>
+                    <h3 class="contact-info-title">Phone</h3>
+                    <p class="contact-info-text">+254 700 123 456<br>+254 733 987 654<br>Mon - Sat: 8am - 8pm</p>
+                </div>
+                <div class="contact-info-card animate-on-scroll">
+                    <div class="contact-icon">✉️</div>
+                    <h3 class="contact-info-title">Email</h3>
+                    <p class="contact-info-text">info@fundipro.co.ke<br>support@fundipro.co.ke<br>partners@fundipro.co.ke</p>
+                </div>
+                <div class="contact-info-card animate-on-scroll">
+                    <div class="contact-icon">🕐</div>
+                    <h3 class="contact-info-title">Business Hours</h3>
+                    <p class="contact-info-text">Monday - Friday: 8am - 8pm<br>Saturday: 9am - 6pm<br>Sunday: 10am - 4pm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Map Section -->
+    <section class="contact-form-section section section-alt">
+        <div class="container">
+            <div class="contact-layout">
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper animate-on-scroll">
+                    <h2 class="form-section-title">Send Us a Message</h2>
+                    <p class="form-section-subtitle">Fill out the form below and we'll get back to you as soon as possible.</p>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName" class="form-label">Full Name <span class="required">*</span></label>
+                                <input 
+                                    type="text" 
+                                    id="fullName" 
+                                    name="fullName" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true"
+                                    placeholder="John Doe">
+                                <span class="form-error" id="fullNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address <span class="required">*</span></label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true"
+                                    placeholder="john@example.com">
+                                <span class="form-error" id="emailError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number <span class="required">*</span></label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true"
+                                    placeholder="+254 700 000 000">
+                                <span class="form-error" id="phoneError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject <span class="required">*</span></label>
+                                <select 
+                                    id="subject" 
+                                    name="subject" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true">
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Customer Support</option>
+                                    <option value="join">Join as Professional</option>
+                                    <option value="partnership">Business Partnership</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="complaint">Complaint</option>
+                                </select>
+                                <span class="form-error" id="subjectError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message <span class="required">*</span></label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                class="form-input form-textarea" 
+                                rows="6" 
+                                required 
+                                aria-required="true"
+                                placeholder="Tell us more about your inquiry..."></textarea>
+                            <span class="form-error" id="messageError"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Map Placeholder -->
+                <div class="map-wrapper animate-on-scroll">
+                    <h2 class="form-section-title">Find Us Here</h2>
+                    <div class="map-placeholder">
+                        <div class="map-content">
+                            <div class="map-icon">📍</div>
+                            <p class="map-text">Westlands Square, 4th Floor<br>Nairobi, Kenya</p>
+                        </div>
+                    </div>
+                    <div class="map-directions">
+                        <h4>Directions</h4>
+                        <p>Located in the heart of Westlands, easily accessible via Waiyaki Way. Ample parking available. Public transport: matatus and buses stop at Westlands Roundabout, 5 minutes walk.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Quick Links -->
+    <section class="quick-help section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Need Quick Help?</h2>
+                <p class="section-subtitle">Check out these common topics</p>
+            </div>
+            <div class="quick-help-grid">
+                <div class="quick-help-card animate-on-scroll">
+                    <div class="quick-help-icon">❓</div>
+                    <h3 class="quick-help-title">FAQs</h3>
+                    <p class="quick-help-description">Find answers to frequently asked questions</p>
+                    <a href="services.html#faq" class="quick-help-link">View FAQs →</a>
+                </div>
+                <div class="quick-help-card animate-on-scroll">
+                    <div class="quick-help-icon">💼</div>
+                    <h3 class="quick-help-title">For Professionals</h3>
+                    <p class="quick-help-description">Learn how to join and grow with FundiPro</p>
+                    <a href="about.html" class="quick-help-link">Learn More →</a>
+                </div>
+                <div class="quick-help-card animate-on-scroll">
+                    <div class="quick-help-icon">📖</div>
+                    <h3 class="quick-help-title">Help Center</h3>
+                    <p class="quick-help-description">Browse guides and tutorials</p>
+                    <a href="#" class="quick-help-link">Visit Help Center →</a>
+                </div>
+                <div class="quick-help-card animate-on-scroll">
+                    <div class="quick-help-icon">💬</div>
+                    <h3 class="quick-help-title">Live Chat</h3>
+                    <p class="quick-help-description">Chat with our support team</p>
+                    <a href="#" class="quick-help-link">Start Chat →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <h2 class="modal-title">Message Sent Successfully!</h2>
+            <p class="modal-text">Thank you for contacting us. We'll get back to you within 24 hours.</p>
+            <button class="btn btn-primary" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">FundiPro</div>
+                    <p class="footer-tagline">Connecting skilled professionals with customers since 2020</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="professionals.html">Find Professionals</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">For Professionals</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Join FundiPro</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FundiPro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

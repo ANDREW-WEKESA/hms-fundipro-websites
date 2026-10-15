@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse and connect with verified skilled professionals on FundiPro. Find the perfect fundi for your project.">
+    <title>Find Professionals - FundiPro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">FundiPro</a>
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="professionals.html" class="nav-link active">Professionals</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="contact.html" class="btn btn-primary btn-nav">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero with Search -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content animate-on-scroll">
+                <h1 class="page-title">Find Your Perfect Professional</h1>
+                <p class="page-subtitle">Browse verified fundis and artisans in your area</p>
+                
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <form id="professionalSearchForm" class="search-form">
+                        <div class="search-input-group">
+                            <label for="searchService" class="sr-only">Service Type</label>
+                            <select id="searchService" name="service">
+                                <option value="">All Services</option>
+                                <option value="plumbing">Plumbing</option>
+                                <option value="electrical">Electrical</option>
+                                <option value="carpentry">Carpentry</option>
+                                <option value="painting">Painting</option>
+                                <option value="cleaning">Cleaning</option>
+                                <option value="landscaping">Landscaping</option>
+                                <option value="roofing">Roofing</option>
+                                <option value="tiling">Tiling</option>
+                            </select>
+                        </div>
+                        <div class="search-input-group">
+                            <label for="searchLocation" class="sr-only">Location</label>
+                            <input type="text" id="searchLocation" name="location" placeholder="Enter location">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professionals Listing Section -->
+    <section class="professionals-listing section">
+        <div class="container">
+            <div class="listing-layout">
+                <!-- Filter Sidebar -->
+                <aside class="filter-sidebar">
+                    <div class="filter-section">
+                        <h3 class="filter-title">Service Type</h3>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="service" value="plumbing" class="service-filter">
+                                <span>Plumbing</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="service" value="electrical" class="service-filter">
+                                <span>Electrical</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="service" value="carpentry" class="service-filter">
+                                <span>Carpentry</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="service" value="painting" class="service-filter">
+                                <span>Painting</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="service" value="cleaning" class="service-filter">
+                                <span>Cleaning</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="service" value="landscaping" class="service-filter">
+                                <span>Landscaping</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="service" value="roofing" class="service-filter">
+                                <span>Roofing</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="service" value="tiling" class="service-filter">
+                                <span>Tiling</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3 class="filter-title">Rating</h3>
+                        <div class="filter-options">
+                            <label class="filter-radio">
+                                <input type="radio" name="rating" value="5" class="rating-filter">
+                                <span>★★★★★ (5.0)</span>
+                            </label>
+                            <label class="filter-radio">
+                                <input type="radio" name="rating" value="4" class="rating-filter">
+                                <span>★★★★☆ (4.0+)</span>
+                            </label>
+                            <label class="filter-radio">
+                                <input type="radio" name="rating" value="3" class="rating-filter">
+                                <span>★★★☆☆ (3.0+)</span>
+                            </label>
+                            <label class="filter-radio">
+                                <input type="radio" name="rating" value="all" class="rating-filter" checked>
+                                <span>All Ratings</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3 class="filter-title">Location</h3>
+                        <input type="text" id="locationFilter" class="filter-input" placeholder="Enter city or area">
+                    </div>
+
+                    <button class="btn btn-secondary btn-block" id="clearFilters">Clear All Filters</button>
+                </aside>
+
+                <!-- Professionals Grid -->
+                <div class="professionals-main">
+                    <div class="results-header">
+                        <p class="results-count"><span id="resultsCount">6</span> professionals found</p>
+                        <select id="sortBy" class="sort-select">
+                            <option value="rating">Highest Rated</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="reviews">Most Reviews</option>
+                        </select>
+                    </div>
+
+                    <div class="professionals-results" id="professionalsResults">
+                        <!-- Professional Card 1 -->
+                        <div class="professional-card-full animate-on-scroll" data-service="electrical" data-rating="5.0" data-price="2000">
+                            <div class="pro-card-header">
+                                <div class="pro-avatar-lg">JM</div>
+                                <div class="pro-basic-info">
+                                    <h3 class="pro-name">John Mwangi</h3>
+                                    <p class="pro-specialty">Master Electrician • 8 years experience</p>
+                                    <div class="pro-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="rating-value">5.0</span>
+                                        <span class="reviews-count">(127 reviews)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-card-body">
+                                <p class="pro-description">Certified electrician specializing in residential and commercial electrical installations. Expert in solar panel setup and energy-efficient solutions.</p>
+                                <div class="pro-details">
+                                    <span class="pro-location">📍 Nairobi, Westlands</span>
+                                    <span class="pro-rate">💰 KES 2,000/hr</span>
+                                </div>
+                                <div class="pro-badges">
+                                    <span class="badge">Verified</span>
+                                    <span class="badge">Top Rated</span>
+                                    <span class="badge">Insured</span>
+                                </div>
+                            </div>
+                            <div class="pro-card-footer">
+                                <button class="btn btn-outline">View Profile</button>
+                                <button class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Professional Card 2 -->
+                        <div class="professional-card-full animate-on-scroll" data-service="plumbing" data-rating="4.9" data-price="1800">
+                            <div class="pro-card-header">
+                                <div class="pro-avatar-lg">AK</div>
+                                <div class="pro-basic-info">
+                                    <h3 class="pro-name">Amina Kamau</h3>
+                                    <p class="pro-specialty">Professional Plumber • 6 years experience</p>
+                                    <div class="pro-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="rating-value">4.9</span>
+                                        <span class="reviews-count">(94 reviews)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-card-body">
+                                <p class="pro-description">Skilled plumber with expertise in drainage systems, pipe installations, and water heater repairs. Available for emergency plumbing services.</p>
+                                <div class="pro-details">
+                                    <span class="pro-location">📍 Mombasa, Nyali</span>
+                                    <span class="pro-rate">💰 KES 1,800/hr</span>
+                                </div>
+                                <div class="pro-badges">
+                                    <span class="badge">Verified</span>
+                                    <span class="badge">Fast Response</span>
+                                </div>
+                            </div>
+                            <div class="pro-card-footer">
+                                <button class="btn btn-outline">View Profile</button>
+                                <button class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Professional Card 3 -->
+                        <div class="professional-card-full animate-on-scroll" data-service="carpentry" data-rating="4.8" data-price="2200">
+                            <div class="pro-card-header">
+                                <div class="pro-avatar-lg">DO</div>
+                                <div class="pro-basic-info">
+                                    <h3 class="pro-name">David Omondi</h3>
+                                    <p class="pro-specialty">Expert Carpenter • 10 years experience</p>
+                                    <div class="pro-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="rating-value">4.8</span>
+                                        <span class="reviews-count">(156 reviews)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-card-body">
+                                <p class="pro-description">Master carpenter specializing in custom furniture, kitchen cabinets, and bespoke woodwork. Quality craftsmanship with attention to detail.</p>
+                                <div class="pro-details">
+                                    <span class="pro-location">📍 Kisumu, Milimani</span>
+                                    <span class="pro-rate">💰 KES 2,200/hr</span>
+                                </div>
+                                <div class="pro-badges">
+                                    <span class="badge">Verified</span>
+                                    <span class="badge">Top Rated</span>
+                                </div>
+                            </div>
+                            <div class="pro-card-footer">
+                                <button class="btn btn-outline">View Profile</button>
+                                <button class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Professional Card 4 -->
+                        <div class="professional-card-full animate-on-scroll" data-service="painting" data-rating="4.7" data-price="1500">
+                            <div class="pro-card-header">
+                                <div class="pro-avatar-lg">MW</div>
+                                <div class="pro-basic-info">
+                                    <h3 class="pro-name">Mary Wangari</h3>
+                                    <p class="pro-specialty">Professional Painter • 5 years experience</p>
+                                    <div class="pro-rating">
+                                        <span class="stars">★★★★☆</span>
+                                        <span class="rating-value">4.7</span>
+                                        <span class="reviews-count">(68 reviews)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-card-body">
+                                <p class="pro-description">Experienced painter offering interior and exterior painting services. Specializes in decorative finishes and color consultation.</p>
+                                <div class="pro-details">
+                                    <span class="pro-location">📍 Nairobi, Karen</span>
+                                    <span class="pro-rate">💰 KES 1,500/hr</span>
+                                </div>
+                                <div class="pro-badges">
+                                    <span class="badge">Verified</span>
+                                </div>
+                            </div>
+                            <div class="pro-card-footer">
+                                <button class="btn btn-outline">View Profile</button>
+                                <button class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Professional Card 5 -->
+                        <div class="professional-card-full animate-on-scroll" data-service="tiling" data-rating="4.9" data-price="1900">
+                            <div class="pro-card-header">
+                                <div class="pro-avatar-lg">SK</div>
+                                <div class="pro-basic-info">
+                                    <h3 class="pro-name">Samuel Kipchoge</h3>
+                                    <p class="pro-specialty">Master Tiler • 7 years experience</p>
+                                    <div class="pro-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="rating-value">4.9</span>
+                                        <span class="reviews-count">(82 reviews)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-card-body">
+                                <p class="pro-description">Professional tiler with expertise in ceramic, porcelain, and natural stone. Precision work for floors, walls, and outdoor spaces.</p>
+                                <div class="pro-details">
+                                    <span class="pro-location">📍 Nakuru, Milimani</span>
+                                    <span class="pro-rate">💰 KES 1,900/hr</span>
+                                </div>
+                                <div class="pro-badges">
+                                    <span class="badge">Verified</span>
+                                    <span class="badge">Top Rated</span>
+                                </div>
+                            </div>
+                            <div class="pro-card-footer">
+                                <button class="btn btn-outline">View Profile</button>
+                                <button class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Professional Card 6 -->
+                        <div class="professional-card-full animate-on-scroll" data-service="landscaping" data-rating="4.6" data-price="1600">
+                            <div class="pro-card-header">
+                                <div class="pro-avatar-lg">LN</div>
+                                <div class="pro-basic-info">
+                                    <h3 class="pro-name">Lucy Njoki</h3>
+                                    <p class="pro-specialty">Landscape Designer • 4 years experience</p>
+                                    <div class="pro-rating">
+                                        <span class="stars">★★★★☆</span>
+                                        <span class="rating-value">4.6</span>
+                                        <span class="reviews-count">(51 reviews)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-card-body">
+                                <p class="pro-description">Creative landscaper specializing in garden design, lawn maintenance, and outdoor living spaces. Eco-friendly approach with native plants.</p>
+                                <div class="pro-details">
+                                    <span class="pro-location">📍 Nairobi, Runda</span>
+                                    <span class="pro-rate">💰 KES 1,600/hr</span>
+                                </div>
+                                <div class="pro-badges">
+                                    <span class="badge">Verified</span>
+                                </div>
+                            </div>
+                            <div class="pro-card-footer">
+                                <button class="btn btn-outline">View Profile</button>
+                                <button class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled>← Previous</button>
+                        <div class="pagination-numbers">
+                            <button class="pagination-number active">1</button>
+                            <button class="pagination-number">2</button>
+                            <button class="pagination-number">3</button>
+                            <span class="pagination-dots">...</span>
+                            <button class="pagination-number">10</button>
+                        </div>
+                        <button class="pagination-btn">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2 class="cta-title">Are You a Skilled Professional?</h2>
+                <p class="cta-subtitle">Join FundiPro and connect with customers who need your expertise</p>
+                <a href="contact.html" class="btn btn-primary btn-lg">Join as a Fundi</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">FundiPro</div>
+                    <p class="footer-tagline">Connecting skilled professionals with customers since 2020</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="professionals.html">Find Professionals</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">For Professionals</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Join FundiPro</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FundiPro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
