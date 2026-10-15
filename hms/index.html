@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HMS - Advanced Healthcare, Compassionate Care. Leading hospital with 500+ doctors, 1000+ beds, 50+ departments, and 24/7 emergency services.">
+    <meta name="keywords" content="hospital, healthcare, medical center, doctors, emergency care, HMS">
+    <title>HMS - Hospital Management System | Quality Healthcare</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-item">
+                <span>📞</span>
+                <span>Emergency: +1-800-HMS-CARE</span>
+            </div>
+            <div class="top-bar-item">
+                <span>📍</span>
+                <span>123 Healthcare Ave, Medical District, City 12345</span>
+            </div>
+            <div class="top-bar-item">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="LinkedIn">💼</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav role="navigation">
+        <div class="nav-content">
+            <div class="logo">
+                <div>
+                    <div class="logo-text">HMS</div>
+                    <span class="logo-tagline">Quality Healthcare</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="patient-portal.html">Patient Portal</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#emergency" class="emergency-btn">Emergency</a></li>
+            </ul>
+            
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Advanced Healthcare, Compassionate Care</h1>
+            <p>Leading the way in medical excellence with state-of-the-art facilities and expert healthcare professionals dedicated to your wellbeing.</p>
+            
+            <div class="cta-buttons">
+                <a href="appointments.html" class="btn btn-primary">Book Appointment</a>
+                <a href="about.html" class="btn btn-secondary">Learn More</a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="500">500+</span>
+                    <span class="stat-label">Expert Doctors</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="1000">1000+</span>
+                    <span class="stat-label">Hospital Beds</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="50">50+</span>
+                    <span class="stat-label">Departments</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="24">24/7</span>
+                    <span class="stat-label">Emergency Care</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Services -->
+    <section class="quick-services">
+        <div class="services-grid">
+            <div class="service-item">
+                <div class="service-icon">🏥</div>
+                <h3>OPD Services</h3>
+                <p>Walk-in consultations with specialist doctors across all departments</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🚑</div>
+                <h3>24/7 Emergency</h3>
+                <p>Round-the-clock emergency and trauma care with advanced life support</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🔬</div>
+                <h3>Lab Tests</h3>
+                <p>Comprehensive diagnostic laboratory services with quick results</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">💊</div>
+                <h3>Pharmacy</h3>
+                <p>24-hour in-house pharmacy with all prescribed medications available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About HMS</h2>
+            <p class="section-subtitle">Your trusted partner in healthcare excellence for over 30 years</p>
+            
+            <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
+                <div>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-light); margin-bottom: 20px;">
+                        HMS has been at the forefront of healthcare delivery, combining cutting-edge medical technology with compassionate patient care. Our multi-specialty hospital offers comprehensive healthcare services under one roof.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-light); margin-bottom: 20px;">
+                        With a team of highly qualified doctors, nurses, and support staff, we are committed to providing world-class healthcare that is accessible, affordable, and patient-centered.
+                    </p>
+                    <a href="about.html" class="btn btn-primary">Read More About Us</a>
+                </div>
+                <div style="background: linear-gradient(135deg, var(--light-blue), var(--primary-blue)); height: 350px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
+                    🏥
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section style="background: var(--lighter-blue);">
+        <div class="container">
+            <h2 class="section-title">Our Departments</h2>
+            <p class="section-subtitle">Comprehensive medical care across multiple specialties</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">❤️</div>
+                        <h3>Cardiology</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Advanced cardiac care with state-of-the-art catheterization labs, heart surgeries, and preventive cardiology programs.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🧠</div>
+                        <h3>Neurology</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Comprehensive brain and nervous system care including stroke management, epilepsy treatment, and neurosurgery.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🦴</div>
+                        <h3>Orthopedics</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Expert bone and joint care with joint replacement surgeries, sports medicine, and rehabilitation services.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👶</div>
+                        <h3>Pediatrics</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Specialized child healthcare from newborns to adolescents with dedicated NICU and pediatric intensive care.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎗️</div>
+                        <h3>Oncology</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Comprehensive cancer care with chemotherapy, radiation therapy, and surgical oncology services.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👩</div>
+                        <h3>Gynecology</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Complete women's health services including maternity care, gynecological surgeries, and fertility treatments.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">✨</div>
+                        <h3>Dermatology</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Expert skin care services including cosmetic procedures, skin disease treatment, and laser therapy.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👁️</div>
+                        <h3>Ophthalmology</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Complete eye care with cataract surgery, LASIK, retina services, and comprehensive vision care.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Doctors -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Meet Our Doctors</h2>
+            <p class="section-subtitle">Experienced healthcare professionals dedicated to your wellbeing</p>
+            
+            <div class="cards-grid">
+                <div class="doctor-card" data-specialty="cardiology">
+                    <div class="doctor-avatar">JD</div>
+                    <h3 class="doctor-name">Dr. John Davis</h3>
+                    <span class="doctor-specialty">Cardiologist</span>
+                    <div class="doctor-info">MBBS, MD, DM (Cardiology)</div>
+                    <div class="doctor-info">20 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="doctor-available">Mon - Fri: 9 AM - 5 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                </div>
+                
+                <div class="doctor-card" data-specialty="neurology">
+                    <div class="doctor-avatar">SW</div>
+                    <h3 class="doctor-name">Dr. Sarah Wilson</h3>
+                    <span class="doctor-specialty">Neurologist</span>
+                    <div class="doctor-info">MBBS, MD, DM (Neurology)</div>
+                    <div class="doctor-info">15 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
+                    <div class="doctor-available">Mon - Sat: 10 AM - 6 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                </div>
+                
+                <div class="doctor-card" data-specialty="orthopedics">
+                    <div class="doctor-avatar">MP</div>
+                    <h3 class="doctor-name">Dr. Michael Patel</h3>
+                    <span class="doctor-specialty">Orthopedic Surgeon</span>
+                    <div class="doctor-info">MBBS, MS (Orthopedics)</div>
+                    <div class="doctor-info">18 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="doctor-available">Tue - Sat: 8 AM - 4 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                </div>
+                
+                <div class="doctor-card" data-specialty="pediatrics">
+                    <div class="doctor-avatar">EL</div>
+                    <h3 class="doctor-name">Dr. Emily Lee</h3>
+                    <span class="doctor-specialty">Pediatrician</span>
+                    <div class="doctor-info">MBBS, MD (Pediatrics)</div>
+                    <div class="doctor-info">12 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 5.0</div>
+                    <div class="doctor-available">Mon - Fri: 9 AM - 7 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="doctors.html" class="btn btn-primary">View All Doctors</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section style="background: var(--lighter-blue);">
+        <div class="container">
+            <h2 class="section-title">Why Choose HMS</h2>
+            <p class="section-subtitle">Excellence in healthcare with patient-first approach</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Advanced Technology</h3>
+                    <p>State-of-the-art medical equipment and latest treatment technologies for accurate diagnosis and effective treatment.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3>Expert Doctors</h3>
+                    <p>Highly qualified and experienced specialists with national and international recognition in their fields.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🕐</div>
+                    <h3>24/7 Care</h3>
+                    <p>Round-the-clock emergency services, ICU care, and patient support ensuring you're never alone in your healthcare journey.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Affordable Pricing</h3>
+                    <p>Quality healthcare at competitive prices with multiple payment options and insurance partnerships for your convenience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Patients Say</h2>
+            <p class="section-subtitle">Real experiences from real patients</p>
+            
+            <div class="cards-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">The cardiac care I received at HMS was exceptional. Dr. Davis and his team saved my life with their quick response and expert treatment. The staff was caring and professional throughout my stay.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RJ</div>
+                        <div class="testimonial-info">
+                            <h4>Robert Johnson</h4>
+                            <p>Cardiac Patient</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">HMS made my pregnancy journey wonderful. The maternity ward is excellent, and Dr. Thompson provided the best prenatal and postnatal care. I'm grateful for their dedication and support.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MT</div>
+                        <div class="testimonial-info">
+                            <h4>Maria Torres</h4>
+                            <p>Maternity Patient</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">After my knee replacement surgery, the rehabilitation team at HMS helped me regain full mobility. Dr. Patel is an outstanding surgeon, and the physiotherapy department is world-class.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DW</div>
+                        <div class="testimonial-info">
+                            <h4>David Williams</h4>
+                            <p>Orthopedic Patient</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Tips / News -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Health Tips & News</h2>
+            <p class="section-subtitle">Stay informed with the latest health information</p>
+            
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-image">💓</div>
+                    <div class="article-content">
+                        <div class="article-date">March 15, 2024</div>
+                        <h3>10 Tips for a Healthy Heart</h3>
+                        <p>Learn simple lifestyle changes that can significantly reduce your risk of heart disease and improve cardiovascular health.</p>
+                        <a href="#" aria-label="Read more about heart health">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">🥗</div>
+                    <div class="article-content">
+                        <div class="article-date">March 12, 2024</div>
+                        <h3>Nutrition Guide for Diabetes</h3>
+                        <p>Expert advice on managing diabetes through proper nutrition, meal planning, and healthy eating habits.</p>
+                        <a href="#" aria-label="Read more about diabetes nutrition">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">🧘</div>
+                    <div class="article-content">
+                        <div class="article-date">March 10, 2024</div>
+                        <h3>Mental Health Awareness</h3>
+                        <p>Understanding the importance of mental health and how to recognize signs when you or loved ones need support.</p>
+                        <a href="#" aria-label="Read more about mental health">Read More →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Schedule Your Appointment Today</h2>
+            <p style="margin-bottom: 40px; font-size: 1.1rem;">Take the first step towards better health</p>
+            
+            <form class="inline-form inline-appointment-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <select name="department" required>
+                    <option value="">Select Department</option>
+                    <option value="cardiology">Cardiology</option>
+                    <option value="neurology">Neurology</option>
+                    <option value="orthopedics">Orthopedics</option>
+                    <option value="pediatrics">Pediatrics</option>
+                    <option value="oncology">Oncology</option>
+                    <option value="gynecology">Gynecology</option>
+                    <option value="dermatology">Dermatology</option>
+                    <option value="ophthalmology">Ophthalmology</option>
+                </select>
+                <input type="date" name="date" required>
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About HMS</h3>
+                <p>Leading healthcare provider dedicated to delivering exceptional medical services with compassion and excellence.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="doctors.html">Find a Doctor</a></li>
+                    <li><a href="appointments.html">Book Appointment</a></li>
+                    <li><a href="patient-portal.html">Patient Portal</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="services.html#cardiology">Cardiology</a></li>
+                    <li><a href="services.html#neurology">Neurology</a></li>
+                    <li><a href="services.html#orthopedics">Orthopedics</a></li>
+                    <li><a href="services.html#pediatrics">Pediatrics</a></li>
+                    <li><a href="services.html#oncology">Oncology</a></li>
+                    <li><a href="services.html#emergency">Emergency</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 123 Healthcare Ave<br>Medical District, City 12345</p>
+                <p>📞 Emergency: +1-800-HMS-CARE</p>
+                <p>📧 info@hms-hospital.com</p>
+                <p>🕐 24/7 Emergency Services</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 HMS - Hospital Management System. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
