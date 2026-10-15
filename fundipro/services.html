@@ -24,9 +24,10 @@
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="services.html" class="nav-link active">Services</a></li>
                     <li><a href="professionals.html" class="nav-link">Professionals</a></li>
+                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="contact.html" class="btn btn-primary btn-nav">Get Started</a></li>
+                    <li><a href="contact.html?type=professional" class="btn btn-primary btn-nav">Get Started</a></li>
                 </ul>
             </div>
         </div>
@@ -383,7 +384,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">FundiPro</div>
-                    <p class="footer-tagline">Connecting skilled professionals with customers since 2020</p>
+                    <p class="footer-tagline">Connecting skilled professionals with customers across Kenya since 2020.</p>
+                    <p style="font-size: 0.875rem; color: #999; margin-top: 10px;">📍 Westlands, Nairobi, Kenya<br>📞 +254 700 123 456 | ✉️ info@fundipro.co.ke</p>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook">📘</a>
                         <a href="#" aria-label="Twitter">🐦</a>
@@ -403,8 +405,8 @@
                 <div class="footer-section">
                     <h4 class="footer-title">For Professionals</h4>
                     <ul class="footer-links">
-                        <li><a href="contact.html">Join FundiPro</a></li>
-                        <li><a href="#">Pricing</a></li>
+                        <li><a href="contact.html?type=professional">Join FundiPro</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="#">Success Stories</a></li>
                         <li><a href="#">Resources</a></li>
                     </ul>
@@ -414,13 +416,13 @@
                     <ul class="footer-links">
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Privacy Policy (Kenya Data Protection Act 2019)</a></li>
                         <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 FundiPro. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> FundiPro. All rights reserved.</p>
             </div>
         </div>
     </footer>

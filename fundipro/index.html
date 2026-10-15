@@ -25,9 +25,10 @@
                     <li><a href="index.html" class="nav-link active">Home</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
                     <li><a href="professionals.html" class="nav-link">Professionals</a></li>
+                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="#get-started" class="btn btn-primary btn-nav">Get Started</a></li>
+                    <li><a href="contact.html?type=professional" class="btn btn-primary btn-nav">Get Started</a></li>
                 </ul>
             </div>
         </div>
@@ -37,8 +38,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content animate-on-scroll">
-                <h1 class="hero-title">Find Trusted Professionals Near You</h1>
-                <p class="hero-subtitle">Connect with skilled fundis and artisans for all your home and business service needs. Quality work, guaranteed.</p>
+                <h1 class="hero-title">Find Trusted Fundis Near You</h1>
+                <p class="hero-subtitle">Connect with skilled tradespeople for all your home and business needs across Kenya.</p>
                 
                 <!-- Search Bar -->
                 <div class="search-bar">
@@ -55,19 +56,48 @@
                                 <option value="landscaping">Landscaping</option>
                                 <option value="roofing">Roofing</option>
                                 <option value="tiling">Tiling</option>
+                                <option value="masonry">Masonry</option>
+                                <option value="welding">Welding</option>
+                                <option value="mechanics">Mechanics</option>
+                                <option value="tailoring">Tailoring</option>
+                                <option value="solar">Solar Installation</option>
+                                <option value="cctv">CCTV Installation</option>
                             </select>
                         </div>
                         <div class="search-input-group">
                             <label for="location" class="sr-only">Location</label>
-                            <input type="text" id="location" name="location" placeholder="Enter your location" required>
+                            <input type="text" id="location" name="location" list="locationList" placeholder="Enter your location" required>
+                            <datalist id="locationList">
+                                <option value="Nairobi">
+                                <option value="Mombasa">
+                                <option value="Kisumu">
+                                <option value="Nakuru">
+                                <option value="Eldoret">
+                                <option value="Thika">
+                                <option value="Nyeri">
+                                <option value="Machakos">
+                                <option value="Meru">
+                                <option value="Garissa">
+                                <option value="Malindi">
+                                <option value="Kitale">
+                                <option value="Kakamega">
+                                <option value="Kericho">
+                                <option value="Embu">
+                                <option value="Kisii">
+                                <option value="Bungoma">
+                                <option value="Voi">
+                                <option value="Nanyuki">
+                                <option value="Lamu">
+                            </datalist>
                         </div>
+                        <button type="button" class="btn btn-outline" id="useLocationBtn" style="white-space: nowrap;">📍 Use My Location</button>
                         <button type="submit" class="btn btn-primary">Search</button>
                     </form>
                 </div>
 
                 <div class="hero-buttons">
                     <a href="professionals.html" class="btn btn-primary btn-lg">Find a Fundi</a>
-                    <a href="contact.html" class="btn btn-outline btn-lg">Join as Professional</a>
+                    <a href="contact.html?type=professional" class="btn btn-outline btn-lg">Join as Professional</a>
                 </div>
             </div>
         </div>
@@ -78,16 +108,16 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-card animate-on-scroll">
-                    <div class="stat-number" data-target="10000">0</div>
-                    <div class="stat-label">Professionals</div>
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Professionals<br><small style="font-size: 0.75rem; opacity: 0.7;">[Demo Data — figures update when live]</small></div>
                 </div>
                 <div class="stat-card animate-on-scroll">
-                    <div class="stat-number" data-target="50000">0</div>
-                    <div class="stat-label">Jobs Completed</div>
+                    <div class="stat-number" data-target="1200">0</div>
+                    <div class="stat-label">Jobs Completed<br><small style="font-size: 0.75rem; opacity: 0.7;">[Demo Data — figures update when live]</small></div>
                 </div>
                 <div class="stat-card animate-on-scroll">
                     <div class="stat-number" data-target="4.8">0</div>
-                    <div class="stat-label">Average Rating</div>
+                    <div class="stat-label">Average Rating ★<br><small style="font-size: 0.75rem; opacity: 0.7;">[Demo Data — figures update when live]</small></div>
                 </div>
             </div>
         </div>
@@ -104,50 +134,38 @@
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">🔧</div>
                     <h3 class="service-title">Plumbing</h3>
-                    <p class="service-count">1,200+ Professionals</p>
+                    <p class="service-count">50+ professionals</p>
                     <a href="professionals.html?service=plumbing" class="service-link">View Professionals →</a>
                 </div>
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">⚡</div>
                     <h3 class="service-title">Electrical</h3>
-                    <p class="service-count">980+ Professionals</p>
+                    <p class="service-count">50+ professionals</p>
                     <a href="professionals.html?service=electrical" class="service-link">View Professionals →</a>
                 </div>
                 <div class="service-card animate-on-scroll">
-                    <div class="service-icon">🔨</div>
+                    <div class="service-icon">🪵</div>
                     <h3 class="service-title">Carpentry</h3>
-                    <p class="service-count">1,500+ Professionals</p>
+                    <p class="service-count">50+ professionals</p>
                     <a href="professionals.html?service=carpentry" class="service-link">View Professionals →</a>
                 </div>
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">🎨</div>
                     <h3 class="service-title">Painting</h3>
-                    <p class="service-count">850+ Professionals</p>
+                    <p class="service-count">50+ professionals</p>
                     <a href="professionals.html?service=painting" class="service-link">View Professionals →</a>
                 </div>
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">🧹</div>
                     <h3 class="service-title">Cleaning</h3>
-                    <p class="service-count">2,100+ Professionals</p>
+                    <p class="service-count">50+ professionals</p>
                     <a href="professionals.html?service=cleaning" class="service-link">View Professionals →</a>
                 </div>
                 <div class="service-card animate-on-scroll">
-                    <div class="service-icon">🌳</div>
-                    <h3 class="service-title">Landscaping</h3>
-                    <p class="service-count">650+ Professionals</p>
-                    <a href="professionals.html?service=landscaping" class="service-link">View Professionals →</a>
-                </div>
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">🏠</div>
-                    <h3 class="service-title">Roofing</h3>
-                    <p class="service-count">420+ Professionals</p>
-                    <a href="professionals.html?service=roofing" class="service-link">View Professionals →</a>
-                </div>
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">🔲</div>
-                    <h3 class="service-title">Tiling</h3>
-                    <p class="service-count">780+ Professionals</p>
-                    <a href="professionals.html?service=tiling" class="service-link">View Professionals →</a>
+                    <div class="service-icon">☀️</div>
+                    <h3 class="service-title">Solar Installation</h3>
+                    <p class="service-count">50+ professionals</p>
+                    <a href="professionals.html?service=solar" class="service-link">View Professionals →</a>
                 </div>
             </div>
         </div>
@@ -165,19 +183,19 @@
                     <div class="step-number">1</div>
                     <div class="step-icon">📝</div>
                     <h3 class="step-title">Post Your Job</h3>
-                    <p class="step-description">Describe what you need done and when you need it. It takes just a few minutes.</p>
+                    <p class="step-description">Describe the work, share your location, set your budget and timeline. Add photos if helpful.</p>
                 </div>
                 <div class="step-card animate-on-scroll">
                     <div class="step-number">2</div>
                     <div class="step-icon">🤝</div>
                     <h3 class="step-title">Get Matched</h3>
-                    <p class="step-description">We connect you with qualified professionals in your area who can do the job.</p>
+                    <p class="step-description">Nearby verified fundis are notified and respond with competitive quotes.</p>
                 </div>
                 <div class="step-card animate-on-scroll">
                     <div class="step-number">3</div>
                     <div class="step-icon">✅</div>
                     <h3 class="step-title">Job Done</h3>
-                    <p class="step-description">Review the work, pay securely, and rate your experience. Simple as that!</p>
+                    <p class="step-description">Review the work, pay securely via M-Pesa, and rate your fundi.</p>
                 </div>
             </div>
         </div>
@@ -290,7 +308,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">FundiPro</div>
-                    <p class="footer-tagline">Connecting skilled professionals with customers since 2020</p>
+                    <p class="footer-tagline">Connecting skilled professionals with customers across Kenya since 2020.</p>
+                    <p style="font-size: 0.875rem; color: #999; margin-top: 10px;">📍 Westlands, Nairobi, Kenya<br>📞 +254 700 123 456 | ✉️ info@fundipro.co.ke</p>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook">📘</a>
                         <a href="#" aria-label="Twitter">🐦</a>
@@ -310,8 +329,8 @@
                 <div class="footer-section">
                     <h4 class="footer-title">For Professionals</h4>
                     <ul class="footer-links">
-                        <li><a href="contact.html">Join FundiPro</a></li>
-                        <li><a href="#">Pricing</a></li>
+                        <li><a href="contact.html?type=professional">Join FundiPro</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="#">Success Stories</a></li>
                         <li><a href="#">Resources</a></li>
                     </ul>
@@ -321,13 +340,13 @@
                     <ul class="footer-links">
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Privacy Policy (Kenya Data Protection Act 2019)</a></li>
                         <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 FundiPro. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> FundiPro. All rights reserved.</p>
             </div>
         </div>
     </footer>

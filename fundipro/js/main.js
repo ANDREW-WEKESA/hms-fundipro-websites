@@ -2,6 +2,12 @@
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Set dynamic year in footer
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+    
     initNavigation();
     initScrollAnimations();
     initBackToTop();
@@ -11,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initProfessionalFilters();
     initCounterAnimation();
     initActiveNavLinks();
+    initGeolocation();
 });
 
 // ===== NAVIGATION =====
@@ -665,3 +672,35 @@ viewProfileButtons.forEach(button => {
 // ===== CONSOLE LOG =====
 console.log('FundiPro website loaded successfully!');
 console.log('Version: 1.0.0');
+
+// ===== GEOLOCATION =====
+function initGeolocation() {
+    const useLocationBtn = document.getElementById('useLocationBtn');
+    if (useLocationBtn) {
+        useLocationBtn.addEventListener('click', function() {
+            if ("geolocation" in navigator) {
+                this.disabled = true;
+                this.textContent = 'Getting location...';
+                
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const locationInput = document.getElementById('location');
+                        if (locationInput) {
+                            locationInput.value = `Lat: ${position.coords.latitude.toFixed(2)}, Lng: ${position.coords.longitude.toFixed(2)}`;
+                        }
+                        this.disabled = false;
+                        this.textContent = '📍 Use My Location';
+                        alert('Location detected! In production, this would reverse-geocode to show your area name.');
+                    },
+                    (error) => {
+                        this.disabled = false;
+                        this.textContent = '📍 Use My Location';
+                        alert('Could not get location. Please enter manually or check your browser permissions.');
+                    }
+                );
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        });
+    }
+}

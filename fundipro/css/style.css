@@ -1255,6 +1255,11 @@ ul {
     color: var(--primary-blue);
 }
 
+.badge-verified {
+    background-color: var(--success);
+    color: var(--bg-white);
+}
+
 .pro-card-footer {
     display: flex;
     gap: var(--spacing-sm);

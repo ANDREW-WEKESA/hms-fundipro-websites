@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FundiPro pricing plans for professionals. Choose the plan that fits your business needs.">
+    <title>Pricing - FundiPro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Pricing-specific styles */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-xl);
+            position: relative;
+            transition: all var(--transition-normal);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .pricing-card-featured {
+            border: 3px solid var(--primary-blue);
+            transform: scale(1.05);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark-blue));
+            color: var(--bg-white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .pricing-price {
+            margin: var(--spacing-md) 0;
+        }
+        
+        .price-currency {
+            font-size: 1.25rem;
+            vertical-align: super;
+            font-weight: 600;
+        }
+        
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        
+        .pricing-subtitle {
+            color: var(--text-light);
+            margin-top: var(--spacing-xs);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .payment-card {
+            background: var(--bg-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        
+        .payment-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .payment-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .payment-card p {
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">FundiPro</a>
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="professionals.html" class="nav-link">Professionals</a></li>
+                    <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="contact.html?type=professional" class="btn btn-primary btn-nav">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content animate-on-scroll">
+                <h1 class="page-title">Pricing Plans</h1>
+                <p class="page-subtitle">Choose the plan that works best for your business</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Cards -->
+    <section class="pricing-section section">
+        <div class="container">
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card animate-on-scroll">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Free</h3>
+                        <div class="pricing-price">
+                            <span class="price-currency">KES</span>
+                            <span class="price-amount">0</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p class="pricing-subtitle">Perfect for getting started</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Basic profile listing</li>
+                        <li>✓ Up to 3 job applications/month</li>
+                        <li>✓ Basic customer reviews</li>
+                        <li>✓ SMS notifications</li>
+                        <li>✗ Featured profile</li>
+                        <li>✗ Priority notifications</li>
+                        <li>✗ Analytics dashboard</li>
+                    </ul>
+                    <a href="contact.html?type=professional&plan=free" class="btn btn-outline btn-block">Get Started Free</a>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card pricing-card-featured animate-on-scroll">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Pro</h3>
+                        <div class="pricing-price">
+                            <span class="price-currency">KES</span>
+                            <span class="price-amount">500</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p class="pricing-subtitle">For growing professionals</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Unlimited job applications</li>
+                        <li>✓ Featured profile</li>
+                        <li>✓ Priority notifications</li>
+                        <li>✓ Analytics dashboard</li>
+                        <li>✓ M-Pesa integration</li>
+                        <li>✓ Enhanced customer reviews</li>
+                        <li>✓ Email support</li>
+                    </ul>
+                    <a href="contact.html?type=professional&plan=pro" class="btn btn-primary btn-block">Start Pro</a>
+                    <p style="text-align: center; font-size: 0.85rem; margin-top: 10px; color: #666;">Pay via M-Pesa</p>
+                </div>
+
+                <!-- Business Plan -->
+                <div class="pricing-card animate-on-scroll">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Business</h3>
+                        <div class="pricing-price">
+                            <span class="price-currency">KES</span>
+                            <span class="price-amount">1,200</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p class="pricing-subtitle">For established businesses</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Everything in Pro</li>
+                        <li>✓ Team accounts (up to 5)</li>
+                        <li>✓ Custom branding</li>
+                        <li>✓ Dedicated support</li>
+                        <li>✓ API access</li>
+                        <li>✓ Advanced analytics</li>
+                        <li>✓ Priority placement</li>
+                    </ul>
+                    <a href="contact.html?type=professional&plan=business" class="btn btn-outline btn-block">Go Business</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="payment-methods section section-alt">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Payment Methods</h2>
+                <p class="section-subtitle">We accept multiple payment options for your convenience</p>
+            </div>
+            <div class="payment-grid">
+                <div class="payment-card animate-on-scroll">
+                    <div class="payment-icon">📱</div>
+                    <h3>M-Pesa</h3>
+                    <p>Pay via M-Pesa Paybill or Till Number. Instant activation upon confirmation.</p>
+                </div>
+                <div class="payment-card animate-on-scroll">
+                    <div class="payment-icon">🏦</div>
+                    <h3>Bank Transfer</h3>
+                    <p>Direct bank transfer to our account. Activation within 24 hours of confirmation.</p>
+                </div>
+                <div class="payment-card animate-on-scroll">
+                    <div class="payment-icon">💳</div>
+                    <h3>Debit/Credit Card</h3>
+                    <p>Visa and Mastercard accepted. Secure online payment processing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion">
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <span>Can I cancel anytime?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! You can cancel your subscription at any time. There are no cancellation fees, and you'll continue to have access to your plan features until the end of your billing period.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <span>How does M-Pesa billing work?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Pay monthly via M-Pesa to our Paybill number. You'll receive a confirmation SMS, and your account will be activated or renewed automatically. We'll send a reminder 3 days before your renewal date.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <span>Is there a free trial?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The Free plan is available indefinitely with no trial period needed. For Pro and Business plans, we offer a 7-day money-back guarantee if you're not satisfied.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <span>Can I upgrade or downgrade my plan?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! You can upgrade or downgrade at any time. When upgrading, you'll be charged a prorated amount for the remainder of the month. When downgrading, changes take effect at the start of your next billing cycle.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <span>What happens if my payment fails?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We'll send you a notification if a payment fails. You'll have a 7-day grace period to update your payment method. During this time, your account remains active. After 7 days, your account will be downgraded to the Free plan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2 class="cta-title">Ready to Grow Your Business?</h2>
+                <p class="cta-subtitle">Join thousands of skilled professionals on FundiPro</p>
+                <a href="contact.html?type=professional" class="btn btn-primary btn-lg">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">FundiPro</div>
+                    <p class="footer-tagline">Connecting skilled professionals with customers across Kenya since 2020.</p>
+                    <p style="font-size: 0.875rem; color: #999; margin-top: 10px;">📍 Westlands, Nairobi, Kenya<br>📞 +254 700 123 456 | ✉️ info@fundipro.co.ke</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="professionals.html">Find Professionals</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">For Professionals</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html?type=professional">Join FundiPro</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy (Kenya Data Protection Act 2019)</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> FundiPro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

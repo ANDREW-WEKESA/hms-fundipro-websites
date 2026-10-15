@@ -24,9 +24,10 @@
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="services.html" class="nav-link">Services</a></li>
                     <li><a href="professionals.html" class="nav-link active">Professionals</a></li>
+                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="contact.html" class="btn btn-primary btn-nav">Get Started</a></li>
+                    <li><a href="contact.html?type=professional" class="btn btn-primary btn-nav">Get Started</a></li>
                 </ul>
             </div>
         </div>
@@ -54,11 +55,39 @@
                                 <option value="landscaping">Landscaping</option>
                                 <option value="roofing">Roofing</option>
                                 <option value="tiling">Tiling</option>
+                                <option value="masonry">Masonry</option>
+                                <option value="welding">Welding</option>
+                                <option value="mechanics">Mechanics</option>
+                                <option value="tailoring">Tailoring</option>
+                                <option value="solar">Solar Installation</option>
+                                <option value="cctv">CCTV Installation</option>
                             </select>
                         </div>
                         <div class="search-input-group">
                             <label for="searchLocation" class="sr-only">Location</label>
-                            <input type="text" id="searchLocation" name="location" placeholder="Enter location">
+                            <input type="text" id="searchLocation" name="location" list="locationList" placeholder="Enter location">
+                            <datalist id="locationList">
+                                <option value="Nairobi">
+                                <option value="Mombasa">
+                                <option value="Kisumu">
+                                <option value="Nakuru">
+                                <option value="Eldoret">
+                                <option value="Thika">
+                                <option value="Nyeri">
+                                <option value="Machakos">
+                                <option value="Meru">
+                                <option value="Garissa">
+                                <option value="Malindi">
+                                <option value="Kitale">
+                                <option value="Kakamega">
+                                <option value="Kericho">
+                                <option value="Embu">
+                                <option value="Kisii">
+                                <option value="Bungoma">
+                                <option value="Voi">
+                                <option value="Nanyuki">
+                                <option value="Lamu">
+                            </datalist>
                         </div>
                         <button type="submit" class="btn btn-primary">Search</button>
                     </form>
@@ -175,7 +204,7 @@
                                     <span class="pro-rate">💰 KES 2,000/hr</span>
                                 </div>
                                 <div class="pro-badges">
-                                    <span class="badge">Verified</span>
+                                    <span class="badge badge-verified">✓ Verified</span>
                                     <span class="badge">Top Rated</span>
                                     <span class="badge">Insured</span>
                                 </div>
@@ -207,7 +236,7 @@
                                     <span class="pro-rate">💰 KES 1,800/hr</span>
                                 </div>
                                 <div class="pro-badges">
-                                    <span class="badge">Verified</span>
+                                    <span class="badge badge-verified">✓ Verified</span>
                                     <span class="badge">Fast Response</span>
                                 </div>
                             </div>
@@ -238,7 +267,7 @@
                                     <span class="pro-rate">💰 KES 2,200/hr</span>
                                 </div>
                                 <div class="pro-badges">
-                                    <span class="badge">Verified</span>
+                                    <span class="badge badge-verified">✓ Verified</span>
                                     <span class="badge">Top Rated</span>
                                 </div>
                             </div>
@@ -269,7 +298,7 @@
                                     <span class="pro-rate">💰 KES 1,500/hr</span>
                                 </div>
                                 <div class="pro-badges">
-                                    <span class="badge">Verified</span>
+                                    <span class="badge badge-verified">✓ Verified</span>
                                 </div>
                             </div>
                             <div class="pro-card-footer">
@@ -299,7 +328,7 @@
                                     <span class="pro-rate">💰 KES 1,900/hr</span>
                                 </div>
                                 <div class="pro-badges">
-                                    <span class="badge">Verified</span>
+                                    <span class="badge badge-verified">✓ Verified</span>
                                     <span class="badge">Top Rated</span>
                                 </div>
                             </div>
@@ -330,7 +359,7 @@
                                     <span class="pro-rate">💰 KES 1,600/hr</span>
                                 </div>
                                 <div class="pro-badges">
-                                    <span class="badge">Verified</span>
+                                    <span class="badge badge-verified">✓ Verified</span>
                                 </div>
                             </div>
                             <div class="pro-card-footer">
@@ -363,7 +392,7 @@
             <div class="cta-content animate-on-scroll">
                 <h2 class="cta-title">Are You a Skilled Professional?</h2>
                 <p class="cta-subtitle">Join FundiPro and connect with customers who need your expertise</p>
-                <a href="contact.html" class="btn btn-primary btn-lg">Join as a Fundi</a>
+                <a href="contact.html?type=professional" class="btn btn-primary btn-lg">Join as a Fundi</a>
             </div>
         </div>
     </section>
@@ -374,7 +403,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">FundiPro</div>
-                    <p class="footer-tagline">Connecting skilled professionals with customers since 2020</p>
+                    <p class="footer-tagline">Connecting skilled professionals with customers across Kenya since 2020.</p>
+                    <p style="font-size: 0.875rem; color: #999; margin-top: 10px;">📍 Westlands, Nairobi, Kenya<br>📞 +254 700 123 456 | ✉️ info@fundipro.co.ke</p>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook">📘</a>
                         <a href="#" aria-label="Twitter">🐦</a>
@@ -394,8 +424,8 @@
                 <div class="footer-section">
                     <h4 class="footer-title">For Professionals</h4>
                     <ul class="footer-links">
-                        <li><a href="contact.html">Join FundiPro</a></li>
-                        <li><a href="#">Pricing</a></li>
+                        <li><a href="contact.html?type=professional">Join FundiPro</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="#">Success Stories</a></li>
                         <li><a href="#">Resources</a></li>
                     </ul>
@@ -405,13 +435,13 @@
                     <ul class="footer-links">
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Privacy Policy (Kenya Data Protection Act 2019)</a></li>
                         <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 FundiPro. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> FundiPro. All rights reserved.</p>
             </div>
         </div>
     </footer>
