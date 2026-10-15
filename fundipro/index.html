@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FundiPro - Connect with trusted skilled professionals for all your home and business service needs. Find qualified artisans near you.">
+    <meta name="keywords" content="fundis, professionals, artisans, home services, plumbing, electrical, carpentry">
+    <title>FundiPro - Find Trusted Professionals Near You</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">FundiPro</a>
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="professionals.html" class="nav-link">Professionals</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="#get-started" class="btn btn-primary btn-nav">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-on-scroll">
+                <h1 class="hero-title">Find Trusted Professionals Near You</h1>
+                <p class="hero-subtitle">Connect with skilled fundis and artisans for all your home and business service needs. Quality work, guaranteed.</p>
+                
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <form id="searchForm" class="search-form">
+                        <div class="search-input-group">
+                            <label for="serviceType" class="sr-only">Service Type</label>
+                            <select id="serviceType" name="serviceType" required>
+                                <option value="">Select Service</option>
+                                <option value="plumbing">Plumbing</option>
+                                <option value="electrical">Electrical</option>
+                                <option value="carpentry">Carpentry</option>
+                                <option value="painting">Painting</option>
+                                <option value="cleaning">Cleaning</option>
+                                <option value="landscaping">Landscaping</option>
+                                <option value="roofing">Roofing</option>
+                                <option value="tiling">Tiling</option>
+                            </select>
+                        </div>
+                        <div class="search-input-group">
+                            <label for="location" class="sr-only">Location</label>
+                            <input type="text" id="location" name="location" placeholder="Enter your location" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="professionals.html" class="btn btn-primary btn-lg">Find a Fundi</a>
+                    <a href="contact.html" class="btn btn-outline btn-lg">Join as Professional</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-number" data-target="10000">0</div>
+                    <div class="stat-label">Professionals</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-number" data-target="50000">0</div>
+                    <div class="stat-label">Jobs Completed</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-number" data-target="4.8">0</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories Section -->
+    <section class="services-section section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Popular Service Categories</h2>
+                <p class="section-subtitle">Browse our wide range of professional services</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🔧</div>
+                    <h3 class="service-title">Plumbing</h3>
+                    <p class="service-count">1,200+ Professionals</p>
+                    <a href="professionals.html?service=plumbing" class="service-link">View Professionals →</a>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">Electrical</h3>
+                    <p class="service-count">980+ Professionals</p>
+                    <a href="professionals.html?service=electrical" class="service-link">View Professionals →</a>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🔨</div>
+                    <h3 class="service-title">Carpentry</h3>
+                    <p class="service-count">1,500+ Professionals</p>
+                    <a href="professionals.html?service=carpentry" class="service-link">View Professionals →</a>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">Painting</h3>
+                    <p class="service-count">850+ Professionals</p>
+                    <a href="professionals.html?service=painting" class="service-link">View Professionals →</a>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🧹</div>
+                    <h3 class="service-title">Cleaning</h3>
+                    <p class="service-count">2,100+ Professionals</p>
+                    <a href="professionals.html?service=cleaning" class="service-link">View Professionals →</a>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🌳</div>
+                    <h3 class="service-title">Landscaping</h3>
+                    <p class="service-count">650+ Professionals</p>
+                    <a href="professionals.html?service=landscaping" class="service-link">View Professionals →</a>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🏠</div>
+                    <h3 class="service-title">Roofing</h3>
+                    <p class="service-count">420+ Professionals</p>
+                    <a href="professionals.html?service=roofing" class="service-link">View Professionals →</a>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🔲</div>
+                    <h3 class="service-title">Tiling</h3>
+                    <p class="service-count">780+ Professionals</p>
+                    <a href="professionals.html?service=tiling" class="service-link">View Professionals →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works section section-alt">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Get started in three simple steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">📝</div>
+                    <h3 class="step-title">Post Your Job</h3>
+                    <p class="step-description">Describe what you need done and when you need it. It takes just a few minutes.</p>
+                </div>
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">🤝</div>
+                    <h3 class="step-title">Get Matched</h3>
+                    <p class="step-description">We connect you with qualified professionals in your area who can do the job.</p>
+                </div>
+                <div class="step-card animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">✅</div>
+                    <h3 class="step-title">Job Done</h3>
+                    <p class="step-description">Review the work, pay securely, and rate your experience. Simple as that!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Professionals Section -->
+    <section class="featured-professionals section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Featured Professionals</h2>
+                <p class="section-subtitle">Meet some of our top-rated fundis</p>
+            </div>
+            <div class="professionals-grid">
+                <div class="professional-card animate-on-scroll">
+                    <div class="professional-avatar">JM</div>
+                    <h3 class="professional-name">John Mwangi</h3>
+                    <p class="professional-trade">Master Electrician</p>
+                    <div class="professional-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-value">5.0</span>
+                    </div>
+                    <p class="professional-location">📍 Nairobi, Kenya</p>
+                    <a href="professionals.html" class="btn btn-outline btn-sm">View Profile</a>
+                </div>
+                <div class="professional-card animate-on-scroll">
+                    <div class="professional-avatar">AK</div>
+                    <h3 class="professional-name">Amina Kamau</h3>
+                    <p class="professional-trade">Professional Plumber</p>
+                    <div class="professional-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-value">4.9</span>
+                    </div>
+                    <p class="professional-location">📍 Mombasa, Kenya</p>
+                    <a href="professionals.html" class="btn btn-outline btn-sm">View Profile</a>
+                </div>
+                <div class="professional-card animate-on-scroll">
+                    <div class="professional-avatar">DO</div>
+                    <h3 class="professional-name">David Omondi</h3>
+                    <p class="professional-trade">Expert Carpenter</p>
+                    <div class="professional-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-value">4.8</span>
+                    </div>
+                    <p class="professional-location">📍 Kisumu, Kenya</p>
+                    <a href="professionals.html" class="btn btn-outline btn-sm">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section section-alt">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real reviews from real customers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-quote">"Found an excellent plumber within hours! Professional service and fair pricing. FundiPro made it so easy to find reliable help."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <p class="author-name">Sarah Muthoni</p>
+                            <p class="author-location">Nairobi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-quote">"The carpenter we hired through FundiPro did an amazing job on our custom furniture. Highly skilled and very professional!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PK</div>
+                        <div class="author-info">
+                            <p class="author-name">Peter Kimani</p>
+                            <p class="author-location">Thika</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-quote">"Great platform! We've used it multiple times for different services. Always reliable professionals and transparent pricing."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">GW</div>
+                        <div class="author-info">
+                            <p class="author-name">Grace Wanjiku</p>
+                            <p class="author-location">Nakuru</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner" id="get-started">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2 class="cta-title">Ready to Find Your Perfect Fundi?</h2>
+                <p class="cta-subtitle">Join thousands of satisfied customers who trust FundiPro</p>
+                <a href="professionals.html" class="btn btn-primary btn-lg">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">FundiPro</div>
+                    <p class="footer-tagline">Connecting skilled professionals with customers since 2020</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="professionals.html">Find Professionals</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">For Professionals</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Join FundiPro</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FundiPro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
