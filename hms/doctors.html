@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find expert doctors at HMS - Experienced specialists across cardiology, neurology, orthopedics, pediatrics, and more medical specialties.">
+    <meta name="keywords" content="doctors, specialists, physicians, medical experts, healthcare professionals">
+    <title>Our Doctors - HMS Hospital Management System | Expert Medical Team</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-item">
+                <span>📞</span>
+                <span>Emergency: +1-800-HMS-CARE</span>
+            </div>
+            <div class="top-bar-item">
+                <span>📍</span>
+                <span>123 Healthcare Ave, Medical District, City 12345</span>
+            </div>
+            <div class="top-bar-item">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="LinkedIn">💼</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav role="navigation">
+        <div class="nav-content">
+            <div class="logo">
+                <div>
+                    <div class="logo-text">HMS</div>
+                    <span class="logo-tagline">Quality Healthcare</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="doctors.html" class="active">Doctors</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="patient-portal.html">Patient Portal</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#emergency" class="emergency-btn">Emergency</a></li>
+            </ul>
+            
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <h1>Our Medical Team</h1>
+            <p>Expert doctors committed to your health and wellbeing</p>
+            
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" class="doctor-search" placeholder="Search by doctor name or specialty..." aria-label="Search doctors">
+                <button type="button" aria-label="Search">🔍</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section style="padding: 40px 20px;">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Doctors</button>
+                <button class="filter-tab" data-filter="cardiology">Cardiology</button>
+                <button class="filter-tab" data-filter="neurology">Neurology</button>
+                <button class="filter-tab" data-filter="orthopedics">Orthopedics</button>
+                <button class="filter-tab" data-filter="pediatrics">Pediatrics</button>
+                <button class="filter-tab" data-filter="oncology">Oncology</button>
+                <button class="filter-tab" data-filter="gynecology">Gynecology</button>
+                <button class="filter-tab" data-filter="dermatology">Dermatology</button>
+                <button class="filter-tab" data-filter="ophthalmology">Ophthalmology</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Grid -->
+    <section style="padding-top: 0;">
+        <div class="container">
+            <div class="cards-grid">
+                <!-- Cardiologists -->
+                <div class="doctor-card" data-specialty="cardiology">
+                    <div class="doctor-avatar">JD</div>
+                    <h3 class="doctor-name">Dr. John Davis</h3>
+                    <span class="doctor-specialty">Cardiologist</span>
+                    <div class="doctor-info">MBBS, MD, DM (Cardiology)</div>
+                    <div class="doctor-info">20 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="doctor-available">Mon - Fri: 9 AM - 5 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <div class="doctor-card" data-specialty="cardiology">
+                    <div class="doctor-avatar">AM</div>
+                    <h3 class="doctor-name">Dr. Anna Martinez</h3>
+                    <span class="doctor-specialty">Interventional Cardiologist</span>
+                    <div class="doctor-info">MBBS, MD, DM, FSCAI</div>
+                    <div class="doctor-info">18 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="doctor-available">Tue - Sat: 10 AM - 6 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <!-- Neurologists -->
+                <div class="doctor-card" data-specialty="neurology">
+                    <div class="doctor-avatar">SW</div>
+                    <h3 class="doctor-name">Dr. Sarah Wilson</h3>
+                    <span class="doctor-specialty">Neurologist</span>
+                    <div class="doctor-info">MBBS, MD, DM (Neurology)</div>
+                    <div class="doctor-info">15 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
+                    <div class="doctor-available">Mon - Sat: 10 AM - 6 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <div class="doctor-card" data-specialty="neurology">
+                    <div class="doctor-avatar">RK</div>
+                    <h3 class="doctor-name">Dr. Rajesh Kumar</h3>
+                    <span class="doctor-specialty">Neurosurgeon</span>
+                    <div class="doctor-info">MBBS, MS, MCh (Neurosurgery)</div>
+                    <div class="doctor-info">22 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 5.0</div>
+                    <div class="doctor-available">Mon - Fri: 8 AM - 4 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <!-- Orthopedic Surgeons -->
+                <div class="doctor-card" data-specialty="orthopedics">
+                    <div class="doctor-avatar">MP</div>
+                    <h3 class="doctor-name">Dr. Michael Patel</h3>
+                    <span class="doctor-specialty">Orthopedic Surgeon</span>
+                    <div class="doctor-info">MBBS, MS (Orthopedics)</div>
+                    <div class="doctor-info">18 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="doctor-available">Tue - Sat: 8 AM - 4 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <div class="doctor-card" data-specialty="orthopedics">
+                    <div class="doctor-avatar">LT</div>
+                    <h3 class="doctor-name">Dr. Lisa Thompson</h3>
+                    <span class="doctor-specialty">Sports Medicine Specialist</span>
+                    <div class="doctor-info">MBBS, MS (Ortho), Fellowship Sports Med</div>
+                    <div class="doctor-info">12 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
+                    <div class="doctor-available">Mon - Fri: 9 AM - 5 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <!-- Pediatricians -->
+                <div class="doctor-card" data-specialty="pediatrics">
+                    <div class="doctor-avatar">EL</div>
+                    <h3 class="doctor-name">Dr. Emily Lee</h3>
+                    <span class="doctor-specialty">Pediatrician</span>
+                    <div class="doctor-info">MBBS, MD (Pediatrics)</div>
+                    <div class="doctor-info">12 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 5.0</div>
+                    <div class="doctor-available">Mon - Fri: 9 AM - 7 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <div class="doctor-card" data-specialty="pediatrics">
+                    <div class="doctor-avatar">JB</div>
+                    <h3 class="doctor-name">Dr. James Brown</h3>
+                    <span class="doctor-specialty">Pediatric Surgeon</span>
+                    <div class="doctor-info">MBBS, MS, MCh (Pediatric Surgery)</div>
+                    <div class="doctor-info">16 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="doctor-available">Tue - Sat: 10 AM - 5 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <!-- Oncologists -->
+                <div class="doctor-card" data-specialty="oncology">
+                    <div class="doctor-avatar">DG</div>
+                    <h3 class="doctor-name">Dr. David Garcia</h3>
+                    <span class="doctor-specialty">Medical Oncologist</span>
+                    <div class="doctor-info">MBBS, MD, DM (Medical Oncology)</div>
+                    <div class="doctor-info">19 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="doctor-available">Mon - Fri: 9 AM - 6 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <div class="doctor-card" data-specialty="oncology">
+                    <div class="doctor-avatar">PR</div>
+                    <h3 class="doctor-name">Dr. Priya Reddy</h3>
+                    <span class="doctor-specialty">Radiation Oncologist</span>
+                    <div class="doctor-info">MBBS, MD (Radiation Oncology)</div>
+                    <div class="doctor-info">14 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
+                    <div class="doctor-available">Mon - Sat: 8 AM - 4 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <!-- Gynecologists -->
+                <div class="doctor-card" data-specialty="gynecology">
+                    <div class="doctor-avatar">MJ</div>
+                    <h3 class="doctor-name">Dr. Maria Johnson</h3>
+                    <span class="doctor-specialty">Gynecologist & Obstetrician</span>
+                    <div class="doctor-info">MBBS, MS (OB/GYN)</div>
+                    <div class="doctor-info">17 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="doctor-available">Mon - Sat: 9 AM - 7 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <div class="doctor-card" data-specialty="gynecology">
+                    <div class="doctor-avatar">NC</div>
+                    <h3 class="doctor-name">Dr. Nina Chen</h3>
+                    <span class="doctor-specialty">Fertility Specialist</span>
+                    <div class="doctor-info">MBBS, MS, Fellowship in IVF</div>
+                    <div class="doctor-info">13 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 5.0</div>
+                    <div class="doctor-available">Tue - Sat: 10 AM - 6 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <!-- Dermatologists -->
+                <div class="doctor-card" data-specialty="dermatology">
+                    <div class="doctor-avatar">AK</div>
+                    <h3 class="doctor-name">Dr. Aisha Khan</h3>
+                    <span class="doctor-specialty">Dermatologist</span>
+                    <div class="doctor-info">MBBS, MD (Dermatology)</div>
+                    <div class="doctor-info">11 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
+                    <div class="doctor-available">Mon - Fri: 10 AM - 6 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <div class="doctor-card" data-specialty="dermatology">
+                    <div class="doctor-avatar">TW</div>
+                    <h3 class="doctor-name">Dr. Thomas White</h3>
+                    <span class="doctor-specialty">Cosmetic Dermatologist</span>
+                    <div class="doctor-info">MBBS, MD, Fellowship Cosmetic Derm</div>
+                    <div class="doctor-info">15 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="doctor-available">Tue - Sat: 9 AM - 5 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <!-- Ophthalmologists -->
+                <div class="doctor-card" data-specialty="ophthalmology">
+                    <div class="doctor-avatar">VS</div>
+                    <h3 class="doctor-name">Dr. Vikram Shah</h3>
+                    <span class="doctor-specialty">Ophthalmologist</span>
+                    <div class="doctor-info">MBBS, MS (Ophthalmology)</div>
+                    <div class="doctor-info">16 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="doctor-available">Mon - Sat: 9 AM - 6 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+
+                <div class="doctor-card" data-specialty="ophthalmology">
+                    <div class="doctor-avatar">RM</div>
+                    <h3 class="doctor-name">Dr. Rachel Miller</h3>
+                    <span class="doctor-specialty">Retina Specialist</span>
+                    <div class="doctor-info">MBBS, MS, Fellowship Retina</div>
+                    <div class="doctor-info">10 years experience</div>
+                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
+                    <div class="doctor-available">Tue - Fri: 10 AM - 5 PM</div>
+                    <a href="appointments.html" class="btn">Book Appointment</a>
+                    <button class="btn btn-secondary">View Profile</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Our Doctors -->
+    <section style="background: var(--lighter-blue);">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Doctors</h2>
+            <p class="section-subtitle">Excellence in medical expertise and patient care</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Highly Qualified</h3>
+                    <p>All our doctors are board-certified with advanced degrees from prestigious medical institutions worldwide.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Experienced</h3>
+                    <p>Our medical team brings decades of combined experience in treating complex medical conditions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Patient-Centered</h3>
+                    <p>We believe in compassionate care with personalized treatment plans tailored to each patient's needs.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Continuous Learning</h3>
+                    <p>Our doctors stay updated with the latest medical research and treatment protocols through ongoing education.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Book an Appointment with Our Expert Doctors</h2>
+            <p style="margin-bottom: 30px; font-size: 1.1rem;">Take the first step towards better health today</p>
+            <div class="cta-buttons">
+                <a href="appointments.html" class="btn btn-primary">Book Appointment</a>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About HMS</h3>
+                <p>Leading healthcare provider dedicated to delivering exceptional medical services with compassion and excellence.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="doctors.html">Find a Doctor</a></li>
+                    <li><a href="appointments.html">Book Appointment</a></li>
+                    <li><a href="patient-portal.html">Patient Portal</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="services.html#cardiology">Cardiology</a></li>
+                    <li><a href="services.html#neurology">Neurology</a></li>
+                    <li><a href="services.html#orthopedics">Orthopedics</a></li>
+                    <li><a href="services.html#pediatrics">Pediatrics</a></li>
+                    <li><a href="services.html#oncology">Oncology</a></li>
+                    <li><a href="services.html#emergency">Emergency</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 123 Healthcare Ave<br>Medical District, City 12345</p>
+                <p>📞 Emergency: +1-800-HMS-CARE</p>
+                <p>📧 info@hms-hospital.com</p>
+                <p>🕐 24/7 Emergency Services</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 HMS - Hospital Management System. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
