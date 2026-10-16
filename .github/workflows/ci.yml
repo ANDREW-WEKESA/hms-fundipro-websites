@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Validate HTML
+      uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+      with:
+        root: ./
+        css: true
+        
+    - name: Check for US content
+      run: |
+        echo "Checking for non-Kenyan content..."
+        ! grep -r "911" hms fundipro --exclude-dir=.git || exit 1
+        ! grep -r "+1-" hms fundipro --exclude-dir=.git || exit 1
+        echo "✓ No US content found"
+        
+    - name: Verify Kenyan phone format
+      run: |
+        echo "Verifying Kenyan phone numbers..."
+        grep -r "+254" hms fundipro --exclude-dir=.git
+        echo "✓ Kenyan phone format verified"
+        
+    - name: Check for KES currency
+      run: |
+        echo "Checking currency format..."
+        grep -r "KES" fundipro --exclude-dir=.git
+        echo "✓ KES currency found"
+
+    - name: Verify emergency numbers
+      run: |
+        echo "Verifying emergency numbers..."
+        grep -r "999\|112" hms --exclude-dir=.git
+        echo "✓ Kenyan emergency numbers verified"
