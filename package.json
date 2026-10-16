@@ -1,0 +1,26 @@
+{
+  "name": "hms-fundipro-websites",
+  "version": "1.0.0",
+  "description": "HMS Hospital Management and FundiPro Professional Services websites with Kenyan localization",
+  "scripts": {
+    "start:hms": "cd hms && python -m http.server 8001",
+    "start:fundipro": "cd fundipro && python -m http.server 8000",
+    "lint": "echo 'Linting not configured yet'",
+    "test": "echo 'Tests not configured yet'"
+  },
+  "keywords": [
+    "hms",
+    "fundipro",
+    "kenya",
+    "hospital",
+    "healthcare",
+    "services",
+    "marketplace"
+  ],
+  "author": "ANDREW WEKESA <andrewwekesa675@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ANDREW-WEKESA/hms-fundipro-websites.git"
+  }
+}
