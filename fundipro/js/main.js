@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCounterAnimation();
     initActiveNavLinks();
     initGeolocation();
+    initProfessionalFormDetection();
 });
 
 // ===== NAVIGATION =====
@@ -140,6 +141,7 @@ function initSearchForm() {
 // ===== CONTACT FORM =====
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
+    const professionalForm = document.getElementById('professionalForm');
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -193,6 +195,81 @@ function initContactForm() {
                 
                 // Show success modal
                 showSuccessModal();
+            }
+        });
+    }
+    
+    if (professionalForm) {
+        professionalForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            clearFormErrors();
+            
+            // Get form values
+            const businessName = document.getElementById('businessName').value.trim();
+            const ownerName = document.getElementById('ownerName').value.trim();
+            const proPhone = document.getElementById('proPhone').value.trim();
+            const proEmail = document.getElementById('proEmail').value.trim();
+            const county = document.getElementById('county').value;
+            const experience = document.getElementById('experience').value;
+            const services = Array.from(document.querySelectorAll('input[name="services"]:checked')).map(cb => cb.value);
+            const proMessage = document.getElementById('proMessage').value.trim();
+            
+            // Validate
+            let isValid = true;
+            
+            if (businessName.length < 2) {
+                showError('businessName', 'Please enter a valid business name');
+                isValid = false;
+            }
+            
+            if (ownerName.length < 2) {
+                showError('ownerName', 'Please enter a valid name');
+                isValid = false;
+            }
+            
+            if (!isValidPhone(proPhone)) {
+                showError('proPhone', 'Please enter a valid phone number');
+                isValid = false;
+            }
+            
+            if (!isValidEmail(proEmail)) {
+                showError('proEmail', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            if (!county) {
+                showError('county', 'Please select your county');
+                isValid = false;
+            }
+            
+            if (!experience || experience < 0) {
+                showError('experience', 'Please enter years of experience');
+                isValid = false;
+            }
+            
+            if (services.length === 0) {
+                showError('services', 'Please select at least one service');
+                isValid = false;
+            }
+            
+            if (proMessage.length < 10) {
+                showError('proMessage', 'Please provide more details about your business');
+                isValid = false;
+            }
+            
+            // If valid, show success modal
+            if (isValid) {
+                console.log('Professional registration submitted:', { 
+                    businessName, ownerName, proPhone, proEmail, county, experience, services, proMessage 
+                });
+                
+                // Reset form
+                professionalForm.reset();
+                
+                // Show success modal with custom message
+                showSuccessModal('Registration Submitted!', 'Thank you for your interest in joining FundiPro. Our team will review your application and contact you within 48 hours.');
             }
         });
     }

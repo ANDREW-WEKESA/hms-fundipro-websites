@@ -183,6 +183,23 @@ nav.scrolled {
     }
 }
 
+.contact-us-btn {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 500;
+}
+
+.contact-us-btn:hover {
+    background: var(--dark-blue);
+    transform: scale(1.05);
+}
+
+.contact-us-btn::after {
+    display: none;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -1383,6 +1400,8 @@ footer {
     
     .hamburger {
         display: flex;
+        min-width: 44px;
+        min-height: 44px;
     }
     
     .nav-links {
@@ -1408,6 +1427,47 @@ footer {
     
     .nav-links a::after {
         display: none;
+    }
+    
+    /* Enforce 44px minimum tap targets for mobile */
+    .nav-links a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+    }
+    
+    .nav-links .btn {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .btn,
+    button[type="submit"],
+    .back-to-top {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Form elements tap targets */
+    input[type="checkbox"],
+    input[type="radio"] {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    /* Ensure all interactive elements meet 44px requirement */
+    a.btn,
+    button.btn,
+    .filter-tab,
+    .time-slot-label {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .hero {

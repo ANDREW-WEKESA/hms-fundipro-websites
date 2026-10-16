@@ -48,22 +48,22 @@
         <div class="container">
             <div class="contact-info-grid">
                 <div class="contact-info-card animate-on-scroll">
-                    <div class="contact-icon">📍</div>
+                    <div class="contact-icon" role="img" aria-label="Location pin">📍</div>
                     <h3 class="contact-info-title">Our Address</h3>
                     <p class="contact-info-text">FundiPro Headquarters<br>Westlands Square, 4th Floor<br>Nairobi, Kenya</p>
                 </div>
                 <div class="contact-info-card animate-on-scroll">
-                    <div class="contact-icon">📞</div>
+                    <div class="contact-icon" role="img" aria-label="Telephone">📞</div>
                     <h3 class="contact-info-title">Phone</h3>
                     <p class="contact-info-text">+254 700 123 456<br>+254 733 987 654<br>Mon - Sat: 8am - 8pm</p>
                 </div>
                 <div class="contact-info-card animate-on-scroll">
-                    <div class="contact-icon">✉️</div>
+                    <div class="contact-icon" role="img" aria-label="Email envelope">✉️</div>
                     <h3 class="contact-info-title">Email</h3>
                     <p class="contact-info-text">info@fundipro.co.ke<br>support@fundipro.co.ke<br>partners@fundipro.co.ke</p>
                 </div>
                 <div class="contact-info-card animate-on-scroll">
-                    <div class="contact-icon">🕐</div>
+                    <div class="contact-icon" role="img" aria-label="Clock">🕐</div>
                     <h3 class="contact-info-title">Business Hours</h3>
                     <p class="contact-info-text">Monday - Friday: 8am - 8pm<br>Saturday: 9am - 6pm<br>Sunday: 10am - 4pm</p>
                 </div>
@@ -77,9 +77,10 @@
             <div class="contact-layout">
                 <!-- Contact Form -->
                 <div class="contact-form-wrapper animate-on-scroll">
-                    <h2 class="form-section-title">Send Us a Message</h2>
-                    <p class="form-section-subtitle">Fill out the form below and we'll get back to you as soon as possible.</p>
+                    <h2 class="form-section-title" id="formTitle">Send Us a Message</h2>
+                    <p class="form-section-subtitle" id="formSubtitle">Fill out the form below and we'll get back to you as soon as possible.</p>
                     
+                    <!-- General Contact Form -->
                     <form id="contactForm" class="contact-form">
                         <div class="form-row">
                             <div class="form-group">
@@ -163,6 +164,194 @@
 
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Send Message</button>
                     </form>
+
+                    <!-- Professional Registration Form (hidden by default) -->
+                    <form id="professionalForm" class="contact-form" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="businessName" class="form-label">Business Name <span class="required">*</span></label>
+                                <input 
+                                    type="text" 
+                                    id="businessName" 
+                                    name="businessName" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true"
+                                    placeholder="e.g., Juma Plumbing Services">
+                                <span class="form-error" id="businessNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerName" class="form-label">Owner Name <span class="required">*</span></label>
+                                <input 
+                                    type="text" 
+                                    id="ownerName" 
+                                    name="ownerName" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true"
+                                    placeholder="Your full name">
+                                <span class="form-error" id="ownerNameError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="proPhone" class="form-label">Phone Number <span class="required">*</span></label>
+                                <input 
+                                    type="tel" 
+                                    id="proPhone" 
+                                    name="proPhone" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true"
+                                    placeholder="+254 700 000 000">
+                                <span class="form-error" id="proPhoneError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="proEmail" class="form-label">Email Address <span class="required">*</span></label>
+                                <input 
+                                    type="email" 
+                                    id="proEmail" 
+                                    name="proEmail" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true"
+                                    placeholder="your@email.com">
+                                <span class="form-error" id="proEmailError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="county" class="form-label">County/Location <span class="required">*</span></label>
+                                <select 
+                                    id="county" 
+                                    name="county" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true">
+                                    <option value="">Select your county</option>
+                                    <option value="Nairobi">Nairobi</option>
+                                    <option value="Mombasa">Mombasa</option>
+                                    <option value="Kisumu">Kisumu</option>
+                                    <option value="Nakuru">Nakuru</option>
+                                    <option value="Uasin Gishu">Uasin Gishu (Eldoret)</option>
+                                    <option value="Kiambu">Kiambu</option>
+                                    <option value="Machakos">Machakos</option>
+                                    <option value="Meru">Meru</option>
+                                    <option value="Nyeri">Nyeri</option>
+                                    <option value="Kajiado">Kajiado</option>
+                                    <option value="Kilifi">Kilifi</option>
+                                    <option value="Kakamega">Kakamega</option>
+                                    <option value="Bungoma">Bungoma</option>
+                                    <option value="Other">Other County</option>
+                                </select>
+                                <span class="form-error" id="countyError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="experience" class="form-label">Years of Experience <span class="required">*</span></label>
+                                <input 
+                                    type="number" 
+                                    id="experience" 
+                                    name="experience" 
+                                    class="form-input" 
+                                    required 
+                                    aria-required="true"
+                                    min="0"
+                                    max="50"
+                                    placeholder="e.g., 5">
+                                <span class="form-error" id="experienceError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Services Offered <span class="required">*</span></label>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 10px;">
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="plumbing" style="margin-right: 8px; width: auto;">
+                                    <span>Plumbing</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="electrical" style="margin-right: 8px; width: auto;">
+                                    <span>Electrical</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="carpentry" style="margin-right: 8px; width: auto;">
+                                    <span>Carpentry</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="painting" style="margin-right: 8px; width: auto;">
+                                    <span>Painting</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="cleaning" style="margin-right: 8px; width: auto;">
+                                    <span>Cleaning</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="landscaping" style="margin-right: 8px; width: auto;">
+                                    <span>Landscaping</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="roofing" style="margin-right: 8px; width: auto;">
+                                    <span>Roofing</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="tiling" style="margin-right: 8px; width: auto;">
+                                    <span>Tiling</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="masonry" style="margin-right: 8px; width: auto;">
+                                    <span>Masonry</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="welding" style="margin-right: 8px; width: auto;">
+                                    <span>Welding</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="solar" style="margin-right: 8px; width: auto;">
+                                    <span>Solar Installation</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" name="services" value="cctv" style="margin-right: 8px; width: auto;">
+                                    <span>CCTV Installation</span>
+                                </label>
+                            </div>
+                            <span class="form-error" id="servicesError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ncaNumber" class="form-label">NCA Registration Number <span style="color: #666; font-weight: normal;">(Optional)</span></label>
+                            <input 
+                                type="text" 
+                                id="ncaNumber" 
+                                name="ncaNumber" 
+                                class="form-input" 
+                                placeholder="e.g., NCA/P/12345">
+                            <span class="form-error" id="ncaNumberError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="proMessage" class="form-label">Tell us about your business <span class="required">*</span></label>
+                            <textarea 
+                                id="proMessage" 
+                                name="proMessage" 
+                                class="form-input form-textarea" 
+                                rows="4" 
+                                required 
+                                aria-required="true"
+                                placeholder="Brief description of your services, areas you cover, any certifications..."></textarea>
+                            <span class="form-error" id="proMessageError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display: flex; align-items: start; cursor: pointer;">
+                                <input type="checkbox" name="proConsent" id="proConsent" required style="margin-right: 10px; margin-top: 4px; width: auto;">
+                                <span>I consent to FundiPro processing my personal and business data in accordance with the Kenya Data Protection Act, 2019. <a href="#" style="color: var(--primary-blue);">View Privacy Policy</a></span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Registration</button>
+                    </form>
                 </div>
 
                 <!-- Map Placeholder -->
@@ -170,7 +359,7 @@
                     <h2 class="form-section-title">Find Us Here</h2>
                     <div class="map-placeholder">
                         <div class="map-content">
-                            <div class="map-icon">📍</div>
+                            <div class="map-icon" role="img" aria-label="Location pin">📍</div>
                             <p class="map-text">Westlands Square, 4th Floor<br>Nairobi, Kenya</p>
                         </div>
                     </div>
@@ -192,25 +381,25 @@
             </div>
             <div class="quick-help-grid">
                 <div class="quick-help-card animate-on-scroll">
-                    <div class="quick-help-icon">❓</div>
+                    <div class="quick-help-icon" role="img" aria-label="Question mark">❓</div>
                     <h3 class="quick-help-title">FAQs</h3>
                     <p class="quick-help-description">Find answers to frequently asked questions</p>
                     <a href="services.html#faq" class="quick-help-link">View FAQs →</a>
                 </div>
                 <div class="quick-help-card animate-on-scroll">
-                    <div class="quick-help-icon">💼</div>
+                    <div class="quick-help-icon" role="img" aria-label="Briefcase">💼</div>
                     <h3 class="quick-help-title">For Professionals</h3>
                     <p class="quick-help-description">Learn how to join and grow with FundiPro</p>
                     <a href="about.html" class="quick-help-link">Learn More →</a>
                 </div>
                 <div class="quick-help-card animate-on-scroll">
-                    <div class="quick-help-icon">📖</div>
+                    <div class="quick-help-icon" role="img" aria-label="Book">📖</div>
                     <h3 class="quick-help-title">Help Center</h3>
                     <p class="quick-help-description">Browse guides and tutorials</p>
                     <a href="#" class="quick-help-link">Visit Help Center →</a>
                 </div>
                 <div class="quick-help-card animate-on-scroll">
-                    <div class="quick-help-icon">💬</div>
+                    <div class="quick-help-icon" role="img" aria-label="Speech bubble">💬</div>
                     <h3 class="quick-help-title">Live Chat</h3>
                     <p class="quick-help-description">Chat with our support team</p>
                     <a href="#" class="quick-help-link">Start Chat →</a>
@@ -222,7 +411,7 @@
     <!-- Success Modal -->
     <div id="successModal" class="modal">
         <div class="modal-content">
-            <div class="modal-icon">✅</div>
+            <div class="modal-icon" role="img" aria-label="Checkmark">✅</div>
             <h2 class="modal-title">Message Sent Successfully!</h2>
             <p class="modal-text">Thank you for contacting us. We'll get back to you within 24 hours.</p>
             <button class="btn btn-primary" id="closeModal">Close</button>
@@ -236,12 +425,12 @@
                 <div class="footer-section">
                     <div class="footer-logo">FundiPro</div>
                     <p class="footer-tagline">Connecting skilled professionals with customers across Kenya since 2020.</p>
-                    <p style="font-size: 0.875rem; color: #999; margin-top: 10px;">📍 Westlands, Nairobi, Kenya<br>📞 +254 700 123 456 | ✉️ info@fundipro.co.ke</p>
+                    <p style="font-size: 0.875rem; color: #999; margin-top: 10px;"><span role="img" aria-label="Location">📍</span> Westlands, Nairobi, Kenya<br><span role="img" aria-label="Phone">📞</span> +254 700 123 456 | <span role="img" aria-label="Email">✉️</span> info@fundipro.co.ke</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="LinkedIn">💼</a>
+                        <a href="#" aria-label="Facebook"><span role="img" aria-label="Facebook icon">📘</span></a>
+                        <a href="#" aria-label="Twitter"><span role="img" aria-label="Twitter icon">🐦</span></a>
+                        <a href="#" aria-label="Instagram"><span role="img" aria-label="Instagram icon">📷</span></a>
+                        <a href="#" aria-label="LinkedIn"><span role="img" aria-label="LinkedIn icon">💼</span></a>
                     </div>
                 </div>
                 <div class="footer-section">

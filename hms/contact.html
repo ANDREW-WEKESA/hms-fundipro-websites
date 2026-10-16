@@ -48,6 +48,7 @@
                 <li><a href="patient-portal.html">Patient Portal</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
                 <li><a href="#emergency" class="emergency-btn">Emergency</a></li>
+                <li><a href="contact.html" class="btn contact-us-btn">Contact Us</a></li>
             </ul>
             
             <button class="hamburger" aria-label="Toggle menu">
@@ -236,62 +237,62 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-open-days="1,2,3,4,5" data-open-start="8" data-open-end="18">
                         <td><strong>Cardiology</strong></td>
                         <td><a href="tel:+254207001251">+254 20 700 1251</a></td>
                         <td>Mon-Fri: 8 AM - 6 PM</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="1,2,3,4,5,6" data-open-start="9" data-open-end="18">
                         <td><strong>Neurology</strong></td>
                         <td><a href="tel:+254207001252">+254 20 700 1252</a></td>
                         <td>Mon-Sat: 9 AM - 6 PM</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="2,3,4,5,6" data-open-start="8" data-open-end="17">
                         <td><strong>Orthopedics</strong></td>
                         <td><a href="tel:+254207001253">+254 20 700 1253</a></td>
                         <td>Tue-Sat: 8 AM - 5 PM</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="1,2,3,4,5" data-open-start="8" data-open-end="19">
                         <td><strong>Pediatrics</strong></td>
                         <td><a href="tel:+254207001254">+254 20 700 1254</a></td>
                         <td>Mon-Fri: 8 AM - 7 PM</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="1,2,3,4,5" data-open-start="9" data-open-end="18">
                         <td><strong>Oncology</strong></td>
                         <td><a href="tel:+254207001255">+254 20 700 1255</a></td>
                         <td>Mon-Fri: 9 AM - 6 PM</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="1,2,3,4,5,6" data-open-start="9" data-open-end="19">
                         <td><strong>Gynecology</strong></td>
                         <td><a href="tel:+254207001256">+254 20 700 1256</a></td>
                         <td>Mon-Sat: 9 AM - 7 PM</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="0,1,2,3,4,5,6" data-open-start="0" data-open-end="24">
                         <td><strong>Emergency</strong></td>
                         <td><a href="tel:+254700911911" style="color: #dc3545; font-weight: bold;">+254 700 911 911</a></td>
                         <td>24/7 Available</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="0,1,2,3,4,5,6" data-open-start="7" data-open-end="19">
                         <td><strong>Laboratory</strong></td>
                         <td><a href="tel:+254207001260">+254 20 700 1260</a></td>
                         <td>7 AM - 7 PM Daily</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="0,1,2,3,4,5,6" data-open-start="7" data-open-end="20">
                         <td><strong>Radiology</strong></td>
                         <td><a href="tel:+254207001261">+254 20 700 1261</a></td>
                         <td>7 AM - 8 PM Daily</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="0,1,2,3,4,5,6" data-open-start="8" data-open-end="22">
                         <td><strong>Pharmacy</strong></td>
                         <td><a href="tel:+254207001262">+254 20 700 1262</a></td>
                         <td>8 AM - 10 PM Daily</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="1,2,3,4,5" data-open-start="8" data-open-end="17">
                         <td><strong>Billing & Insurance</strong></td>
                         <td><a href="tel:+254207001270">+254 20 700 1270</a></td>
                         <td>Mon-Fri: 8 AM - 5 PM</td>
                     </tr>
-                    <tr>
+                    <tr data-open-days="1,2,3,4,5" data-open-start="8" data-open-end="17">
                         <td><strong>Medical Records</strong></td>
                         <td><a href="tel:+254207001271">+254 20 700 1271</a></td>
                         <td>Mon-Fri: 8 AM - 5 PM</td>
@@ -302,32 +303,29 @@
     </section>
 
     <script>
-        // Add open/closed badges based on Africa/Nairobi time
+        // Add open/closed badges based on Africa/Nairobi time using data attributes
         document.addEventListener('DOMContentLoaded', function() {
             const now = new Date().toLocaleString('en-US', {timeZone: 'Africa/Nairobi'});
             const nairobiTime = new Date(now);
-            const hours = nairobiTime.getHours();
-            const day = nairobiTime.getDay(); // 0 = Sunday, 6 = Saturday
+            const currentHour = nairobiTime.getHours();
+            const currentDay = nairobiTime.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
             
             document.querySelectorAll('.department-table tbody tr').forEach(row => {
-                const hoursCell = row.cells[2];
-                const hoursText = hoursCell.textContent;
-                const badge = document.createElement('span');
+                const openDays = row.getAttribute('data-open-days');
+                const openStart = parseInt(row.getAttribute('data-open-start'));
+                const openEnd = parseInt(row.getAttribute('data-open-end'));
                 
-                let isOpen = false;
-                
-                if (hoursText.includes('24/7')) {
-                    isOpen = true;
-                } else if (hoursText.includes('Mon-Fri') && day >= 1 && day <= 5) {
-                    isOpen = hours >= 8 && hours < 18;
-                } else if (hoursText.includes('Mon-Sat') && day >= 1 && day <= 6) {
-                    isOpen = hours >= 8 && hours < 18;
-                } else if (hoursText.includes('Tue-Sat') && day >= 2 && day <= 6) {
-                    isOpen = hours >= 8 && hours < 17;
-                } else if (hoursText.includes('Daily')) {
-                    isOpen = hours >= 7 && hours < 20;
+                if (!openDays || openStart === null || openEnd === null) {
+                    return; // Skip if data attributes are missing
                 }
                 
+                const daysArray = openDays.split(',').map(d => parseInt(d));
+                const isDayOpen = daysArray.includes(currentDay);
+                const isHourOpen = (openEnd === 24) ? true : (currentHour >= openStart && currentHour < openEnd);
+                const isOpen = isDayOpen && isHourOpen;
+                
+                const hoursCell = row.cells[2];
+                const badge = document.createElement('span');
                 badge.textContent = isOpen ? ' OPEN' : ' CLOSED';
                 badge.style.cssText = isOpen ? 
                     'color: #28a745; font-weight: bold; margin-left: 10px;' : 
