@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -101,7 +101,9 @@
             
             <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Switch to dark mode" aria-pressed="false">🌙</button>
 
-            <button class="hamburger" aria-label="Toggle menu">
+            <button class="site-search-toggle" id="siteSearchToggle" aria-label="Open site search" aria-expanded="false">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>            <button class="hamburger" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -726,6 +728,18 @@
         </svg>
     </a>
 
+    <!-- Site-Wide Search Overlay -->
+    <div class="site-search-overlay" id="siteSearchOverlay" role="dialog" aria-modal="true" aria-label="Site search" hidden>
+        <div class="site-search-box">
+            <div class="site-search-input-wrap">
+                <svg class="site-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" id="siteSearchInput" class="site-search-input" placeholder="Search services, doctors, pages…" autocomplete="off" aria-label="Search site" aria-autocomplete="list" aria-controls="siteSearchResults">
+                <button class="site-search-close" id="siteSearchClose" aria-label="Close search">&#10005;</button>
+            </div>
+            <ul class="site-search-results" id="siteSearchResults" role="listbox" aria-label="Search results" hidden></ul>
+            <p class="site-search-hint" id="siteSearchHint">Start typing to search…</p>
+        </div>
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>

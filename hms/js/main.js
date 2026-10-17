@@ -209,7 +209,7 @@ function initBackToTop() {
     
     if (backToTop) {
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 500) {
+            if (window.scrollY > 300) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
@@ -1897,4 +1897,271 @@ function initEmergencyFAB() {
             });
         });
     }
+}
+
+// ─── Cookie Consent Banner ──────────────────────────────────────────────────
+
+function initCookieConsent() {
+    // Don't show if user already made a choice
+    if (localStorage.getItem('hms_cookie_consent')) return;
+
+    var banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+
+    // Show banner after a brief delay
+    setTimeout(function() {
+        banner.classList.add('visible');
+    }, 800);
+
+    var acceptBtn  = document.getElementById('cookieAccept');
+    var declineBtn = document.getElementById('cookieDecline');
+
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+            localStorage.setItem('hms_cookie_consent', 'accepted');
+            hideBanner();
+        });
+    }
+
+    if (declineBtn) {
+        declineBtn.addEventListener('click', function() {
+            localStorage.setItem('hms_cookie_consent', 'declined');
+            hideBanner();
+        });
+    }
+
+    function hideBanner() {
+        banner.classList.remove('visible');
+        setTimeout(function() {
+            banner.style.display = 'none';
+        }, 400);
+    }
+}
+
+// ─── Dynamic Copyright Year ──────────────────────────────────────────────────
+
+function updateCopyrightYear() {
+    var yearSpans = document.querySelectorAll('#currentYear');
+    var year = new Date().getFullYear();
+    yearSpans.forEach(function(span) {
+        span.textContent = year;
+    });
+}
+
+// Call cookie consent and copyright year on DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+    initCookieConsent();
+    updateCopyrightYear();
+});
+
+// ─── Commit 14: Site-Wide Search ─────────────────────────────────────────────
+
+/**
+ * HMS Search Data
+ * Covers: all 8 services/departments, 12 doctors, all 7 pages.
+ */
+var HMS_SEARCH_DATA = [
+    // Pages
+    { type: 'page',    emoji: '🏠', title: 'Home',            desc: 'HMS homepage — overview, stats, quick links', url: 'index.html' },
+    { type: 'page',    emoji: '🏥', title: 'About HMS',       desc: 'Our history, mission, accreditations, leadership', url: 'about.html' },
+    { type: 'page',    emoji: '💊', title: 'Services',        desc: 'All departments, operating hours, open/closed status', url: 'services.html' },
+    { type: 'page',    emoji: '👨‍⚕️', title: 'Doctors',         desc: 'Find and filter our specialist doctors', url: 'doctors.html' },
+    { type: 'page',    emoji: '📅', title: 'Appointments',    desc: 'Book an appointment online in 4 steps', url: 'appointments.html' },
+    { type: 'page',    emoji: '🔐', title: 'Patient Portal',  desc: 'Login with OTP, view records, pay bills via M-Pesa', url: 'patient-portal.html' },
+    { type: 'page',    emoji: '📞', title: 'Contact',         desc: 'Address, phone numbers, map, contact form', url: 'contact.html' },
+
+    // Services / Departments
+    { type: 'service', emoji: '🚑', title: 'Emergency & Trauma',     desc: '24/7 emergency care, trauma, advanced life support', url: 'services.html#emergency' },
+    { type: 'service', emoji: '🤰', title: 'Maternity & NICU',       desc: 'Antenatal, delivery, postnatal, NICU for premature babies', url: 'services.html#maternity' },
+    { type: 'service', emoji: '❤️', title: 'Cardiology',             desc: 'Heart care, angioplasty, catheterisation labs', url: 'services.html#cardiology' },
+    { type: 'service', emoji: '🧠', title: 'Neurology & Neurosurgery', desc: 'Brain, spine, stroke management, epilepsy', url: 'services.html#neurology' },
+    { type: 'service', emoji: '🦴', title: 'Orthopaedics',           desc: 'Bone & joint care, replacement surgery, physiotherapy', url: 'services.html#orthopedics' },
+    { type: 'service', emoji: '👶', title: 'Paediatrics',            desc: 'Child healthcare, NICU, paediatric ICU', url: 'services.html#pediatrics' },
+    { type: 'service', emoji: '🔬', title: 'Laboratory',             desc: 'Full diagnostic lab services, blood tests, pathology', url: 'services.html#laboratory' },
+    { type: 'service', emoji: '📡', title: 'Radiology & Imaging',    desc: 'X-ray, MRI, CT scan, ultrasound, interventional radiology', url: 'services.html#radiology' },
+    { type: 'service', emoji: '💉', title: 'Pharmacy',               desc: '24-hour in-house pharmacy, all prescribed medicines', url: 'services.html#pharmacy' },
+    { type: 'service', emoji: '🎗️', title: 'Oncology',              desc: 'Cancer care, chemotherapy, radiation therapy', url: 'services.html#oncology' },
+
+    // Doctors
+    { type: 'doctor', emoji: '👨‍⚕️', title: 'Dr. John Davis',          desc: 'Cardiologist — 20 yrs experience',           url: 'doctors.html' },
+    { type: 'doctor', emoji: '👩‍⚕️', title: 'Dr. Sarah Wilson',        desc: 'Neurologist — 15 yrs experience',            url: 'doctors.html' },
+    { type: 'doctor', emoji: '👨‍⚕️', title: 'Dr. Michael Patel',       desc: 'Orthopaedic Surgeon — 18 yrs experience',    url: 'doctors.html' },
+    { type: 'doctor', emoji: '👩‍⚕️', title: 'Dr. Emily Lee',           desc: 'Paediatrician — 12 yrs experience',          url: 'doctors.html' },
+    { type: 'doctor', emoji: '👩‍⚕️', title: 'Dr. Anna Martinez',       desc: 'Interventional Cardiologist',                url: 'doctors.html' },
+    { type: 'doctor', emoji: '👨‍⚕️', title: 'Dr. Rajesh Kumar',        desc: 'Neurosurgeon',                               url: 'doctors.html' },
+    { type: 'doctor', emoji: '👩‍⚕️', title: 'Dr. Grace Mwangi',        desc: 'Obstetrician / Gynaecologist',               url: 'doctors.html' },
+    { type: 'doctor', emoji: '👨‍⚕️', title: 'Dr. Tom Otieno',          desc: 'Emergency Medicine Specialist',              url: 'doctors.html' },
+    { type: 'doctor', emoji: '👩‍⚕️', title: 'Dr. Patricia Waweru',     desc: 'General Practitioner',                       url: 'doctors.html' },
+    { type: 'doctor', emoji: '👨‍⚕️', title: 'Dr. Ben Kariuki',         desc: 'Diagnostic Radiologist',                     url: 'doctors.html' },
+    { type: 'doctor', emoji: '👩‍⚕️', title: 'Dr. Alice Mutua',         desc: 'Interventional Radiologist',                 url: 'doctors.html' },
+    { type: 'doctor', emoji: '👨‍⚕️', title: 'Dr. Samuel Gitau',        desc: 'Clinical Pathologist',                       url: 'doctors.html' },
+
+    // Quick actions
+    { type: 'action', emoji: '📅', title: 'Book Appointment',       desc: 'Schedule a visit with a specialist', url: 'appointments.html' },
+    { type: 'action', emoji: '🚨', title: 'Emergency (999)',        desc: 'Call 999 or 112 for emergencies',    url: 'tel:999' },
+    { type: 'action', emoji: '📞', title: 'Contact Us',             desc: '+254 700 911 911 | info@hms.co.ke',  url: 'contact.html' }
+];
+
+/**
+ * Initialises the site-wide search overlay.
+ * Works on every page because the overlay HTML is injected into all pages.
+ */
+function initSiteSearch() {
+    var toggleBtn = document.getElementById('siteSearchToggle');
+    var overlay   = document.getElementById('siteSearchOverlay');
+    var input     = document.getElementById('siteSearchInput');
+    var results   = document.getElementById('siteSearchResults');
+    var hint      = document.getElementById('siteSearchHint');
+    var closeBtn  = document.getElementById('siteSearchClose');
+
+    if (!toggleBtn || !overlay || !input || !results) return;
+
+    // ── Open / close helpers ──────────────────────────────────────────────
+
+    function openSearch() {
+        overlay.removeAttribute('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        // Wait a frame so the animation plays
+        requestAnimationFrame(function() { input.focus(); });
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSearch() {
+        overlay.setAttribute('hidden', '');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        input.value = '';
+        results.innerHTML = '';
+        results.setAttribute('hidden', '');
+        if (hint) hint.hidden = false;
+        document.body.style.overflow = '';
+        toggleBtn.focus();
+    }
+
+    // Toggle button
+    toggleBtn.addEventListener('click', function() {
+        if (overlay.hasAttribute('hidden')) {
+            openSearch();
+        } else {
+            closeSearch();
+        }
+    });
+
+    // Close button inside overlay
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeSearch);
+    }
+
+    // ESC key closes
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !overlay.hasAttribute('hidden')) {
+            closeSearch();
+        }
+    });
+
+    // Click outside the box closes
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeSearch();
+    });
+
+    // ── Search logic ──────────────────────────────────────────────────────
+
+    function search(query) {
+        query = query.trim().toLowerCase();
+        results.innerHTML = '';
+
+        if (!query) {
+            results.setAttribute('hidden', '');
+            if (hint) { hint.textContent = 'Start typing to search…'; hint.hidden = false; }
+            return;
+        }
+
+        var matches = HMS_SEARCH_DATA.filter(function(item) {
+            return (
+                item.title.toLowerCase().includes(query) ||
+                item.desc.toLowerCase().includes(query)  ||
+                item.type.toLowerCase().includes(query)
+            );
+        });
+
+        if (matches.length === 0) {
+            results.setAttribute('hidden', '');
+            if (hint) { hint.textContent = 'No results found for "' + query + '"'; hint.hidden = false; }
+            return;
+        }
+
+        if (hint) hint.hidden = true;
+
+        matches.forEach(function(item, idx) {
+            var li  = document.createElement('li');
+            var btn = document.createElement('button');
+            btn.className = 'site-search-result-item';
+            btn.setAttribute('role', 'option');
+            btn.setAttribute('aria-selected', 'false');
+            btn.setAttribute('tabindex', '-1');
+
+            btn.innerHTML =
+                '<span class="site-search-result-emoji" aria-hidden="true">' + item.emoji + '</span>' +
+                '<span class="site-search-result-text">' +
+                    '<span class="site-search-result-title">' + escapeHtml(item.title) + '</span>' +
+                    '<span class="site-search-result-desc">'  + escapeHtml(item.desc)  + '</span>' +
+                '</span>';
+
+            btn.addEventListener('click', function() {
+                closeSearch();
+                if (item.url.startsWith('tel:')) {
+                    window.location.href = item.url;
+                } else {
+                    window.location.href = item.url;
+                }
+            });
+
+            li.appendChild(btn);
+            results.appendChild(li);
+        });
+
+        results.removeAttribute('hidden');
+
+        // ── Keyboard navigation within results ─────────────────────────
+        var resultBtns = results.querySelectorAll('.site-search-result-item');
+
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowDown' && resultBtns.length) {
+                e.preventDefault();
+                resultBtns[0].focus();
+            }
+        });
+
+        resultBtns.forEach(function(btn, i) {
+            btn.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    var next = resultBtns[i + 1];
+                    if (next) next.focus(); else input.focus();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    var prev = resultBtns[i - 1];
+                    if (prev) prev.focus(); else input.focus();
+                } else if (e.key === 'Enter') {
+                    btn.click();
+                }
+            });
+        });
+    }
+
+    // Debounce: only search after user stops typing for 120 ms
+    var debounceTimer;
+    input.addEventListener('input', function() {
+        clearTimeout(debounceTimer);
+        var q = this.value;
+        debounceTimer = setTimeout(function() { search(q); }, 120);
+    });
+}
+
+/** Minimal HTML escape to prevent XSS when building result items. */
+function escapeHtml(str) {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
 }
