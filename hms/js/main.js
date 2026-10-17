@@ -358,61 +358,86 @@ function initMultiStepForm() {
     }
 }
 
-// Doctor Filter Tabs
+// Doctor Filter Tabs + Search (shared state)
+// Both filters and search cooperate: a card is visible only when it matches
+// the active department filter AND the current search query.
+
 function initDoctorFilters() {
     const filterTabs = document.querySelectorAll('.filter-tab');
-    const doctorCards = document.querySelectorAll('.doctor-card');
-    
+
     filterTabs.forEach(tab => {
         tab.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            
             // Update active tab
             filterTabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
-            
-            // Filter doctors
-            doctorCards.forEach(card => {
-                const specialty = card.getAttribute('data-specialty');
-                
-                if (filter === 'all' || specialty === filter) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
+
+            applyDoctorVisibility();
         });
     });
 }
 
-// Doctor Search
 function initDoctorSearch() {
     const searchInput = document.querySelector('.doctor-search');
-    const doctorCards = document.querySelectorAll('.doctor-card');
-    
+
     if (searchInput) {
         searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
-            
-            doctorCards.forEach(card => {
-                const name = card.querySelector('.doctor-name').textContent.toLowerCase();
-                const specialty = card.querySelector('.doctor-specialty').textContent.toLowerCase();
-                
-                if (name.includes(query) || specialty.includes(query)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            applyDoctorVisibility();
         });
+    }
+}
+
+/**
+ * applyDoctorVisibility — show/hide doctor cards based on the currently
+ * active filter tab and the current search query.  Shows a "no results"
+ * message when every card is hidden.
+ */
+function applyDoctorVisibility() {
+    const activeTab  = document.querySelector('.filter-tab.active');
+    const searchInput = document.querySelector('.doctor-search');
+    const noResults  = document.getElementById('doctorsNoResults');
+
+    const filter = activeTab ? activeTab.getAttribute('data-filter') : 'all';
+    const query  = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+    const doctorCards = document.querySelectorAll('.doctor-card');
+    let visibleCount = 0;
+
+    doctorCards.forEach(card => {
+        const specialty = card.getAttribute('data-specialty') || '';
+        const name      = card.querySelector('.doctor-name')
+            ? card.querySelector('.doctor-name').textContent.toLowerCase()
+            : '';
+        const specialtyText = card.querySelector('.doctor-specialty')
+            ? card.querySelector('.doctor-specialty').textContent.toLowerCase()
+            : '';
+        const qualifications = card.querySelector('.doctor-qualifications')
+            ? card.querySelector('.doctor-qualifications').textContent.toLowerCase()
+            : '';
+
+        const matchesDept   = filter === 'all' || specialty === filter;
+        const matchesSearch = !query ||
+            name.includes(query) ||
+            specialtyText.includes(query) ||
+            qualifications.includes(query);
+
+        if (matchesDept && matchesSearch) {
+            card.style.display = 'block';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 10);
+            visibleCount++;
+        } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.display = 'none';
+            }, 300);
+        }
+    });
+
+    if (noResults) {
+        noResults.hidden = visibleCount > 0;
     }
 }
 

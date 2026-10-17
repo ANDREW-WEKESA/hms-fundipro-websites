@@ -74,226 +74,157 @@
     </section>
 
     <!-- Filter Tabs -->
-    <section style="padding: 40px 20px;">
+    <section class="doctors-filter-section">
         <div class="container">
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">All Doctors</button>
+            <div class="filter-tabs" role="group" aria-label="Filter doctors by department">
+                <button class="filter-tab active" data-filter="all">All</button>
                 <button class="filter-tab" data-filter="cardiology">Cardiology</button>
                 <button class="filter-tab" data-filter="neurology">Neurology</button>
                 <button class="filter-tab" data-filter="orthopedics">Orthopedics</button>
                 <button class="filter-tab" data-filter="pediatrics">Pediatrics</button>
-                <button class="filter-tab" data-filter="oncology">Oncology</button>
-                <button class="filter-tab" data-filter="gynecology">Gynecology</button>
-                <button class="filter-tab" data-filter="dermatology">Dermatology</button>
-                <button class="filter-tab" data-filter="ophthalmology">Ophthalmology</button>
+                <button class="filter-tab" data-filter="general-medicine">General Medicine</button>
+                <button class="filter-tab" data-filter="maternity">Maternity</button>
+                <button class="filter-tab" data-filter="emergency">Emergency</button>
             </div>
+
+            <!-- No results message -->
+            <p class="doctors-no-results" id="doctorsNoResults" hidden>No doctors match your search.</p>
         </div>
     </section>
 
     <!-- Doctors Grid -->
-    <section style="padding-top: 0;">
+    <section class="doctors-grid-section">
         <div class="container">
-            <div class="cards-grid">
-                <!-- Cardiologists -->
-                <div class="doctor-card" data-specialty="cardiology">
-                    <div class="doctor-avatar">JD</div>
-                    <h3 class="doctor-name">Dr. John Davis</h3>
+            <div class="doctors-grid" id="doctorsGrid">
+
+                <!-- ── Cardiology (2) ──────────────────────────────────── -->
+                <article class="doctor-card" data-specialty="cardiology" data-name="Dr. Amina Hassan">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #1976d2, #0d47a1);" aria-hidden="true">AH</div>
+                    <h3 class="doctor-name">Dr. Amina Hassan</h3>
                     <span class="doctor-specialty">Cardiologist</span>
-                    <div class="doctor-info">MBBS, MD, DM (Cardiology)</div>
-                    <div class="doctor-info">20 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
-                    <div class="doctor-available">Mon - Fri: 9 AM - 5 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                    <div class="doctor-dept">Cardiology</div>
+                    <div class="doctor-qualifications">MBChB, MMed (Cardiology), FACC</div>
+                    <span class="availability-badge available">✅ Available Today</span>
+                    <a href="appointments.html?doctor=Dr.%20Amina%20Hassan" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <div class="doctor-card" data-specialty="cardiology">
-                    <div class="doctor-avatar">AM</div>
-                    <h3 class="doctor-name">Dr. Anna Martinez</h3>
+                <article class="doctor-card" data-specialty="cardiology" data-name="Dr. James Mwangi">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #1565c0, #0d47a1);" aria-hidden="true">JM</div>
+                    <h3 class="doctor-name">Dr. James Mwangi</h3>
                     <span class="doctor-specialty">Interventional Cardiologist</span>
-                    <div class="doctor-info">MBBS, MD, DM, FSCAI</div>
-                    <div class="doctor-info">18 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
-                    <div class="doctor-available">Tue - Sat: 10 AM - 6 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                    <div class="doctor-dept">Cardiology</div>
+                    <div class="doctor-qualifications">MBChB, MMed, Fellowship (Interventional Cardiology)</div>
+                    <span class="availability-badge next-available">🕐 Next Available: Wednesday</span>
+                    <a href="appointments.html?doctor=Dr.%20James%20Mwangi" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <!-- Neurologists -->
-                <div class="doctor-card" data-specialty="neurology">
-                    <div class="doctor-avatar">SW</div>
-                    <h3 class="doctor-name">Dr. Sarah Wilson</h3>
+                <!-- ── Neurology (2) ───────────────────────────────────── -->
+                <article class="doctor-card" data-specialty="neurology" data-name="Dr. Fatuma Odhiambo">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #6a1b9a, #4a148c);" aria-hidden="true">FO</div>
+                    <h3 class="doctor-name">Dr. Fatuma Odhiambo</h3>
                     <span class="doctor-specialty">Neurologist</span>
-                    <div class="doctor-info">MBBS, MD, DM (Neurology)</div>
-                    <div class="doctor-info">15 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
-                    <div class="doctor-available">Mon - Sat: 10 AM - 6 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                    <div class="doctor-dept">Neurology</div>
+                    <div class="doctor-qualifications">MBChB, MMed (Neurology), MSc Clinical Neuroscience</div>
+                    <span class="availability-badge available">✅ Available Today</span>
+                    <a href="appointments.html?doctor=Dr.%20Fatuma%20Odhiambo" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <div class="doctor-card" data-specialty="neurology">
-                    <div class="doctor-avatar">RK</div>
-                    <h3 class="doctor-name">Dr. Rajesh Kumar</h3>
+                <article class="doctor-card" data-specialty="neurology" data-name="Dr. Brian Kamau">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #7b1fa2, #4a148c);" aria-hidden="true">BK</div>
+                    <h3 class="doctor-name">Dr. Brian Kamau</h3>
                     <span class="doctor-specialty">Neurosurgeon</span>
-                    <div class="doctor-info">MBBS, MS, MCh (Neurosurgery)</div>
-                    <div class="doctor-info">22 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 5.0</div>
-                    <div class="doctor-available">Mon - Fri: 8 AM - 4 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                    <div class="doctor-dept">Neurology</div>
+                    <div class="doctor-qualifications">MBChB, MMed (Surgery), Fellowship (Neurosurgery)</div>
+                    <span class="availability-badge next-available">🕐 Next Available: Thursday</span>
+                    <a href="appointments.html?doctor=Dr.%20Brian%20Kamau" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <!-- Orthopedic Surgeons -->
-                <div class="doctor-card" data-specialty="orthopedics">
-                    <div class="doctor-avatar">MP</div>
-                    <h3 class="doctor-name">Dr. Michael Patel</h3>
+                <!-- ── Orthopedics (1) ─────────────────────────────────── -->
+                <article class="doctor-card" data-specialty="orthopedics" data-name="Dr. Samuel Kipkorir">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #e65100, #bf360c);" aria-hidden="true">SK</div>
+                    <h3 class="doctor-name">Dr. Samuel Kipkorir</h3>
                     <span class="doctor-specialty">Orthopedic Surgeon</span>
-                    <div class="doctor-info">MBBS, MS (Orthopedics)</div>
-                    <div class="doctor-info">18 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
-                    <div class="doctor-available">Tue - Sat: 8 AM - 4 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                    <div class="doctor-dept">Orthopedics</div>
+                    <div class="doctor-qualifications">MBChB, MMed (Orthopedics &amp; Trauma Surgery)</div>
+                    <span class="availability-badge available">✅ Available Today</span>
+                    <a href="appointments.html?doctor=Dr.%20Samuel%20Kipkorir" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <div class="doctor-card" data-specialty="orthopedics">
-                    <div class="doctor-avatar">LT</div>
-                    <h3 class="doctor-name">Dr. Lisa Thompson</h3>
-                    <span class="doctor-specialty">Sports Medicine Specialist</span>
-                    <div class="doctor-info">MBBS, MS (Ortho), Fellowship Sports Med</div>
-                    <div class="doctor-info">12 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
-                    <div class="doctor-available">Mon - Fri: 9 AM - 5 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
-
-                <!-- Pediatricians -->
-                <div class="doctor-card" data-specialty="pediatrics">
-                    <div class="doctor-avatar">EL</div>
-                    <h3 class="doctor-name">Dr. Emily Lee</h3>
+                <!-- ── Pediatrics (2) ──────────────────────────────────── -->
+                <article class="doctor-card" data-specialty="pediatrics" data-name="Dr. Grace Njeri">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #00838f, #006064);" aria-hidden="true">GN</div>
+                    <h3 class="doctor-name">Dr. Grace Njeri</h3>
                     <span class="doctor-specialty">Pediatrician</span>
-                    <div class="doctor-info">MBBS, MD (Pediatrics)</div>
-                    <div class="doctor-info">12 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 5.0</div>
-                    <div class="doctor-available">Mon - Fri: 9 AM - 7 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                    <div class="doctor-dept">Pediatrics</div>
+                    <div class="doctor-qualifications">MBChB, MMed (Pediatrics &amp; Child Health)</div>
+                    <span class="availability-badge available">✅ Available Today</span>
+                    <a href="appointments.html?doctor=Dr.%20Grace%20Njeri" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <div class="doctor-card" data-specialty="pediatrics">
-                    <div class="doctor-avatar">JB</div>
-                    <h3 class="doctor-name">Dr. James Brown</h3>
+                <article class="doctor-card" data-specialty="pediatrics" data-name="Dr. Peter Otieno">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #00695c, #004d40);" aria-hidden="true">PO</div>
+                    <h3 class="doctor-name">Dr. Peter Otieno</h3>
                     <span class="doctor-specialty">Pediatric Surgeon</span>
-                    <div class="doctor-info">MBBS, MS, MCh (Pediatric Surgery)</div>
-                    <div class="doctor-info">16 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
-                    <div class="doctor-available">Tue - Sat: 10 AM - 5 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                    <div class="doctor-dept">Pediatrics</div>
+                    <div class="doctor-qualifications">MBChB, MMed (Surgery), Fellowship (Pediatric Surgery)</div>
+                    <span class="availability-badge next-available">🕐 Next Available: Tuesday</span>
+                    <a href="appointments.html?doctor=Dr.%20Peter%20Otieno" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <!-- Oncologists -->
-                <div class="doctor-card" data-specialty="oncology">
-                    <div class="doctor-avatar">DG</div>
-                    <h3 class="doctor-name">Dr. David Garcia</h3>
-                    <span class="doctor-specialty">Medical Oncologist</span>
-                    <div class="doctor-info">MBBS, MD, DM (Medical Oncology)</div>
-                    <div class="doctor-info">19 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
-                    <div class="doctor-available">Mon - Fri: 9 AM - 6 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                <!-- ── General Medicine (2) ───────────────────────────── -->
+                <article class="doctor-card" data-specialty="general-medicine" data-name="Dr. Patricia Waweru">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #2e7d32, #1b5e20);" aria-hidden="true">PW</div>
+                    <h3 class="doctor-name">Dr. Patricia Waweru</h3>
+                    <span class="doctor-specialty">General Practitioner</span>
+                    <div class="doctor-dept">General Medicine</div>
+                    <div class="doctor-qualifications">MBChB, MMed (Internal Medicine)</div>
+                    <span class="availability-badge available">✅ Available Today</span>
+                    <a href="appointments.html?doctor=Dr.%20Patricia%20Waweru" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <div class="doctor-card" data-specialty="oncology">
-                    <div class="doctor-avatar">PR</div>
-                    <h3 class="doctor-name">Dr. Priya Reddy</h3>
-                    <span class="doctor-specialty">Radiation Oncologist</span>
-                    <div class="doctor-info">MBBS, MD (Radiation Oncology)</div>
-                    <div class="doctor-info">14 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
-                    <div class="doctor-available">Mon - Sat: 8 AM - 4 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                <article class="doctor-card" data-specialty="general-medicine" data-name="Dr. Kevin Omondi">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #388e3c, #1b5e20);" aria-hidden="true">KO</div>
+                    <h3 class="doctor-name">Dr. Kevin Omondi</h3>
+                    <span class="doctor-specialty">General Practitioner</span>
+                    <div class="doctor-dept">General Medicine</div>
+                    <div class="doctor-qualifications">MBChB, Diploma Family Medicine (KCMC)</div>
+                    <span class="availability-badge available">✅ Available Today</span>
+                    <a href="appointments.html?doctor=Dr.%20Kevin%20Omondi" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <!-- Gynecologists -->
-                <div class="doctor-card" data-specialty="gynecology">
-                    <div class="doctor-avatar">MJ</div>
-                    <h3 class="doctor-name">Dr. Maria Johnson</h3>
-                    <span class="doctor-specialty">Gynecologist & Obstetrician</span>
-                    <div class="doctor-info">MBBS, MS (OB/GYN)</div>
-                    <div class="doctor-info">17 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
-                    <div class="doctor-available">Mon - Sat: 9 AM - 7 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                <!-- ── Maternity / OB-GYN (2) ─────────────────────────── -->
+                <article class="doctor-card" data-specialty="maternity" data-name="Dr. Esther Kamau">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #ad1457, #880e4f);" aria-hidden="true">EK</div>
+                    <h3 class="doctor-name">Dr. Esther Kamau</h3>
+                    <span class="doctor-specialty">Obstetrician &amp; Gynaecologist</span>
+                    <div class="doctor-dept">Maternity / OB-GYN</div>
+                    <div class="doctor-qualifications">MBChB, MMed (Obstetrics &amp; Gynaecology)</div>
+                    <span class="availability-badge available">✅ Available Today</span>
+                    <a href="appointments.html?doctor=Dr.%20Esther%20Kamau" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <div class="doctor-card" data-specialty="gynecology">
-                    <div class="doctor-avatar">NC</div>
-                    <h3 class="doctor-name">Dr. Nina Chen</h3>
-                    <span class="doctor-specialty">Fertility Specialist</span>
-                    <div class="doctor-info">MBBS, MS, Fellowship in IVF</div>
-                    <div class="doctor-info">13 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 5.0</div>
-                    <div class="doctor-available">Tue - Sat: 10 AM - 6 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                <article class="doctor-card" data-specialty="maternity" data-name="Dr. Lilian Achieng">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #c2185b, #880e4f);" aria-hidden="true">LA</div>
+                    <h3 class="doctor-name">Dr. Lilian Achieng</h3>
+                    <span class="doctor-specialty">Maternal-Fetal Medicine Specialist</span>
+                    <div class="doctor-dept">Maternity / OB-GYN</div>
+                    <div class="doctor-qualifications">MBChB, MMed, Fellowship (Maternal-Fetal Medicine)</div>
+                    <span class="availability-badge next-available">🕐 Next Available: Friday</span>
+                    <a href="appointments.html?doctor=Dr.%20Lilian%20Achieng" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <!-- Dermatologists -->
-                <div class="doctor-card" data-specialty="dermatology">
-                    <div class="doctor-avatar">AK</div>
-                    <h3 class="doctor-name">Dr. Aisha Khan</h3>
-                    <span class="doctor-specialty">Dermatologist</span>
-                    <div class="doctor-info">MBBS, MD (Dermatology)</div>
-                    <div class="doctor-info">11 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
-                    <div class="doctor-available">Mon - Fri: 10 AM - 6 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+                <!-- ── Emergency (1) ───────────────────────────────────── -->
+                <article class="doctor-card" data-specialty="emergency" data-name="Dr. Tom Otieno">
+                    <div class="doctor-avatar" style="background: linear-gradient(135deg, #c62828, #b71c1c);" aria-hidden="true">TO</div>
+                    <h3 class="doctor-name">Dr. Tom Otieno</h3>
+                    <span class="doctor-specialty">Emergency Medicine Physician</span>
+                    <div class="doctor-dept">Emergency</div>
+                    <div class="doctor-qualifications">MBChB, MMed (Emergency Medicine), ATLS Certified</div>
+                    <span class="availability-badge available">✅ Available Today</span>
+                    <a href="appointments.html?doctor=Dr.%20Tom%20Otieno" class="btn doctor-book-btn">Book Appointment</a>
+                </article>
 
-                <div class="doctor-card" data-specialty="dermatology">
-                    <div class="doctor-avatar">TW</div>
-                    <h3 class="doctor-name">Dr. Thomas White</h3>
-                    <span class="doctor-specialty">Cosmetic Dermatologist</span>
-                    <div class="doctor-info">MBBS, MD, Fellowship Cosmetic Derm</div>
-                    <div class="doctor-info">15 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
-                    <div class="doctor-available">Tue - Sat: 9 AM - 5 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
-
-                <!-- Ophthalmologists -->
-                <div class="doctor-card" data-specialty="ophthalmology">
-                    <div class="doctor-avatar">VS</div>
-                    <h3 class="doctor-name">Dr. Vikram Shah</h3>
-                    <span class="doctor-specialty">Ophthalmologist</span>
-                    <div class="doctor-info">MBBS, MS (Ophthalmology)</div>
-                    <div class="doctor-info">16 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.9</div>
-                    <div class="doctor-available">Mon - Sat: 9 AM - 6 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
-
-                <div class="doctor-card" data-specialty="ophthalmology">
-                    <div class="doctor-avatar">RM</div>
-                    <h3 class="doctor-name">Dr. Rachel Miller</h3>
-                    <span class="doctor-specialty">Retina Specialist</span>
-                    <div class="doctor-info">MBBS, MS, Fellowship Retina</div>
-                    <div class="doctor-info">10 years experience</div>
-                    <div class="doctor-rating">⭐⭐⭐⭐⭐ 4.8</div>
-                    <div class="doctor-available">Tue - Fri: 10 AM - 5 PM</div>
-                    <a href="appointments.html" class="btn">Book Appointment</a>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
-            </div>
+            </div><!-- /.doctors-grid -->
         </div>
     </section>
 
@@ -376,7 +307,7 @@
                     <li><a href="services.html#neurology">Neurology</a></li>
                     <li><a href="services.html#orthopedics">Orthopedics</a></li>
                     <li><a href="services.html#pediatrics">Pediatrics</a></li>
-                    <li><a href="services.html#oncology">Oncology</a></li>
+                    <li><a href="services.html#maternity">Maternity</a></li>
                     <li><a href="services.html#emergency">Emergency</a></li>
                 </ul>
             </div>
