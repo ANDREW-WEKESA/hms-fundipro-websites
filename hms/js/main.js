@@ -2301,3 +2301,5 @@ document.addEventListener('DOMContentLoaded', function() {
 // emergency modal v2 - improved accessibility
 
 // search v2 - highlight matched text
+
+// cookie banner v2 - Swahili support
