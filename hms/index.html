@@ -6,7 +6,55 @@
     <meta name="description" content="HMS - Advanced Healthcare, Compassionate Care. Leading hospital with 500+ doctors, 1000+ beds, 50+ departments, and 24/7 emergency services.">
     <meta name="keywords" content="hospital, healthcare, medical center, doctors, emergency care, HMS">
     <title>HMS - Hospital Management System | Quality Healthcare</title>
+    <link rel="canonical" href="https://www.hms.co.ke/index.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HMS - Hospital Management System | Quality Healthcare">
+    <meta property="og:description" content="HMS - Advanced Healthcare, Compassionate Care. Leading hospital with 500+ doctors, 50+ departments, and 24/7 emergency services in Nairobi, Kenya.">
+    <meta property="og:image" content="https://www.hms.co.ke/images/hms-og-image.jpg">
+    <meta property="og:url" content="https://www.hms.co.ke/">
+    <meta property="og:site_name" content="HMS Hospital Management System">
+    <meta property="og:locale" content="en_KE">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HMS - Hospital Management System | Quality Healthcare">
+    <meta name="twitter:description" content="Advanced Healthcare, Compassionate Care. 50+ specialist doctors, 24/7 emergency services, Nairobi Kenya.">
+    <meta name="twitter:image" content="https://www.hms.co.ke/images/hms-og-image.jpg">
+    <meta name="twitter:site" content="@HMSHospitalKE">
+    <!-- Performance: preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/style.css">
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hospital",
+      "name": "HMS - Hospital Management System",
+      "url": "https://www.hms.co.ke",
+      "logo": "https://www.hms.co.ke/images/hms-logo.png",
+      "image": "https://www.hms.co.ke/images/hms-og-image.jpg",
+      "description": "Leading multi-specialty hospital in Nairobi providing comprehensive healthcare services with 50+ specialist doctors and 24/7 emergency care.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ngong Road, Upper Hill",
+        "addressLocality": "Nairobi",
+        "addressCountry": "KE"
+      },
+      "telephone": "+254700911911",
+      "email": "info@hms.co.ke",
+      "openingHours": "Mo-Fr 08:00-17:00",
+      "medicalSpecialty": ["Cardiology", "Neurology", "Orthopedics", "Pediatrics", "Oncology", "Emergency Medicine"],
+      "hasMap": "https://maps.google.com/?q=-1.2921,36.8219",
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.facebook.com/HMSHospitalKE",
+        "https://twitter.com/HMSHospitalKE",
+        "https://www.instagram.com/HMSHospitalKE",
+        "https://www.linkedin.com/company/HMSHospitalKE"
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Top Bar -->
@@ -51,6 +99,8 @@
                 <li><a href="contact.html" class="btn contact-us-btn">Contact Us</a></li>
             </ul>
             
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Switch to dark mode" aria-pressed="false">🌙</button>
+
             <button class="hamburger" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -99,22 +149,22 @@
     <!-- Quick Services -->
     <section class="quick-services">
         <div class="services-grid">
-            <div class="service-item">
+            <div class="service-item reveal">
                 <div class="service-icon">🏥</div>
                 <h3>OPD Services</h3>
                 <p>Walk-in consultations with specialist doctors across all departments</p>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <div class="service-icon">🚑</div>
                 <h3>24/7 Emergency</h3>
                 <p>Round-the-clock emergency and trauma care with advanced life support</p>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <div class="service-icon">🔬</div>
                 <h3>Lab Tests</h3>
                 <p>Comprehensive diagnostic laboratory services with quick results</p>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <div class="service-icon">💊</div>
                 <h3>Pharmacy</h3>
                 <p>24-hour in-house pharmacy with all prescribed medications available</p>
@@ -122,10 +172,101 @@
         </div>
     </section>
 
+    <!-- Insurance & Payment Section -->
+    <section class="insurance-section" id="insurance">
+        <div class="container">
+            <h2 class="section-title reveal">Insurance &amp; Payment</h2>
+            <p class="section-subtitle">We accept all major insurance providers and payment options for your convenience</p>
+
+            <!-- Insurance Provider Cards -->
+            <div class="insurance-providers-grid">
+
+                <div class="insurance-provider-card reveal">
+                    <div class="ins-logo-circle" style="background: #1565c0;">SHA</div>
+                    <div class="ins-name">SHA</div>
+                </div>
+
+                <div class="insurance-provider-card reveal">
+                    <div class="ins-logo-circle" style="background: #2e7d32;">NHIF</div>
+                    <div class="ins-name">NHIF</div>
+                </div>
+
+                <div class="insurance-provider-card reveal">
+                    <div class="ins-logo-circle" style="background: #b71c1c;">AAR</div>
+                    <div class="ins-name">AAR</div>
+                </div>
+
+                <div class="insurance-provider-card reveal">
+                    <div class="ins-logo-circle" style="background: #e65100;">Jub</div>
+                    <div class="ins-name">Jubilee</div>
+                </div>
+
+                <div class="insurance-provider-card reveal">
+                    <div class="ins-logo-circle" style="background: #4a148c;">Brit</div>
+                    <div class="ins-name">Britam</div>
+                </div>
+
+                <div class="insurance-provider-card reveal">
+                    <div class="ins-logo-circle" style="background: #006064;">CIC</div>
+                    <div class="ins-name">CIC</div>
+                </div>
+
+                <div class="insurance-provider-card reveal">
+                    <div class="ins-logo-circle" style="background: #37474f;">Mad</div>
+                    <div class="ins-name">Madison</div>
+                </div>
+
+                <div class="insurance-provider-card reveal">
+                    <div class="ins-logo-circle" style="background: #880e4f;">Res</div>
+                    <div class="ins-name">Resolution</div>
+                </div>
+
+            </div>
+
+            <!-- M-Pesa Highlight -->
+            <div class="mpesa-highlight reveal">
+                <div class="mpesa-icon">📱</div>
+                <div class="mpesa-text">
+                    <h3>M-Pesa — Primary Payment Option</h3>
+                    <p>Pay your bills instantly via M-Pesa Paybill or Lipa Na M-Pesa. Fast, secure and available 24/7. Dial *334# or use the M-Pesa app to complete your payment.</p>
+                </div>
+            </div>
+
+            <!-- Check Coverage CTA -->
+            <div class="insurance-cta-row reveal">
+                <a href="contact.html" class="btn-coverage">🔍 Check Your Coverage</a>
+            </div>
+
+            <!-- Claims Process -->
+            <h3 class="claims-title reveal">How the Claims Process Works</h3>
+            <div class="claims-steps">
+
+                <div class="claims-step reveal">
+                    <div class="claims-step-num">1</div>
+                    <h4>Verify</h4>
+                    <p>Present your insurance card at reception. We verify your cover and benefits in real time before treatment begins.</p>
+                </div>
+
+                <div class="claims-step reveal">
+                    <div class="claims-step-num">2</div>
+                    <h4>Pre-auth</h4>
+                    <p>Our billing team requests pre-authorisation from your insurer for procedures, admissions, or high-cost treatments.</p>
+                </div>
+
+                <div class="claims-step reveal">
+                    <div class="claims-step-num">3</div>
+                    <h4>Claim</h4>
+                    <p>We submit the claim directly to your insurer on your behalf. You only pay any co-payment or uncovered balance.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title">About HMS</h2>
+            <h2 class="section-title reveal">About HMS</h2>
             <p class="section-subtitle">Your trusted partner in healthcare excellence for over 30 years</p>
             
             <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
@@ -148,11 +289,11 @@
     <!-- Departments Section -->
     <section style="background: var(--lighter-blue);">
         <div class="container">
-            <h2 class="section-title">Our Departments</h2>
+            <h2 class="section-title reveal">Our Departments</h2>
             <p class="section-subtitle">Comprehensive medical care across multiple specialties</p>
             
             <div class="cards-grid">
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-header">
                         <div class="card-icon">❤️</div>
                         <h3>Cardiology</h3>
@@ -162,7 +303,7 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-header">
                         <div class="card-icon">🧠</div>
                         <h3>Neurology</h3>
@@ -172,7 +313,7 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-header">
                         <div class="card-icon">🦴</div>
                         <h3>Orthopedics</h3>
@@ -182,7 +323,7 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-header">
                         <div class="card-icon">👶</div>
                         <h3>Pediatrics</h3>
@@ -192,7 +333,7 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-header">
                         <div class="card-icon">🎗️</div>
                         <h3>Oncology</h3>
@@ -202,7 +343,7 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-header">
                         <div class="card-icon">👩</div>
                         <h3>Gynecology</h3>
@@ -212,7 +353,7 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-header">
                         <div class="card-icon">✨</div>
                         <h3>Dermatology</h3>
@@ -222,7 +363,7 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card reveal">
                     <div class="card-header">
                         <div class="card-icon">👁️</div>
                         <h3>Ophthalmology</h3>
@@ -238,11 +379,11 @@
     <!-- Featured Doctors -->
     <section>
         <div class="container">
-            <h2 class="section-title">Meet Our Doctors</h2>
+            <h2 class="section-title reveal">Meet Our Doctors</h2>
             <p class="section-subtitle">Experienced healthcare professionals dedicated to your wellbeing</p>
             
             <div class="cards-grid">
-                <div class="doctor-card" data-specialty="cardiology">
+                <div class="doctor-card reveal" data-specialty="cardiology">
                     <div class="doctor-avatar">JD</div>
                     <h3 class="doctor-name">Dr. John Davis</h3>
                     <span class="doctor-specialty">Cardiologist</span>
@@ -253,7 +394,7 @@
                     <a href="appointments.html" class="btn">Book Appointment</a>
                 </div>
                 
-                <div class="doctor-card" data-specialty="neurology">
+                <div class="doctor-card reveal" data-specialty="neurology">
                     <div class="doctor-avatar">SW</div>
                     <h3 class="doctor-name">Dr. Sarah Wilson</h3>
                     <span class="doctor-specialty">Neurologist</span>
@@ -264,7 +405,7 @@
                     <a href="appointments.html" class="btn">Book Appointment</a>
                 </div>
                 
-                <div class="doctor-card" data-specialty="orthopedics">
+                <div class="doctor-card reveal" data-specialty="orthopedics">
                     <div class="doctor-avatar">MP</div>
                     <h3 class="doctor-name">Dr. Michael Patel</h3>
                     <span class="doctor-specialty">Orthopedic Surgeon</span>
@@ -275,7 +416,7 @@
                     <a href="appointments.html" class="btn">Book Appointment</a>
                 </div>
                 
-                <div class="doctor-card" data-specialty="pediatrics">
+                <div class="doctor-card reveal" data-specialty="pediatrics">
                     <div class="doctor-avatar">EL</div>
                     <h3 class="doctor-name">Dr. Emily Lee</h3>
                     <span class="doctor-specialty">Pediatrician</span>
@@ -296,29 +437,29 @@
     <!-- Why Choose Us -->
     <section style="background: var(--lighter-blue);">
         <div class="container">
-            <h2 class="section-title">Why Choose HMS</h2>
+            <h2 class="section-title reveal">Why Choose HMS</h2>
             <p class="section-subtitle">Excellence in healthcare with patient-first approach</p>
             
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card reveal">
                     <div class="feature-icon">🔬</div>
                     <h3>Advanced Technology</h3>
                     <p>State-of-the-art medical equipment and latest treatment technologies for accurate diagnosis and effective treatment.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card reveal">
                     <div class="feature-icon">👨‍⚕️</div>
                     <h3>Expert Doctors</h3>
                     <p>Highly qualified and experienced specialists with national and international recognition in their fields.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card reveal">
                     <div class="feature-icon">🕐</div>
                     <h3>24/7 Care</h3>
                     <p>Round-the-clock emergency services, ICU care, and patient support ensuring you're never alone in your healthcare journey.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card reveal">
                     <div class="feature-icon">💰</div>
                     <h3>Affordable Pricing</h3>
                     <p>Quality healthcare at competitive prices with multiple payment options and insurance partnerships for your convenience.</p>
@@ -327,48 +468,128 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
+    <!-- Testimonials Carousel -->
+    <section class="testimonials-carousel-section" id="testimonials" aria-label="Patient testimonials">
         <div class="container">
-            <h2 class="section-title">What Our Patients Say</h2>
-            <p class="section-subtitle">Real experiences from real patients</p>
-            
-            <div class="cards-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"</div>
-                    <p class="testimonial-text">The cardiac care I received at HMS was exceptional. Dr. Davis and his team saved my life with their quick response and expert treatment. The staff was caring and professional throughout my stay.</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">RJ</div>
-                        <div class="testimonial-info">
-                            <h4>Robert Johnson</h4>
-                            <p>Cardiac Patient</p>
+            <h2 class="section-title reveal">What Our Patients Say</h2>
+            <p class="section-subtitle">Real experiences from real Kenyan patients</p>
+
+            <div class="carousel-wrapper" id="testimonialsCarousel">
+                <div class="carousel-track" id="testimonialsTrack" aria-live="polite">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide" role="group" aria-label="Testimonial 1 of 6">
+                        <div class="tcarousel-card">
+                            <span class="tcarousel-quote-mark" aria-hidden="true">"</span>
+                            <p class="tcarousel-text">HMS saved my life when I had a heart attack at 2 AM. The emergency team was ready the moment I arrived, and Dr. Davis performed the angioplasty within the hour. I am forever grateful for the world-class care I received right here in Nairobi.</p>
+                            <div class="tcarousel-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                            <div class="tcarousel-author">
+                                <div class="tcarousel-avatar" aria-hidden="true">MW</div>
+                                <div>
+                                    <div class="tcarousel-author-name">Mary Wanjiku</div>
+                                    <div class="tcarousel-author-location">📍 Nairobi, Kenya &mdash; Cardiac Patient</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"</div>
-                    <p class="testimonial-text">HMS made my pregnancy journey wonderful. The maternity ward is excellent, and Dr. Thompson provided the best prenatal and postnatal care. I'm grateful for their dedication and support.</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">MT</div>
-                        <div class="testimonial-info">
-                            <h4>Maria Torres</h4>
-                            <p>Maternity Patient</p>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide" role="group" aria-label="Testimonial 2 of 6">
+                        <div class="tcarousel-card">
+                            <span class="tcarousel-quote-mark" aria-hidden="true">"</span>
+                            <p class="tcarousel-text">My son was diagnosed with a rare neurological condition and we were referred to HMS from Kisumu. Dr. Wilson and her team ran every test meticulously and explained everything clearly. He is fully recovered now and back in school. Thank you, HMS!</p>
+                            <div class="tcarousel-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                            <div class="tcarousel-author">
+                                <div class="tcarousel-avatar" aria-hidden="true">JO</div>
+                                <div>
+                                    <div class="tcarousel-author-name">John Otieno</div>
+                                    <div class="tcarousel-author-location">📍 Kisumu, Kenya &mdash; Paediatric Neurology</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"</div>
-                    <p class="testimonial-text">After my knee replacement surgery, the rehabilitation team at HMS helped me regain full mobility. Dr. Patel is an outstanding surgeon, and the physiotherapy department is world-class.</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">DW</div>
-                        <div class="testimonial-info">
-                            <h4>David Williams</h4>
-                            <p>Orthopedic Patient</p>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide" role="group" aria-label="Testimonial 3 of 6">
+                        <div class="tcarousel-card">
+                            <span class="tcarousel-quote-mark" aria-hidden="true">"</span>
+                            <p class="tcarousel-text">I delivered my twins at HMS and the maternity team was absolutely outstanding. Dr. Mwangi was calm, professional, and reassuring throughout the entire process. The NICU staff cared for my premature babies with such tenderness. I cannot recommend HMS enough.</p>
+                            <div class="tcarousel-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                            <div class="tcarousel-author">
+                                <div class="tcarousel-avatar" aria-hidden="true">FA</div>
+                                <div>
+                                    <div class="tcarousel-author-name">Fatuma Ali</div>
+                                    <div class="tcarousel-author-location">📍 Mombasa, Kenya &mdash; Maternity Patient</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide" role="group" aria-label="Testimonial 4 of 6">
+                        <div class="tcarousel-card">
+                            <span class="tcarousel-quote-mark" aria-hidden="true">"</span>
+                            <p class="tcarousel-text">After years of knee pain, Dr. Patel performed my total knee replacement at HMS. The surgical team and the physiotherapy department worked together seamlessly. Six months later I am walking pain-free. The rehab program here is truly world-class.</p>
+                            <div class="tcarousel-stars" aria-label="4 out of 5 stars">★★★★☆</div>
+                            <div class="tcarousel-author">
+                                <div class="tcarousel-avatar" aria-hidden="true">SK</div>
+                                <div>
+                                    <div class="tcarousel-author-name">Samuel Kamau</div>
+                                    <div class="tcarousel-author-location">📍 Nakuru, Kenya &mdash; Orthopaedic Patient</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="carousel-slide" role="group" aria-label="Testimonial 5 of 6">
+                        <div class="tcarousel-card">
+                            <span class="tcarousel-quote-mark" aria-hidden="true">"</span>
+                            <p class="tcarousel-text">I was diagnosed with early-stage breast cancer and the oncology team at HMS designed a treatment plan that worked perfectly. The chemotherapy suite is comfortable, and the nurses made every session bearable with their warmth and encouragement. I am now in remission!</p>
+                            <div class="tcarousel-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                            <div class="tcarousel-author">
+                                <div class="tcarousel-avatar" aria-hidden="true">AN</div>
+                                <div>
+                                    <div class="tcarousel-author-name">Aisha Njeri</div>
+                                    <div class="tcarousel-author-location">📍 Eldoret, Kenya &mdash; Oncology Patient</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 -->
+                    <div class="carousel-slide" role="group" aria-label="Testimonial 6 of 6">
+                        <div class="tcarousel-card">
+                            <span class="tcarousel-quote-mark" aria-hidden="true">"</span>
+                            <p class="tcarousel-text">I brought my elderly father to HMS for a diabetes review and was impressed by how thorough and kind the entire team was. The lab results were ready in under two hours and the specialist explained everything in Kiswahili so my father could understand. Truly patient-centred care.</p>
+                            <div class="tcarousel-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                            <div class="tcarousel-author">
+                                <div class="tcarousel-avatar" aria-hidden="true">DM</div>
+                                <div>
+                                    <div class="tcarousel-author-name">David Mutua</div>
+                                    <div class="tcarousel-author-location">📍 Machakos, Kenya &mdash; General Medicine</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /.carousel-track -->
+            </div><!-- /.carousel-wrapper -->
+
+            <!-- Arrow controls -->
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="carouselPrev" aria-label="Previous testimonial">&#8592;</button>
+                <button class="carousel-btn" id="carouselNext" aria-label="Next testimonial">&#8594;</button>
+            </div>
+
+            <!-- Dot indicators -->
+            <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Testimonial navigation">
+                <button class="carousel-dot active" role="tab" aria-selected="true"  aria-label="Testimonial 1" data-index="0"></button>
+                <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Testimonial 2" data-index="1"></button>
+                <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Testimonial 3" data-index="2"></button>
+                <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Testimonial 4" data-index="3"></button>
+                <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Testimonial 5" data-index="4"></button>
+                <button class="carousel-dot"        role="tab" aria-selected="false" aria-label="Testimonial 6" data-index="5"></button>
             </div>
         </div>
     </section>
@@ -376,11 +597,11 @@
     <!-- Health Tips / News -->
     <section>
         <div class="container">
-            <h2 class="section-title">Health Tips & News</h2>
+            <h2 class="section-title reveal">Health Tips & News</h2>
             <p class="section-subtitle">Stay informed with the latest health information</p>
             
             <div class="articles-grid">
-                <article class="article-card">
+                <article class="article-card reveal">
                     <div class="article-image">💓</div>
                     <div class="article-content">
                         <div class="article-date">March 15, 2024</div>
@@ -390,7 +611,7 @@
                     </div>
                 </article>
                 
-                <article class="article-card">
+                <article class="article-card reveal">
                     <div class="article-image">🥗</div>
                     <div class="article-content">
                         <div class="article-date">March 12, 2024</div>
@@ -400,7 +621,7 @@
                     </div>
                 </article>
                 
-                <article class="article-card">
+                <article class="article-card reveal">
                     <div class="article-image">🧘</div>
                     <div class="article-content">
                         <div class="article-date">March 10, 2024</div>
@@ -493,6 +714,17 @@
 
     <!-- Back to Top Button -->
     <button class="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/254700911911?text=Hello%20HMS%2C%20I%20would%20like%20to%20enquire%20about%20your%20services"
+       class="whatsapp-float"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Chat with us on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.73.69 5.3 2 7.57L.5 31.5l8.18-2.01A15.45 15.45 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.3a13.7 13.7 0 01-7.02-1.94l-.5-.3-5.17 1.27 1.3-4.99-.34-.53A13.73 13.73 0 1116 28.8zm7.54-10.28c-.4-.2-2.38-1.17-2.75-1.3-.37-.14-.63-.2-.9.2s-1.03 1.3-1.27 1.57c-.23.27-.47.3-.87.1-.4-.2-1.7-.63-3.24-2-1.2-1.07-2-2.38-2.24-2.78-.23-.4-.02-.61.18-.81.18-.18.4-.47.6-.7.2-.23.27-.4.4-.67.13-.27.07-.5-.03-.7-.1-.2-.9-2.17-1.24-2.97-.33-.77-.66-.67-.9-.68h-.77c-.27 0-.7.1-1.06.5s-1.4 1.37-1.4 3.34 1.44 3.87 1.64 4.14c.2.27 2.83 4.32 6.86 6.06.96.41 1.71.66 2.29.85.96.3 1.84.26 2.53.16.77-.12 2.38-.97 2.72-1.91.33-.94.33-1.74.23-1.91-.1-.17-.36-.27-.76-.47z"/>
+        </svg>
+    </a>
 
     <script src="js/main.js"></script>
 </body>

@@ -1,8 +1,51 @@
 // HMS Main JavaScript File
 
+// ── Page-load spinner — shown immediately, hidden once DOM is ready ───────────
+(function() {
+    var spinner = document.createElement('div');
+    spinner.className = 'page-load-spinner';
+    spinner.setAttribute('role', 'status');
+    spinner.setAttribute('aria-label', 'Loading…');
+    var dot = document.createElement('div');
+    dot.className = 'spinner';
+    spinner.appendChild(dot);
+    // Insert as first child so it renders before anything else
+    if (document.body) {
+        document.body.insertBefore(spinner, document.body.firstChild);
+    } else {
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.insertBefore(spinner, document.body.firstChild);
+        });
+    }
+
+    function hideSpinner() {
+        spinner.classList.add('hidden');
+        setTimeout(function() { spinner.remove(); }, 450);
+    }
+
+    if (document.readyState === 'complete') {
+        hideSpinner();
+    } else {
+        window.addEventListener('load', hideSpinner);
+        // Fallback: hide after 2.5 s even if load event doesn't fire
+        setTimeout(hideSpinner, 2500);
+    }
+}());
+
+// ── Dark mode — apply saved preference before paint to avoid flash ────────────
+(function() {
+    var saved = localStorage.getItem('hms-theme');
+    if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+}());
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    
+
+    // 1. Page transition: fade-in body on load
+    document.body.classList.add('page-transition');
+
     // Initialize all functionality
     initMobileMenu();
     initStickyNav();
@@ -10,6 +53,24 @@ document.addEventListener('DOMContentLoaded', function() {
     initBackToTop();
     initAnimateOnScroll();
     initStatsCounter();
+    initEmergencyFAB();
+
+    // Dark mode toggle
+    initDarkMode();
+
+    // 3. Button ripple effect
+    initButtonRipple();
+
+    // 4. Loading spinner on form submit
+    initFormSpinner();
+
+    // 5. Scroll reveal via IntersectionObserver
+    initScrollReveal();
+
+    // Testimonials carousel (homepage)
+    if (document.getElementById('testimonialsCarousel')) {
+        initTestimonialsCarousel();
+    }
 
     // Services page — live open/closed badges
     if (document.querySelector('.dept-cards-grid')) {
@@ -633,7 +694,122 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ─── Appointment Booking Form ────────────────────────────────────────────────
+// ─── Commit 9: Button Ripple, Form Spinner, Scroll Reveal ───────────────────
+
+// 3. Button ripple effect
+function initButtonRipple() {
+    document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.btn');
+        if (!btn) return;
+
+        var ripple = document.createElement('span');
+        ripple.className = 'ripple';
+
+        var rect = btn.getBoundingClientRect();
+        var size = Math.max(rect.width, rect.height);
+        ripple.style.width  = size + 'px';
+        ripple.style.height = size + 'px';
+        ripple.style.left   = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top    = (e.clientY - rect.top  - size / 2) + 'px';
+
+        btn.appendChild(ripple);
+
+        ripple.addEventListener('animationend', function() {
+            ripple.remove();
+        });
+    });
+}
+
+// 4. Loading spinner — shown on any form submit, hidden after 1.5 s
+function initFormSpinner() {
+    // Create the overlay element once
+    var overlay = document.createElement('div');
+    overlay.className = 'spinner-overlay';
+    overlay.setAttribute('role', 'status');
+    overlay.setAttribute('aria-label', 'Processing…');
+    var spinner = document.createElement('div');
+    spinner.className = 'spinner';
+    overlay.appendChild(spinner);
+    document.body.appendChild(overlay);
+
+    document.addEventListener('submit', function(e) {
+        // Only show spinner for forms that don't already handle their own
+        // success/failure UI (multi-step, booking, portal register).
+        // Those forms prevent default and show inline banners — skip them.
+        var form = e.target;
+        var skipIds = ['appointmentBookingForm', 'registerForm', 'contactForm'];
+        if (skipIds.indexOf(form.id) !== -1) return;
+
+        overlay.classList.add('active');
+        setTimeout(function() {
+            overlay.classList.remove('active');
+        }, 1500);
+    });
+}
+
+// 5. Scroll reveal using IntersectionObserver
+function initScrollReveal() {
+    if (!('IntersectionObserver' in window)) {
+        // Fallback: make all reveal elements visible immediately
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            el.classList.add('visible');
+        });
+        return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Unobserve once visible so it doesn't re-trigger
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+    });
+}
+
+// ─── Commit 10: Dark Mode ─────────────────────────────────────────────────────
+
+/**
+ * initDarkMode — wires up the dark mode toggle button.
+ * The saved preference is applied before paint by the IIFE at the top of
+ * this file; this function just keeps the button icon in sync and handles
+ * user clicks.
+ */
+function initDarkMode() {
+    var toggleBtn = document.getElementById('darkModeToggle');
+    if (!toggleBtn) return;
+
+    // Sync icon to current state
+    function syncIcon() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        toggleBtn.textContent = isDark ? '☀️' : '🌙';
+        toggleBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    }
+
+    syncIcon();
+
+    toggleBtn.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('hms-theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('hms-theme', 'dark');
+        }
+        syncIcon();
+    });
+}
+
 
 /**
  * Department → Doctor mapping.
@@ -1358,6 +1534,108 @@ function initContactDeptStatus() {
     setInterval(updateBadges, 60000);
 }
 
+// ─── Commit 13: Patient Testimonials Carousel ────────────────────────────────
+
+/**
+ * Auto-rotating testimonials carousel.
+ * - Rotates every 4 seconds.
+ * - Pauses on hover or focus-within.
+ * - Dot indicators and prev/next arrow buttons.
+ * - Fully keyboard accessible.
+ */
+function initTestimonialsCarousel() {
+    var track   = document.getElementById('testimonialsTrack');
+    var dotsEl  = document.getElementById('carouselDots');
+    var prevBtn = document.getElementById('carouselPrev');
+    var nextBtn = document.getElementById('carouselNext');
+    var wrapper = document.getElementById('testimonialsCarousel');
+
+    if (!track || !dotsEl || !prevBtn || !nextBtn || !wrapper) return;
+
+    var slides    = track.querySelectorAll('.carousel-slide');
+    var dots      = dotsEl.querySelectorAll('.carousel-dot');
+    var total     = slides.length;
+    var current   = 0;
+    var autoTimer = null;
+    var INTERVAL  = 4000;
+
+    // Move carousel to given index
+    function goTo(index) {
+        // Wrap around
+        if (index < 0)     index = total - 1;
+        if (index >= total) index = 0;
+
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+
+        // Update dots
+        dots.forEach(function(dot, i) {
+            var isActive = i === current;
+            dot.classList.toggle('active', isActive);
+            dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+    }
+
+    // Start auto-rotation
+    function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(function() {
+            goTo(current + 1);
+        }, INTERVAL);
+    }
+
+    function stopAuto() {
+        if (autoTimer) {
+            clearInterval(autoTimer);
+            autoTimer = null;
+        }
+    }
+
+    // Arrow buttons
+    prevBtn.addEventListener('click', function() {
+        goTo(current - 1);
+        startAuto(); // restart timer on manual interaction
+    });
+
+    nextBtn.addEventListener('click', function() {
+        goTo(current + 1);
+        startAuto();
+    });
+
+    // Dot buttons
+    dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+            var idx = parseInt(this.getAttribute('data-index'), 10);
+            goTo(idx);
+            startAuto();
+        });
+    });
+
+    // Keyboard left/right arrow navigation
+    wrapper.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+            goTo(current - 1);
+            startAuto();
+        } else if (e.key === 'ArrowRight') {
+            goTo(current + 1);
+            startAuto();
+        }
+    });
+
+    // Pause on hover / focus-within
+    wrapper.addEventListener('mouseenter', stopAuto);
+    wrapper.addEventListener('focusin',    stopAuto);
+    wrapper.addEventListener('mouseleave', startAuto);
+    wrapper.addEventListener('focusout',   function(e) {
+        // Only restart if focus leaves the carousel entirely
+        if (!wrapper.contains(e.relatedTarget)) startAuto();
+    });
+
+    // Init
+    goTo(0);
+    startAuto();
+}
+
 // ─── Contact Page — Form Submission Toast ────────────────────────────────────
 
 /**
@@ -1447,4 +1725,176 @@ function initContactFormToast() {
         form.reset();
         showToast('✔ Thank you! Your message has been sent. We will get back to you shortly.', false);
     });
+}
+
+// ─── Commit 11: Emergency FAB + Modal ────────────────────────────────────────
+
+/**
+ * Injects the floating emergency button and modal into the page,
+ * then wires up open/close and accordion behaviour.
+ * Called once from DOMContentLoaded.
+ */
+function initEmergencyFAB() {
+
+    // ── Inject markup ──────────────────────────────────────────────────────
+
+    var fabHTML = [
+        '<button class="emergency-fab" id="emergencyFAB" aria-label="Open emergency contacts" title="Emergency">',
+        '  🚨',
+        '</button>',
+
+        '<div class="emg-modal-overlay" id="emgModalOverlay" role="dialog" aria-modal="true" aria-labelledby="emgModalTitle">',
+        '  <div class="emg-modal">',
+        '    <div class="emg-modal-header">',
+        '      <h2 id="emgModalTitle">🚨 Emergency Contacts</h2>',
+        '      <button class="emg-modal-close" id="emgModalClose" aria-label="Close emergency modal">✕</button>',
+        '    </div>',
+        '    <div class="emg-modal-body">',
+
+        '      <div class="emg-call-grid">',
+        '        <a href="tel:999" class="emg-call-btn">',
+        '          <span class="emg-icon">📞</span>',
+        '          <span class="emg-num">999</span>',
+        '          <span class="emg-label">Police / Ambulance</span>',
+        '        </a>',
+        '        <a href="tel:112" class="emg-call-btn">',
+        '          <span class="emg-icon">🚑</span>',
+        '          <span class="emg-num">112</span>',
+        '          <span class="emg-label">International SOS</span>',
+        '        </a>',
+        '        <a href="tel:+254700911911" class="emg-call-btn">',
+        '          <span class="emg-icon">🏥</span>',
+        '          <span class="emg-num">+254 700 911 911</span>',
+        '          <span class="emg-label">HMS Emergency Line</span>',
+        '        </a>',
+        '      </div>',
+
+        '      <p class="emg-accordion-title">🩹 First Aid Quick Tips</p>',
+        '      <div class="emg-accordion" id="emgAccordion">',
+
+        '        <div class="emg-accordion-item">',
+        '          <button class="emg-accordion-btn" aria-expanded="false" aria-controls="emg-tip-1">',
+        '            💔 Cardiac Arrest — CPR',
+        '            <i class="emg-accordion-icon">▼</i>',
+        '          </button>',
+        '          <div class="emg-accordion-panel" id="emg-tip-1" hidden>',
+        '            Call 999 immediately. Place the heel of your hand on the centre of the chest and push hard and fast — at least 100–120 compressions per minute. If trained, give 2 rescue breaths after every 30 compressions. Continue until help arrives.',
+        '          </div>',
+        '        </div>',
+
+        '        <div class="emg-accordion-item">',
+        '          <button class="emg-accordion-btn" aria-expanded="false" aria-controls="emg-tip-2">',
+        '            🩸 Severe Bleeding',
+        '            <i class="emg-accordion-icon">▼</i>',
+        '          </button>',
+        '          <div class="emg-accordion-panel" id="emg-tip-2" hidden>',
+        '            Apply firm, direct pressure to the wound using a clean cloth or bandage. Do not remove the cloth if it soaks through — add more on top. Elevate the limb above heart level if possible and keep the patient calm and still.',
+        '          </div>',
+        '        </div>',
+
+        '        <div class="emg-accordion-item">',
+        '          <button class="emg-accordion-btn" aria-expanded="false" aria-controls="emg-tip-3">',
+        '            🔥 Burns',
+        '            <i class="emg-accordion-icon">▼</i>',
+        '          </button>',
+        '          <div class="emg-accordion-panel" id="emg-tip-3" hidden>',
+        '            Cool the burn under cool (not cold) running water for at least 10–20 minutes. Remove jewellery near the burn area if possible. Do NOT use ice, butter, or toothpaste. Cover loosely with a clean, non-fluffy material and seek medical help.',
+        '          </div>',
+        '        </div>',
+
+        '        <div class="emg-accordion-item">',
+        '          <button class="emg-accordion-btn" aria-expanded="false" aria-controls="emg-tip-4">',
+        '            😵 Choking',
+        '            <i class="emg-accordion-icon">▼</i>',
+        '          </button>',
+        '          <div class="emg-accordion-panel" id="emg-tip-4" hidden>',
+        '            For adults — give up to 5 firm back blows between the shoulder blades, then up to 5 abdominal thrusts (Heimlich). Alternate until the object is cleared or emergency services arrive. For infants use back blows and chest thrusts only.',
+        '          </div>',
+        '        </div>',
+
+        '        <div class="emg-accordion-item">',
+        '          <button class="emg-accordion-btn" aria-expanded="false" aria-controls="emg-tip-5">',
+        '            🧠 Stroke — FAST',
+        '            <i class="emg-accordion-icon">▼</i>',
+        '          </button>',
+        '          <div class="emg-accordion-panel" id="emg-tip-5" hidden>',
+        '            Use the FAST test: <strong>F</strong>ace drooping, <strong>A</strong>rm weakness, <strong>S</strong>peech difficulty — if any present, <strong>T</strong>ime to call 999. Keep the person calm, do not give food or water, and note the exact time symptoms started.',
+        '          </div>',
+        '        </div>',
+
+        '      </div><!-- /.emg-accordion -->',
+        '    </div><!-- /.emg-modal-body -->',
+        '  </div><!-- /.emg-modal -->',
+        '</div><!-- /.emg-modal-overlay -->'
+    ].join('\n');
+
+    var container = document.createElement('div');
+    container.innerHTML = fabHTML;
+    while (container.firstChild) {
+        document.body.appendChild(container.firstChild);
+    }
+
+    // ── Element references ──────────────────────────────────────────────────
+
+    var fab     = document.getElementById('emergencyFAB');
+    var overlay = document.getElementById('emgModalOverlay');
+    var closeBtn = document.getElementById('emgModalClose');
+
+    // ── Open / close helpers ────────────────────────────────────────────────
+
+    function openModal() {
+        overlay.classList.add('active');
+        closeBtn.focus();
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        overlay.classList.remove('active');
+        fab.focus();
+        document.body.style.overflow = '';
+    }
+
+    fab.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+
+    // Close on overlay background click
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // ── First Aid Accordion ─────────────────────────────────────────────────
+
+    var accordion = document.getElementById('emgAccordion');
+    if (accordion) {
+        var accordionBtns = accordion.querySelectorAll('.emg-accordion-btn');
+
+        accordionBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var isExpanded = this.getAttribute('aria-expanded') === 'true';
+                var panelId    = this.getAttribute('aria-controls');
+                var panel      = document.getElementById(panelId);
+
+                // Collapse all items
+                accordionBtns.forEach(function(otherBtn) {
+                    var otherId    = otherBtn.getAttribute('aria-controls');
+                    var otherPanel = document.getElementById(otherId);
+                    otherBtn.setAttribute('aria-expanded', 'false');
+                    if (otherPanel) otherPanel.hidden = true;
+                });
+
+                // Toggle clicked item open
+                if (!isExpanded) {
+                    this.setAttribute('aria-expanded', 'true');
+                    if (panel) panel.hidden = false;
+                }
+            });
+        });
+    }
 }
