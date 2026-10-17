@@ -40,6 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.inline-appointment-form')) {
         initInlineForm();
     }
+
+    // Patient Portal
+    if (document.querySelector('.portal-tabs')) {
+        initPatientPortal();
+    }
 });
 
 // Mobile Menu Toggle
@@ -959,5 +964,263 @@ function initAppointmentBookingForm() {
         if (!el) return;
         var group = el.closest('.form-group');
         if (group) group.classList.remove('error');
+    }
+}
+
+// ─── Patient Portal ───────────────────────────────────────────────────────────
+//
+// Handles:
+//  • Tab switching (Login / Register)
+//  • Send OTP flow (shows OTP field, pre-fills demo value)
+//  • OTP validation and dashboard reveal
+//  • Register form submission
+//  • Dashboard card navigation
+//  • M-Pesa pay button
+//  • Logout
+// ─────────────────────────────────────────────────────────────────────────────
+
+function initPatientPortal() {
+
+    // ── Element references ──────────────────────────────────────────────────
+    var tabLogin        = document.getElementById('tab-login');
+    var tabRegister     = document.getElementById('tab-register');
+    var panelLogin      = document.getElementById('panel-login');
+    var panelRegister   = document.getElementById('panel-register');
+
+    var sendOtpBtn      = document.getElementById('sendOtpBtn');
+    var otpGroup        = document.getElementById('otpGroup');
+    var otpInput        = document.getElementById('otpInput');
+    var otpError        = document.getElementById('otpError');
+    var loginBtn        = document.getElementById('loginBtn');
+    var loginError      = document.getElementById('loginError');
+    var loginIdentifier = document.getElementById('loginIdentifier');
+    var identifierError = document.getElementById('loginIdentifierError');
+
+    var registerForm    = document.getElementById('registerForm');
+    var registerSuccess = document.getElementById('registerSuccess');
+
+    var authSection     = document.getElementById('portalAuthSection');
+    var dashboard       = document.getElementById('patientDashboard');
+    var dashWelcome     = document.getElementById('dashboardWelcome');
+    var logoutBtn       = document.getElementById('logoutBtn');
+
+    var DEMO_OTP = '123456';
+
+    // ── Tab switching ───────────────────────────────────────────────────────
+
+    function showTab(targetTab) {
+        var isLogin = (targetTab === 'login');
+
+        tabLogin.classList.toggle('portal-tab--active', isLogin);
+        tabLogin.setAttribute('aria-selected', isLogin ? 'true' : 'false');
+
+        tabRegister.classList.toggle('portal-tab--active', !isLogin);
+        tabRegister.setAttribute('aria-selected', isLogin ? 'false' : 'true');
+
+        panelLogin.hidden    = !isLogin;
+        panelRegister.hidden = isLogin;
+    }
+
+    tabLogin.addEventListener('click', function() { showTab('login'); });
+    tabRegister.addEventListener('click', function() { showTab('register'); });
+
+    // ── OTP flow ────────────────────────────────────────────────────────────
+
+    sendOtpBtn.addEventListener('click', function() {
+        var val = loginIdentifier.value.trim();
+
+        if (!val) {
+            loginIdentifier.closest('.form-group').classList.add('error');
+            return;
+        }
+        loginIdentifier.closest('.form-group').classList.remove('error');
+
+        // Show OTP field and pre-fill with demo OTP
+        otpGroup.hidden = false;
+        otpInput.value  = DEMO_OTP;
+        loginBtn.hidden = false;
+
+        // Scroll OTP field into view smoothly
+        otpGroup.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        otpInput.focus();
+
+        sendOtpBtn.textContent = 'Resend OTP';
+    });
+
+    // Clear OTP error on typing
+    otpInput.addEventListener('input', function() {
+        otpError.hidden = true;
+        loginError.hidden = true;
+        otpInput.closest('.form-group').classList.remove('error');
+    });
+
+    // ── Login validation ────────────────────────────────────────────────────
+
+    loginBtn.addEventListener('click', function() {
+        var code = otpInput.value.trim();
+
+        if (code !== DEMO_OTP) {
+            otpInput.closest('.form-group').classList.add('error');
+            otpError.removeAttribute('hidden');
+            loginError.removeAttribute('hidden');
+            return;
+        }
+
+        // Successful login — determine display name
+        var identifier = loginIdentifier.value.trim();
+        var displayName = deriveDisplayName(identifier);
+
+        // Populate welcome message
+        if (dashWelcome) {
+            dashWelcome.textContent = 'Welcome back, ' + displayName;
+        }
+
+        // Hide auth section, show dashboard
+        authSection.hidden = true;
+        dashboard.hidden   = false;
+        dashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    /**
+     * Derive a friendly display name from the login identifier.
+     * If it looks like an email, use the part before @.
+     * Otherwise return the raw value.
+     */
+    function deriveDisplayName(identifier) {
+        if (identifier.indexOf('@') !== -1) {
+            return identifier.split('@')[0];
+        }
+        return identifier;
+    }
+
+    // ── Register form ───────────────────────────────────────────────────────
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (!validateRegisterForm()) return;
+
+            // Show success banner, hide form fields
+            registerForm.hidden      = true;
+            registerSuccess.hidden   = false;
+            registerSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    }
+
+    function validateRegisterForm() {
+        var valid = true;
+        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var phoneRe = /^\+254[0-9]{9}$/;
+
+        var fields = [
+            { id: 'regFullName',        check: function(v) { return v.length > 0; } },
+            { id: 'regNationalId',      check: function(v) { return v.length > 0; } },
+            { id: 'regPhone',           check: function(v) { return phoneRe.test(v); } },
+            { id: 'regEmail',           check: function(v) { return emailRe.test(v); } },
+            { id: 'regDob',             check: function(v) { return v.length > 0; } },
+            { id: 'regGender',          check: function(v) { return v.length > 0; } },
+            { id: 'regPassword',        check: function(v) { return v.length >= 8; } }
+        ];
+
+        fields.forEach(function(f) {
+            var el = document.getElementById(f.id);
+            if (!el) return;
+            var group = el.closest('.form-group');
+            if (!f.check(el.value.trim())) {
+                if (group) group.classList.add('error');
+                valid = false;
+            } else {
+                if (group) group.classList.remove('error');
+            }
+        });
+
+        // Confirm password check
+        var pw  = document.getElementById('regPassword');
+        var cpw = document.getElementById('regConfirmPassword');
+        if (pw && cpw) {
+            var cpwGroup = cpw.closest('.form-group');
+            if (!cpw.value || cpw.value !== pw.value) {
+                if (cpwGroup) cpwGroup.classList.add('error');
+                var errEl = document.getElementById('regConfirmError');
+                if (errEl) errEl.textContent = cpw.value
+                    ? 'Passwords do not match.'
+                    : 'Please confirm your password.';
+                valid = false;
+            } else {
+                if (cpwGroup) cpwGroup.classList.remove('error');
+            }
+        }
+
+        return valid;
+    }
+
+    // Clear errors on input for register fields
+    var regInputs = document.querySelectorAll('#registerForm input, #registerForm select');
+    regInputs.forEach(function(input) {
+        input.addEventListener('input', function() {
+            var group = this.closest('.form-group');
+            if (group) group.classList.remove('error');
+        });
+    });
+
+    // ── Dashboard card navigation ───────────────────────────────────────────
+    // Each card scrolls to its target section.
+
+    var dashCards = document.querySelectorAll('.dashboard-card');
+    dashCards.forEach(function(card) {
+        card.addEventListener('click', function() {
+            var targetId = this.getAttribute('data-target');
+            var target   = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // ── M-Pesa Pay buttons ──────────────────────────────────────────────────
+
+    document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.portal-mpesa-btn');
+        if (!btn) return;
+
+        var amount  = btn.getAttribute('data-amount');
+        var invoice = btn.getAttribute('data-invoice');
+
+        alert(
+            'M-Pesa Payment\n\n' +
+            'Dial *334# on your Safaricom line to pay ' +
+            'KES ' + formatAmount(amount) + ' for invoice ' + invoice + '.\n\n' +
+            'Follow the on-screen prompts and enter your M-Pesa PIN to complete the payment.'
+        );
+    });
+
+    /** Format a numeric string as a comma-separated number. */
+    function formatAmount(val) {
+        var num = parseInt(val, 10);
+        if (isNaN(num)) return val;
+        return num.toLocaleString();
+    }
+
+    // ── Logout ──────────────────────────────────────────────────────────────
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            // Hide dashboard, show auth section
+            dashboard.hidden   = true;
+            authSection.hidden = false;
+
+            // Reset login form state
+            loginIdentifier.value = '';
+            otpInput.value        = '';
+            otpGroup.hidden       = true;
+            loginBtn.hidden       = true;
+            loginError.hidden     = true;
+            sendOtpBtn.textContent = 'Send OTP';
+
+            loginIdentifier.closest('.form-group').classList.remove('error');
+
+            authSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
     }
 }

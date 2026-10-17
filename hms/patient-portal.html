@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HMS Patient Portal - Access your medical records, appointments, lab results, prescriptions, and billing information securely online.">
+    <meta name="description" content="HMS Patient Portal - Login or register to access your medical records, appointments, lab results, and billing information securely online.">
     <meta name="keywords" content="patient portal, medical records, lab results, online appointments, healthcare portal">
     <title>Patient Portal - HMS Hospital Management System</title>
     <link rel="stylesheet" href="css/style.css">
@@ -38,7 +38,7 @@
                     <span class="logo-tagline">Quality Healthcare</span>
                 </div>
             </div>
-            
+
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -50,7 +50,7 @@
                 <li><a href="#emergency" class="emergency-btn">🔔 Emergency</a></li>
                 <li><a href="contact.html" class="btn contact-us-btn">Contact Us</a></li>
             </ul>
-            
+
             <button class="hamburger" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -67,75 +67,328 @@
         </div>
     </section>
 
-    <!-- Login Section -->
-    <section>
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         AUTH SECTION (Login / Register tabs)
+    ════════════════════════════════════════════════════════════════════════ -->
+    <section id="portalAuthSection">
         <div class="container">
             <h2 class="section-title">Access Your Health Records</h2>
-            <p class="section-subtitle">Secure login to manage your healthcare</p>
-            
-            <div class="login-container">
-                <!-- Login Form -->
-                <div class="login-form">
+            <p class="section-subtitle">Secure access to manage your healthcare</p>
+
+            <!-- Tab buttons -->
+            <div class="portal-tabs" role="tablist">
+                <button class="portal-tab portal-tab--active"
+                        id="tab-login"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="panel-login">Login</button>
+                <button class="portal-tab"
+                        id="tab-register"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="panel-register">Register</button>
+            </div>
+
+            <!-- ── Login Panel ─────────────────────────────────────────────── -->
+            <div class="portal-tab-panel" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+                <div class="portal-form-card">
                     <h2>Patient Login</h2>
-                    <form>
-                        <div class="form-group">
-                            <label for="loginEmail">Email Address *</label>
-                            <input type="email" id="loginEmail" name="email" placeholder="your.email@example.com" required>
-                            <span class="error-message">Please enter a valid email</span>
+
+                    <!-- Identifier field -->
+                    <div class="form-group">
+                        <label for="loginIdentifier">Phone (+254) or Email *</label>
+                        <input type="text"
+                               id="loginIdentifier"
+                               name="loginIdentifier"
+                               placeholder="+2547XXXXXXXX or email@example.com"
+                               autocomplete="username"
+                               required>
+                        <span class="error-message" id="loginIdentifierError">Please enter your phone number or email.</span>
+                    </div>
+
+                    <!-- Send OTP button -->
+                    <button type="button" class="btn portal-otp-send-btn" id="sendOtpBtn">
+                        Send OTP
+                    </button>
+
+                    <!-- OTP field (hidden until OTP is sent) -->
+                    <div class="form-group portal-otp-group" id="otpGroup" hidden>
+                        <label for="otpInput">Enter OTP (6 digits) *</label>
+                        <input type="text"
+                               id="otpInput"
+                               name="otp"
+                               maxlength="6"
+                               pattern="[0-9]{6}"
+                               placeholder="______"
+                               autocomplete="one-time-code"
+                               inputmode="numeric">
+                        <span class="portal-otp-demo-note" id="otpDemoNote">Demo: use <strong>123456</strong></span>
+                        <span class="error-message" id="otpError">Invalid OTP. Please try again.</span>
+                    </div>
+
+                    <!-- Login button -->
+                    <button type="button" class="btn portal-login-btn" id="loginBtn" hidden>
+                        Login
+                    </button>
+
+                    <!-- Login error -->
+                    <p class="portal-auth-error" id="loginError" hidden>Incorrect OTP. Please check and try again.</p>
+                </div>
+            </div><!-- /panel-login -->
+
+            <!-- ── Register Panel ──────────────────────────────────────────── -->
+            <div class="portal-tab-panel" id="panel-register" role="tabpanel" aria-labelledby="tab-register" hidden>
+                <div class="portal-form-card">
+                    <h2>Create Account</h2>
+
+                    <!-- Register success banner -->
+                    <div class="portal-register-success" id="registerSuccess" hidden>
+                        <span class="portal-register-success-icon">✅</span>
+                        <p>Account created! Login to access your portal.</p>
+                    </div>
+
+                    <form id="registerForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regFullName">Full Name *</label>
+                                <input type="text" id="regFullName" name="fullName"
+                                       placeholder="John Doe" required>
+                                <span class="error-message">Please enter your full name.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="regNationalId">National ID *</label>
+                                <input type="text" id="regNationalId" name="nationalId"
+                                       placeholder="12345678" required>
+                                <span class="error-message">Please enter your National ID.</span>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="loginPassword">Password *</label>
-                            <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
-                            <span class="error-message">Please enter your password</span>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regPhone">Phone Number (+254) *</label>
+                                <input type="tel" id="regPhone" name="phone"
+                                       placeholder="+2547XXXXXXXX" required>
+                                <span class="error-message">Enter a valid Kenyan phone number.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="regEmail">Email Address *</label>
+                                <input type="email" id="regEmail" name="email"
+                                       placeholder="your.email@example.com" required>
+                                <span class="error-message">Please enter a valid email address.</span>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label style="display: flex; align-items: center; cursor: pointer;">
-                                <input type="checkbox" name="remember" style="margin-right: 10px; width: auto;">
-                                <span>Remember me</span>
-                            </label>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regDob">Date of Birth *</label>
+                                <input type="date" id="regDob" name="dob" required>
+                                <span class="error-message">Please select your date of birth.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="regGender">Gender *</label>
+                                <select id="regGender" name="gender" required>
+                                    <option value="">— Select —</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                    <option value="prefer-not">Prefer not to say</option>
+                                </select>
+                                <span class="error-message">Please select your gender.</span>
+                            </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; margin-bottom: 15px;">Login</button>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regPassword">Password *</label>
+                                <input type="password" id="regPassword" name="password"
+                                       placeholder="At least 8 characters" required minlength="8">
+                                <span class="error-message">Password must be at least 8 characters.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="regConfirmPassword">Confirm Password *</label>
+                                <input type="password" id="regConfirmPassword" name="confirmPassword"
+                                       placeholder="Repeat your password" required>
+                                <span class="error-message" id="regConfirmError">Passwords do not match.</span>
+                            </div>
+                        </div>
 
-                        <div class="forgot-password">
-                            <a href="#">Forgot Password?</a>
+                        <div class="portal-form-submit-row">
+                            <button type="submit" class="btn portal-register-submit-btn">Create Account</button>
                         </div>
                     </form>
                 </div>
+            </div><!-- /panel-register -->
+        </div>
+    </section><!-- /portalAuthSection -->
 
-                <!-- Registration CTA -->
-                <div class="login-form" style="background: var(--lighter-blue); border: 2px solid var(--primary-blue);">
-                    <h2>New Patient?</h2>
-                    <p style="margin-bottom: 25px; color: var(--text-light); line-height: 1.7;">
-                        Register for the patient portal to access your medical records, book appointments, view test results, and communicate with your healthcare team.
-                    </p>
-                    
-                    <ul style="list-style: none; margin-bottom: 30px;">
-                        <li style="padding: 8px 0; color: var(--text-dark);">✓ View medical records anytime</li>
-                        <li style="padding: 8px 0; color: var(--text-dark);">✓ Book and manage appointments</li>
-                        <li style="padding: 8px 0; color: var(--text-dark);">✓ Access lab results instantly</li>
-                        <li style="padding: 8px 0; color: var(--text-dark);">✓ Request prescription refills</li>
-                        <li style="padding: 8px 0; color: var(--text-dark);">✓ Pay bills online</li>
-                    </ul>
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PATIENT DASHBOARD (hidden until login succeeds)
+    ════════════════════════════════════════════════════════════════════════ -->
+    <section id="patientDashboard" hidden>
+        <div class="container">
 
-                    <button type="button" class="btn btn-primary" style="width: 100%; padding: 15px;">Create Account</button>
-                    
-                    <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">
-                        Need help registering? <a href="contact.html" style="color: var(--primary-blue); font-weight: 500;">Contact support</a>
-                    </p>
+            <!-- Welcome header -->
+            <div class="dashboard-header">
+                <div>
+                    <h2 id="dashboardWelcome" class="dashboard-welcome">Welcome back, Patient</h2>
+                    <p class="dashboard-subtitle">Here's an overview of your health records</p>
+                </div>
+                <button type="button" class="btn portal-logout-btn" id="logoutBtn">Logout</button>
+            </div>
+
+            <!-- 4 quick-access cards -->
+            <div class="dashboard-cards">
+                <button type="button" class="dashboard-card" data-target="dashAppointments">
+                    <span class="dashboard-card-icon">📅</span>
+                    <span class="dashboard-card-label">My Appointments</span>
+                </button>
+                <button type="button" class="dashboard-card" data-target="dashLabResults">
+                    <span class="dashboard-card-icon">🔬</span>
+                    <span class="dashboard-card-label">My Lab Results</span>
+                </button>
+                <button type="button" class="dashboard-card" data-target="dashInvoices">
+                    <span class="dashboard-card-icon">💳</span>
+                    <span class="dashboard-card-label">My Invoices</span>
+                </button>
+                <button type="button" class="dashboard-card" data-target="dashMedHistory">
+                    <span class="dashboard-card-icon">📋</span>
+                    <span class="dashboard-card-label">Medical History</span>
+                </button>
+            </div>
+
+            <!-- ── My Appointments ──────────────────────────────────────── -->
+            <div class="dashboard-section" id="dashAppointments">
+                <h3 class="dashboard-section-title">📅 My Appointments</h3>
+                <div class="dashboard-table-wrapper">
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Doctor</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25 Oct 2026</td>
+                                <td>10:00 AM</td>
+                                <td>Dr. Patricia Waweru</td>
+                                <td>General Practice</td>
+                                <td><span class="dash-badge dash-badge--upcoming">Upcoming</span></td>
+                            </tr>
+                            <tr>
+                                <td>02 Nov 2026</td>
+                                <td>02:30 PM</td>
+                                <td>Dr. Sarah Wilson</td>
+                                <td>Neurology</td>
+                                <td><span class="dash-badge dash-badge--upcoming">Upcoming</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
+            <!-- ── My Lab Results ──────────────────────────────────────── -->
+            <div class="dashboard-section" id="dashLabResults">
+                <h3 class="dashboard-section-title">🔬 My Lab Results</h3>
+                <div class="lab-results-list">
+                    <div class="lab-result-item">
+                        <div class="lab-result-info">
+                            <strong>Full Blood Count (FBC)</strong>
+                            <span>Date: 10 Oct 2026 &nbsp;|&nbsp; Ref: LAB-2026-1042</span>
+                            <span class="dash-badge dash-badge--ready">Ready</span>
+                        </div>
+                        <a href="#" class="btn portal-pdf-btn" aria-label="Download Full Blood Count PDF">⬇ Download PDF</a>
+                    </div>
+                    <div class="lab-result-item">
+                        <div class="lab-result-info">
+                            <strong>Lipid Panel</strong>
+                            <span>Date: 05 Oct 2026 &nbsp;|&nbsp; Ref: LAB-2026-0988</span>
+                            <span class="dash-badge dash-badge--ready">Ready</span>
+                        </div>
+                        <a href="#" class="btn portal-pdf-btn" aria-label="Download Lipid Panel PDF">⬇ Download PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── My Invoices ──────────────────────────────────────────── -->
+            <div class="dashboard-section" id="dashInvoices">
+                <h3 class="dashboard-section-title">💳 My Invoices</h3>
+                <div class="dashboard-table-wrapper">
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Description</th>
+                                <th>Amount (KES)</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>INV-2026-0451</td>
+                                <td>General Consultation</td>
+                                <td>1,500</td>
+                                <td>10 Oct 2026</td>
+                                <td><span class="dash-badge dash-badge--unpaid">Unpaid</span></td>
+                                <td>
+                                    <button type="button"
+                                            class="btn portal-mpesa-btn"
+                                            data-amount="1500"
+                                            data-invoice="INV-2026-0451">
+                                        🟢 M-Pesa Pay
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>INV-2026-0388</td>
+                                <td>Full Blood Count Test</td>
+                                <td>850</td>
+                                <td>05 Oct 2026</td>
+                                <td><span class="dash-badge dash-badge--paid">Paid</span></td>
+                                <td><span class="dash-paid-text">— Paid —</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ── Medical History ─────────────────────────────────────── -->
+            <div class="dashboard-section" id="dashMedHistory">
+                <h3 class="dashboard-section-title">📋 Medical History</h3>
+                <div class="med-history-list">
+                    <div class="med-history-item">
+                        <div class="med-history-date">08 Sep 2026</div>
+                        <div class="med-history-details">
+                            <strong>General Consultation</strong>
+                            <p>Complaint: Persistent headache. Diagnosed with tension-type headache. Prescribed Ibuprofen 400 mg for 5 days. Follow-up in 2 weeks.</p>
+                            <span class="med-history-doctor">Dr. Patricia Waweru — General Practice</span>
+                        </div>
+                    </div>
+                    <div class="med-history-item">
+                        <div class="med-history-date">15 Aug 2026</div>
+                        <div class="med-history-details">
+                            <strong>Neurology Review</strong>
+                            <p>Follow-up for migraine management. MRI results reviewed — no structural abnormalities. Medication adjusted to Amitriptyline 10 mg nightly.</p>
+                            <span class="med-history-doctor">Dr. Sarah Wilson — Neurology</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </section><!-- /patientDashboard -->
 
     <!-- Portal Features -->
-    <section style="background: var(--lighter-blue);">
+    <section style="background: var(--lighter-blue);" id="portalFeaturesSection">
         <div class="container">
             <h2 class="section-title">Patient Portal Features</h2>
             <p class="section-subtitle">Everything you need to manage your health</p>
-            
+
             <div class="cards-grid">
                 <div class="card">
                     <div class="card-header">
@@ -204,7 +457,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">💳</div>
-                        <h3>Billing & Payments</h3>
+                        <h3>Billing &amp; Payments</h3>
                     </div>
                     <div class="card-body">
                         <p>View and pay your medical bills online, set up payment plans, review insurance claims, and access itemized billing statements.</p>
@@ -237,28 +490,28 @@
     </section>
 
     <!-- How It Works -->
-    <section>
+    <section id="portalHowSection">
         <div class="container">
             <h2 class="section-title">How the Portal Works</h2>
             <p class="section-subtitle">Getting started is simple</p>
-            
+
             <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
                 <div class="feature-card">
                     <div class="feature-icon">📝</div>
                     <h3>1. Register</h3>
-                    <p>Create your account using your email and patient information. You'll need your patient ID or date of birth to verify your identity. Registration takes less than 5 minutes.</p>
+                    <p>Create your account using your email and patient information. You'll need your National ID or date of birth to verify your identity. Registration takes less than 5 minutes.</p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon">🔐</div>
                     <h3>2. Login Securely</h3>
-                    <p>Access the portal anytime using your email and password. Two-factor authentication provides additional security for your sensitive health information.</p>
+                    <p>Access the portal anytime using your phone number or email and a one-time OTP. Each session is protected so your health information stays secure.</p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon">🏥</div>
                     <h3>3. Manage Your Health</h3>
-                    <p>View records, book appointments, access test results, request prescriptions, pay bills, and communicate with your healthcare team - all in one place.</p>
+                    <p>View records, book appointments, access test results, request prescriptions, pay bills, and communicate with your healthcare team — all in one place.</p>
                 </div>
             </div>
         </div>
@@ -267,9 +520,9 @@
     <!-- Security & Privacy -->
     <section style="background: var(--lighter-blue);">
         <div class="container">
-            <h2 class="section-title">Your Privacy & Security</h2>
+            <h2 class="section-title">Your Privacy &amp; Security</h2>
             <p class="section-subtitle">HIPAA compliant and secure</p>
-            
+
             <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
                 <div class="card">
                     <div class="card-header">
@@ -287,17 +540,17 @@
                         <h3>Data Protection Compliant</h3>
                     </div>
                     <div class="card-body">
-                        <p>We fully comply with the Kenya Data Protection Act, 2019, to ensure your protected health information (PHI) remains confidential and is only accessed by authorized healthcare professionals.</p>
+                        <p>We fully comply with the Kenya Data Protection Act, 2019, to ensure your protected health information (PHI) remains confidential and is only accessed by authorised healthcare professionals.</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
                         <div class="card-icon">✅</div>
-                        <h3>Two-Factor Authentication</h3>
+                        <h3>OTP Authentication</h3>
                     </div>
                     <div class="card-body">
-                        <p>Optional two-factor authentication adds an extra layer of security to your account, requiring both your password and a verification code to login.</p>
+                        <p>One-time passwords sent to your registered phone or email provide strong authentication without requiring you to remember complex passwords.</p>
                     </div>
                 </div>
 
@@ -314,7 +567,7 @@
 
             <div style="max-width: 800px; margin: 40px auto 0; padding: 25px; background: #d1ecf1; border-radius: 10px; border-left: 4px solid #0c5460;">
                 <p style="margin: 0; color: #0c5460; line-height: 1.7;">
-                    <strong>🔐 Your Privacy Matters:</strong> We never sell or share your personal health information with third parties for marketing purposes. Your data is used solely for your healthcare and is protected by strict privacy policies and federal law.
+                    <strong>🔐 Your Privacy Matters:</strong> We never sell or share your personal health information with third parties for marketing purposes. Your data is used solely for your healthcare and is protected by strict privacy policies and the Kenya Data Protection Act 2019.
                 </p>
             </div>
         </div>
@@ -325,7 +578,7 @@
         <div class="container">
             <h2 class="section-title">Need Help?</h2>
             <p class="section-subtitle">We're here to assist you</p>
-            
+
             <div class="contact-grid">
                 <div class="contact-card">
                     <div class="contact-card-icon">📞</div>
@@ -333,21 +586,21 @@
                     <p><a href="tel:+254207001280">+254 20 700 1280</a></p>
                     <p style="font-size: 0.9rem;">Mon-Fri: 8 AM - 8 PM<br>Sat-Sun: 9 AM - 5 PM</p>
                 </div>
-                
+
                 <div class="contact-card">
                     <div class="contact-card-icon">📧</div>
                     <h3>Email Support</h3>
                     <p><a href="mailto:portal@hms.co.ke">portal@hms.co.ke</a></p>
                     <p style="font-size: 0.9rem;">Response within 24 hours</p>
                 </div>
-                
+
                 <div class="contact-card">
                     <div class="contact-card-icon">❓</div>
-                    <h3>FAQ & Guides</h3>
+                    <h3>FAQ &amp; Guides</h3>
                     <p><a href="#" style="color: var(--primary-blue);">View Help Center</a></p>
                     <p style="font-size: 0.9rem;">Step-by-step tutorials</p>
                 </div>
-                
+
                 <div class="contact-card">
                     <div class="contact-card-icon">🏥</div>
                     <h3>In-Person Help</h3>
@@ -363,7 +616,7 @@
         <div class="container">
             <h2>Access Your Health on the Go</h2>
             <p style="margin-bottom: 30px; font-size: 1.1rem;">Download our mobile app for iOS and Android</p>
-            
+
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                 <div style="background: var(--white); padding: 15px 30px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
                     <div style="font-size: 2.5rem;">📱</div>
@@ -372,7 +625,7 @@
                         <div style="font-size: 1.2rem; font-weight: 700; color: var(--dark-blue);">App Store</div>
                     </div>
                 </div>
-                
+
                 <div style="background: var(--white); padding: 15px 30px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
                     <div style="font-size: 2.5rem;">📱</div>
                     <div style="text-align: left;">
@@ -397,7 +650,7 @@
                     <a href="#" aria-label="LinkedIn">💼</a>
                 </div>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
@@ -409,7 +662,7 @@
                     <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Departments</h3>
                 <ul>
@@ -421,7 +674,7 @@
                     <li><a href="services.html#emergency">Emergency</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Contact Info</h3>
                 <p>📍 Ngong Road, Upper Hill<br>Nairobi, Kenya</p>
@@ -430,7 +683,7 @@
                 <p>🕐 24/7 Emergency Services</p>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; <span id="currentYear">2024</span> HMS - Hospital Management System. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy (Kenya Data Protection Act 2019)</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
         </div>
