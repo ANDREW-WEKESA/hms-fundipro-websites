@@ -2299,3 +2299,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // emergency modal v2 - improved accessibility
+
+// search v2 - highlight matched text
