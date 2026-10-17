@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,18 +31,18 @@
     <div class="top-bar">
         <div class="top-bar-content">
             <div class="top-bar-item">
-                <span>📞</span>
+                <span>??</span>
                 <span>Emergency: 999 / 112 | <a href="tel:+254700911911" style="color: inherit; text-decoration: none;">+254 700 911 911</a></span>
             </div>
             <div class="top-bar-item">
-                <span>📍</span>
+                <span>??</span>
                 <span>Ngong Road, Upper Hill, Nairobi, Kenya</span>
             </div>
             <div class="top-bar-item">
-                <a href="#" aria-label="Facebook">📘</a>
-                <a href="#" aria-label="X (Twitter)">🐦</a>
-                <a href="#" aria-label="Instagram">📷</a>
-                <a href="#" aria-label="LinkedIn">💼</a>
+                <a href="#" aria-label="Facebook">??</a>
+                <a href="#" aria-label="X (Twitter)">??</a>
+                <a href="#" aria-label="Instagram">??</a>
+                <a href="#" aria-label="LinkedIn">??</a>
             </div>
         </div>
     </div>
@@ -65,11 +65,11 @@
                 <li><a href="appointments.html">Appointments</a></li>
                 <li><a href="patient-portal.html" class="active">Patient Portal</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="#emergency" class="emergency-btn">🔔 Emergency</a></li>
+                <li><a href="#emergency" class="emergency-btn">?? Emergency</a></li>
                 <li><a href="contact.html" class="btn contact-us-btn">Contact Us</a></li>
             </ul>
 
-            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Switch to dark mode" aria-pressed="false">🌙</button>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Switch to dark mode" aria-pressed="false">??</button>
 
             <button class="site-search-toggle" id="siteSearchToggle" aria-label="Open site search" aria-expanded="false">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -81,6 +81,15 @@
         </div>
     </nav>
 
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb-inner">
+            <a href="index.html">&#127968; Home</a>
+            <span class="breadcrumb-sep">&#8250;</span>
+            <span class="breadcrumb-current">Patient Portal</span>
+        </div>
+    </nav>
+
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="hero-content">
@@ -89,9 +98,17 @@
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
+    <!-- Print Action Bar -->
+    <div class="print-action-bar">
+        <button class="print-btn" onclick="window.print()" aria-label="Print this page">
+            Print Patient Records
+        </button>
+    </div>
+
+
+    <!-- -----------------------------------------------------------------------
          AUTH SECTION (Login / Register tabs)
-    ════════════════════════════════════════════════════════════════════════ -->
+    ------------------------------------------------------------------------ -->
     <section id="portalAuthSection">
         <div class="container">
             <h2 class="section-title">Access Your Health Records</h2>
@@ -111,7 +128,7 @@
                         aria-controls="panel-register">Register</button>
             </div>
 
-            <!-- ── Login Panel ─────────────────────────────────────────────── -->
+            <!-- -- Login Panel ----------------------------------------------- -->
             <div class="portal-tab-panel" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
                 <div class="portal-form-card">
                     <h2>Patient Login</h2>
@@ -158,14 +175,14 @@
                 </div>
             </div><!-- /panel-login -->
 
-            <!-- ── Register Panel ──────────────────────────────────────────── -->
+            <!-- -- Register Panel -------------------------------------------- -->
             <div class="portal-tab-panel" id="panel-register" role="tabpanel" aria-labelledby="tab-register" hidden>
                 <div class="portal-form-card">
                     <h2>Create Account</h2>
 
                     <!-- Register success banner -->
                     <div class="portal-register-success" id="registerSuccess" hidden>
-                        <span class="portal-register-success-icon">✅</span>
+                        <span class="portal-register-success-icon">?</span>
                         <p>Account created! Login to access your portal.</p>
                     </div>
 
@@ -209,7 +226,7 @@
                             <div class="form-group">
                                 <label for="regGender">Gender *</label>
                                 <select id="regGender" name="gender" required>
-                                    <option value="">— Select —</option>
+                                    <option value="">� Select �</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="other">Other</option>
@@ -243,9 +260,9 @@
         </div>
     </section><!-- /portalAuthSection -->
 
-    <!-- ═══════════════════════════════════════════════════════════════════════
+    <!-- -----------------------------------------------------------------------
          PATIENT DASHBOARD (hidden until login succeeds)
-    ════════════════════════════════════════════════════════════════════════ -->
+    ------------------------------------------------------------------------ -->
     <section id="patientDashboard" hidden>
         <div class="container">
 
@@ -261,26 +278,26 @@
             <!-- 4 quick-access cards -->
             <div class="dashboard-cards">
                 <button type="button" class="dashboard-card" data-target="dashAppointments">
-                    <span class="dashboard-card-icon">📅</span>
+                    <span class="dashboard-card-icon">??</span>
                     <span class="dashboard-card-label">My Appointments</span>
                 </button>
                 <button type="button" class="dashboard-card" data-target="dashLabResults">
-                    <span class="dashboard-card-icon">🔬</span>
+                    <span class="dashboard-card-icon">??</span>
                     <span class="dashboard-card-label">My Lab Results</span>
                 </button>
                 <button type="button" class="dashboard-card" data-target="dashInvoices">
-                    <span class="dashboard-card-icon">💳</span>
+                    <span class="dashboard-card-icon">??</span>
                     <span class="dashboard-card-label">My Invoices</span>
                 </button>
                 <button type="button" class="dashboard-card" data-target="dashMedHistory">
-                    <span class="dashboard-card-icon">📋</span>
+                    <span class="dashboard-card-icon">??</span>
                     <span class="dashboard-card-label">Medical History</span>
                 </button>
             </div>
 
-            <!-- ── My Appointments ──────────────────────────────────────── -->
+            <!-- -- My Appointments ---------------------------------------- -->
             <div class="dashboard-section" id="dashAppointments">
-                <h3 class="dashboard-section-title">📅 My Appointments</h3>
+                <h3 class="dashboard-section-title">?? My Appointments</h3>
                 <div class="dashboard-table-wrapper">
                     <table class="dashboard-table">
                         <thead>
@@ -312,9 +329,9 @@
                 </div>
             </div>
 
-            <!-- ── My Lab Results ──────────────────────────────────────── -->
+            <!-- -- My Lab Results ---------------------------------------- -->
             <div class="dashboard-section" id="dashLabResults">
-                <h3 class="dashboard-section-title">🔬 My Lab Results</h3>
+                <h3 class="dashboard-section-title">?? My Lab Results</h3>
                 <div class="lab-results-list">
                     <div class="lab-result-item">
                         <div class="lab-result-info">
@@ -322,7 +339,7 @@
                             <span>Date: 10 Oct 2026 &nbsp;|&nbsp; Ref: LAB-2026-1042</span>
                             <span class="dash-badge dash-badge--ready">Ready</span>
                         </div>
-                        <a href="#" class="btn portal-pdf-btn" aria-label="Download Full Blood Count PDF">⬇ Download PDF</a>
+                        <a href="#" class="btn portal-pdf-btn" aria-label="Download Full Blood Count PDF">? Download PDF</a>
                     </div>
                     <div class="lab-result-item">
                         <div class="lab-result-info">
@@ -330,14 +347,14 @@
                             <span>Date: 05 Oct 2026 &nbsp;|&nbsp; Ref: LAB-2026-0988</span>
                             <span class="dash-badge dash-badge--ready">Ready</span>
                         </div>
-                        <a href="#" class="btn portal-pdf-btn" aria-label="Download Lipid Panel PDF">⬇ Download PDF</a>
+                        <a href="#" class="btn portal-pdf-btn" aria-label="Download Lipid Panel PDF">? Download PDF</a>
                     </div>
                 </div>
             </div>
 
-            <!-- ── My Invoices ──────────────────────────────────────────── -->
+            <!-- -- My Invoices -------------------------------------------- -->
             <div class="dashboard-section" id="dashInvoices">
-                <h3 class="dashboard-section-title">💳 My Invoices</h3>
+                <h3 class="dashboard-section-title">?? My Invoices</h3>
                 <div class="dashboard-table-wrapper">
                     <table class="dashboard-table">
                         <thead>
@@ -362,7 +379,7 @@
                                             class="btn portal-mpesa-btn"
                                             data-amount="1500"
                                             data-invoice="INV-2026-0451">
-                                        🟢 M-Pesa Pay
+                                        ?? M-Pesa Pay
                                     </button>
                                 </td>
                             </tr>
@@ -372,31 +389,31 @@
                                 <td>850</td>
                                 <td>05 Oct 2026</td>
                                 <td><span class="dash-badge dash-badge--paid">Paid</span></td>
-                                <td><span class="dash-paid-text">— Paid —</span></td>
+                                <td><span class="dash-paid-text">� Paid �</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- ── Medical History ─────────────────────────────────────── -->
+            <!-- -- Medical History --------------------------------------- -->
             <div class="dashboard-section" id="dashMedHistory">
-                <h3 class="dashboard-section-title">📋 Medical History</h3>
+                <h3 class="dashboard-section-title">?? Medical History</h3>
                 <div class="med-history-list">
                     <div class="med-history-item">
                         <div class="med-history-date">08 Sep 2026</div>
                         <div class="med-history-details">
                             <strong>General Consultation</strong>
                             <p>Complaint: Persistent headache. Diagnosed with tension-type headache. Prescribed Ibuprofen 400 mg for 5 days. Follow-up in 2 weeks.</p>
-                            <span class="med-history-doctor">Dr. Patricia Waweru — General Practice</span>
+                            <span class="med-history-doctor">Dr. Patricia Waweru � General Practice</span>
                         </div>
                     </div>
                     <div class="med-history-item">
                         <div class="med-history-date">15 Aug 2026</div>
                         <div class="med-history-details">
                             <strong>Neurology Review</strong>
-                            <p>Follow-up for migraine management. MRI results reviewed — no structural abnormalities. Medication adjusted to Amitriptyline 10 mg nightly.</p>
-                            <span class="med-history-doctor">Dr. Sarah Wilson — Neurology</span>
+                            <p>Follow-up for migraine management. MRI results reviewed � no structural abnormalities. Medication adjusted to Amitriptyline 10 mg nightly.</p>
+                            <span class="med-history-doctor">Dr. Sarah Wilson � Neurology</span>
                         </div>
                     </div>
                 </div>
@@ -414,7 +431,7 @@
             <div class="cards-grid">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">📅</div>
+                        <div class="card-icon">??</div>
                         <h3>Appointments</h3>
                     </div>
                     <div class="card-body">
@@ -430,7 +447,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">📋</div>
+                        <div class="card-icon">??</div>
                         <h3>Medical Records</h3>
                     </div>
                     <div class="card-body">
@@ -446,7 +463,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">🔬</div>
+                        <div class="card-icon">??</div>
                         <h3>Lab Results</h3>
                     </div>
                     <div class="card-body">
@@ -462,7 +479,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">💊</div>
+                        <div class="card-icon">??</div>
                         <h3>Prescriptions</h3>
                     </div>
                     <div class="card-body">
@@ -478,7 +495,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">💳</div>
+                        <div class="card-icon">??</div>
                         <h3>Billing &amp; Payments</h3>
                     </div>
                     <div class="card-body">
@@ -494,7 +511,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">💻</div>
+                        <div class="card-icon">??</div>
                         <h3>Telemedicine</h3>
                     </div>
                     <div class="card-body">
@@ -519,21 +536,21 @@
 
             <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
                 <div class="feature-card">
-                    <div class="feature-icon">📝</div>
+                    <div class="feature-icon">??</div>
                     <h3>1. Register</h3>
                     <p>Create your account using your email and patient information. You'll need your National ID or date of birth to verify your identity. Registration takes less than 5 minutes.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🔐</div>
+                    <div class="feature-icon">??</div>
                     <h3>2. Login Securely</h3>
                     <p>Access the portal anytime using your phone number or email and a one-time OTP. Each session is protected so your health information stays secure.</p>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🏥</div>
+                    <div class="feature-icon">??</div>
                     <h3>3. Manage Your Health</h3>
-                    <p>View records, book appointments, access test results, request prescriptions, pay bills, and communicate with your healthcare team — all in one place.</p>
+                    <p>View records, book appointments, access test results, request prescriptions, pay bills, and communicate with your healthcare team � all in one place.</p>
                 </div>
             </div>
         </div>
@@ -548,7 +565,7 @@
             <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">🔒</div>
+                        <div class="card-icon">??</div>
                         <h3>Bank-Level Security</h3>
                     </div>
                     <div class="card-body">
@@ -558,7 +575,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">🛡️</div>
+                        <div class="card-icon">???</div>
                         <h3>Data Protection Compliant</h3>
                     </div>
                     <div class="card-body">
@@ -568,7 +585,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">✅</div>
+                        <div class="card-icon">?</div>
                         <h3>OTP Authentication</h3>
                     </div>
                     <div class="card-body">
@@ -578,7 +595,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-icon">👁️</div>
+                        <div class="card-icon">???</div>
                         <h3>Access Control</h3>
                     </div>
                     <div class="card-body">
@@ -589,7 +606,7 @@
 
             <div style="max-width: 800px; margin: 40px auto 0; padding: 25px; background: #d1ecf1; border-radius: 10px; border-left: 4px solid #0c5460;">
                 <p style="margin: 0; color: #0c5460; line-height: 1.7;">
-                    <strong>🔐 Your Privacy Matters:</strong> We never sell or share your personal health information with third parties for marketing purposes. Your data is used solely for your healthcare and is protected by strict privacy policies and the Kenya Data Protection Act 2019.
+                    <strong>?? Your Privacy Matters:</strong> We never sell or share your personal health information with third parties for marketing purposes. Your data is used solely for your healthcare and is protected by strict privacy policies and the Kenya Data Protection Act 2019.
                 </p>
             </div>
         </div>
@@ -603,28 +620,28 @@
 
             <div class="contact-grid">
                 <div class="contact-card">
-                    <div class="contact-card-icon">📞</div>
+                    <div class="contact-card-icon">??</div>
                     <h3>Technical Support</h3>
                     <p><a href="tel:+254207001280">+254 20 700 1280</a></p>
                     <p style="font-size: 0.9rem;">Mon-Fri: 8 AM - 8 PM<br>Sat-Sun: 9 AM - 5 PM</p>
                 </div>
 
                 <div class="contact-card">
-                    <div class="contact-card-icon">📧</div>
+                    <div class="contact-card-icon">??</div>
                     <h3>Email Support</h3>
                     <p><a href="mailto:portal@hms.co.ke">portal@hms.co.ke</a></p>
                     <p style="font-size: 0.9rem;">Response within 24 hours</p>
                 </div>
 
                 <div class="contact-card">
-                    <div class="contact-card-icon">❓</div>
+                    <div class="contact-card-icon">?</div>
                     <h3>FAQ &amp; Guides</h3>
                     <p><a href="#" style="color: var(--primary-blue);">View Help Center</a></p>
                     <p style="font-size: 0.9rem;">Step-by-step tutorials</p>
                 </div>
 
                 <div class="contact-card">
-                    <div class="contact-card-icon">🏥</div>
+                    <div class="contact-card-icon">??</div>
                     <h3>In-Person Help</h3>
                     <p>Visit our reception desk</p>
                     <p style="font-size: 0.9rem;">We'll help you register</p>
@@ -641,7 +658,7 @@
 
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                 <div style="background: var(--white); padding: 15px 30px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-                    <div style="font-size: 2.5rem;">📱</div>
+                    <div style="font-size: 2.5rem;">??</div>
                     <div style="text-align: left;">
                         <div style="font-size: 0.85rem; opacity: 0.8;">Download on the</div>
                         <div style="font-size: 1.2rem; font-weight: 700; color: var(--dark-blue);">App Store</div>
@@ -649,7 +666,7 @@
                 </div>
 
                 <div style="background: var(--white); padding: 15px 30px; border-radius: 10px; display: flex; align-items: center; gap: 15px;">
-                    <div style="font-size: 2.5rem;">📱</div>
+                    <div style="font-size: 2.5rem;">??</div>
                     <div style="text-align: left;">
                         <div style="font-size: 0.85rem; opacity: 0.8;">Get it on</div>
                         <div style="font-size: 1.2rem; font-weight: 700; color: var(--dark-blue);">Google Play</div>
@@ -666,10 +683,10 @@
                 <h3>About HMS</h3>
                 <p>Leading healthcare provider dedicated to delivering exceptional medical services with compassion and excellence.</p>
                 <div class="social-links">
-                    <a href="#" aria-label="Facebook">📘</a>
-                    <a href="#" aria-label="Twitter">🐦</a>
-                    <a href="#" aria-label="Instagram">📷</a>
-                    <a href="#" aria-label="LinkedIn">💼</a>
+                    <a href="#" aria-label="Facebook">??</a>
+                    <a href="#" aria-label="Twitter">??</a>
+                    <a href="#" aria-label="Instagram">??</a>
+                    <a href="#" aria-label="LinkedIn">??</a>
                 </div>
             </div>
 
@@ -699,20 +716,20 @@
 
             <div class="footer-section">
                 <h3>Contact Info</h3>
-                <p>📍 Ngong Road, Upper Hill<br>Nairobi, Kenya</p>
-                <p>📞 Emergency: <a href="tel:999" style="color: inherit;">999</a> / <a href="tel:112" style="color: inherit;">112</a></p>
-                <p>📧 <a href="mailto:info@hms.co.ke" style="color: inherit;">info@hms.co.ke</a></p>
-                <p>🕐 24/7 Emergency Services</p>
+                <p>?? Ngong Road, Upper Hill<br>Nairobi, Kenya</p>
+                <p>?? Emergency: <a href="tel:999" style="color: inherit;">999</a> / <a href="tel:112" style="color: inherit;">112</a></p>
+                <p>?? <a href="mailto:info@hms.co.ke" style="color: inherit;">info@hms.co.ke</a></p>
+                <p>?? 24/7 Emergency Services</p>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; <span id="currentYear">2024</span> HMS - Hospital Management System. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy (Kenya Data Protection Act 2019)</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
+            <p>&copy; <span id="currentYear">2026</span> HMS - Hospital Management System. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy (Kenya Data Protection Act 2019)</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" aria-label="Back to top">↑</button>
+    <button class="back-to-top" aria-label="Back to top">?</button>
 
 
     <!-- WhatsApp Floating Button -->
@@ -739,11 +756,11 @@
         <div class="site-search-box">
             <div class="site-search-input-wrap">
                 <svg class="site-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input type="search" id="siteSearchInput" class="site-search-input" placeholder="Search services, doctors, pages…" autocomplete="off" aria-label="Search site" aria-autocomplete="list" aria-controls="siteSearchResults">
+                <input type="search" id="siteSearchInput" class="site-search-input" placeholder="Search services, doctors, pages�" autocomplete="off" aria-label="Search site" aria-autocomplete="list" aria-controls="siteSearchResults">
                 <button class="site-search-close" id="siteSearchClose" aria-label="Close search">&#10005;</button>
             </div>
             <ul class="site-search-results" id="siteSearchResults" role="listbox" aria-label="Search results" hidden></ul>
-            <p class="site-search-hint" id="siteSearchHint">Start typing to search…</p>
+            <p class="site-search-hint" id="siteSearchHint">Start typing to search�</p>
         </div>
     </div>
     <script src="js/main.js"></script>

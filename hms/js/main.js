@@ -72,6 +72,11 @@ document.addEventListener('DOMContentLoaded', function() {
         initTestimonialsCarousel();
     }
 
+    // Site-wide search (all pages)
+    if (document.getElementById('siteSearchToggle')) {
+        initSiteSearch();
+    }
+
     // Services page — live open/closed badges
     if (document.querySelector('.dept-cards-grid')) {
         initServiceStatusBadges();
@@ -2165,3 +2170,130 @@ function escapeHtml(str) {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;');
 }
+
+
+// ── Emergency Floating Button & Modal ────────────────────────────────────────
+function initEmergencyFAB() {
+    const fab = document.createElement('div');
+    fab.innerHTML = `
+    <button class="emergency-fab" aria-label="Emergency" id="emergencyFAB">🚨</button>
+    <div class="emergency-modal-overlay" id="emergencyModalOverlay">
+      <div class="emergency-modal" role="dialog" aria-label="Emergency Contacts">
+        <button class="emergency-modal-close" id="closeEmergencyModal">&times;</button>
+        <h2>🚨 Emergency Contacts</h2>
+        <div class="emergency-call-btns">
+          <a href="tel:999" class="ecall-btn red">📞 999</a>
+          <a href="tel:112" class="ecall-btn red">📞 112</a>
+          <a href="tel:+254700911911" class="ecall-btn orange">📞 +254 700 911 911</a>
+        </div>
+        <details class="first-aid"><summary>🩹 First Aid: Choking</summary><p>Give 5 back blows then 5 abdominal thrusts. Repeat until clear.</p></details>
+        <details class="first-aid"><summary>🩹 First Aid: CPR</summary><p>30 chest compressions then 2 rescue breaths. Rate: 100-120/min.</p></details>
+        <details class="first-aid"><summary>🩹 First Aid: Burns</summary><p>Cool under running water for 20 min. Do NOT apply ice or butter.</p></details>
+        <details class="first-aid"><summary>🩹 First Aid: Bleeding</summary><p>Apply firm pressure with clean cloth. Elevate the wound above heart.</p></details>
+        <details class="first-aid"><summary>🩹 First Aid: Stroke (FAST)</summary><p>Face drooping, Arm weakness, Speech difficulty — Time to call 999.</p></details>
+      </div>
+    </div>`;
+    document.body.appendChild(fab);
+    document.getElementById('emergencyFAB').addEventListener('click', function() {
+        document.getElementById('emergencyModalOverlay').classList.add('active');
+    });
+    document.getElementById('closeEmergencyModal').addEventListener('click', function() {
+        document.getElementById('emergencyModalOverlay').classList.remove('active');
+    });
+    document.getElementById('emergencyModalOverlay').addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('active');
+    });
+}
+
+// ── WhatsApp Floating Button ─────────────────────────────────────────────────
+function initWhatsAppFAB() {
+    const msg = encodeURIComponent('Hello HMS, I would like to enquire about your services.');
+    const btn = document.createElement('a');
+    btn.href = 'https://wa.me/254700911911?text=' + msg;
+    btn.target = '_blank';
+    btn.rel = 'noopener noreferrer';
+    btn.className = 'whatsapp-fab';
+    btn.setAttribute('aria-label', 'Chat on WhatsApp');
+    btn.innerHTML = '💬';
+    document.body.appendChild(btn);
+}
+
+// ── Cookie Consent Banner (Kenya DPA 2019) ───────────────────────────────────
+function initCookieConsent() {
+    if (localStorage.getItem('hms_cookie_consent')) return;
+    const banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.innerHTML = `
+      <p>We use cookies to improve your experience. By continuing, you agree to our 
+        <a href="contact.html">Privacy Policy</a> in accordance with the 
+        <strong>Kenya Data Protection Act, 2019</strong>.
+      </p>
+      <div class="cookie-btns">
+        <button id="cookieAccept" class="btn btn-primary btn-sm">Accept</button>
+        <button id="cookieDecline" class="btn btn-secondary btn-sm">Decline</button>
+      </div>`;
+    document.body.appendChild(banner);
+    document.getElementById('cookieAccept').addEventListener('click', function() {
+        localStorage.setItem('hms_cookie_consent', 'accepted');
+        banner.remove();
+    });
+    document.getElementById('cookieDecline').addEventListener('click', function() {
+        localStorage.setItem('hms_cookie_consent', 'declined');
+        banner.remove();
+    });
+}
+
+// ── Site Search ───────────────────────────────────────────────────────────────
+function initSiteSearch() {
+    const searchData = [
+        { title: 'Home', url: 'index.html', keywords: 'home hospital hms nairobi' },
+        { title: 'About Us', url: 'about.html', keywords: 'about history mission vision leadership' },
+        { title: 'Services', url: 'services.html', keywords: 'services opd emergency maternity pharmacy lab radiology icu surgery' },
+        { title: 'Doctors', url: 'doctors.html', keywords: 'doctors specialists cardiology neurology pediatrics' },
+        { title: 'Appointments', url: 'appointments.html', keywords: 'book appointment schedule' },
+        { title: 'Patient Portal', url: 'patient-portal.html', keywords: 'patient portal login results invoices' },
+        { title: 'Contact', url: 'contact.html', keywords: 'contact phone address directions map' },
+        { title: 'Emergency', url: 'tel:999', keywords: 'emergency 999 112 ambulance' },
+        { title: 'Dr. Amina Hassan – Cardiology', url: 'doctors.html', keywords: 'cardiology heart doctor' },
+        { title: 'Dr. Grace Njeri – Pediatrics', url: 'doctors.html', keywords: 'pediatrics children doctor' },
+        { title: 'Laboratory Services', url: 'services.html', keywords: 'lab blood test results' },
+        { title: 'Pharmacy', url: 'services.html', keywords: 'pharmacy drugs prescription' },
+    ];
+    const searchBtn = document.querySelector('.search-toggle');
+    const searchOverlay = document.getElementById('searchOverlay');
+    if (!searchBtn || !searchOverlay) return;
+    const input = searchOverlay.querySelector('.search-input');
+    const results = searchOverlay.querySelector('.search-results');
+    searchBtn.addEventListener('click', function() {
+        searchOverlay.classList.add('active');
+        input.focus();
+    });
+    searchOverlay.addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('active');
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') searchOverlay.classList.remove('active');
+    });
+    input.addEventListener('input', function() {
+        const q = this.value.toLowerCase().trim();
+        results.innerHTML = '';
+        if (!q) return;
+        const matches = searchData.filter(d => d.title.toLowerCase().includes(q) || d.keywords.includes(q));
+        matches.slice(0, 6).forEach(function(item) {
+            const a = document.createElement('a');
+            a.href = item.url;
+            a.className = 'search-result-item';
+            a.textContent = item.title;
+            results.appendChild(a);
+        });
+        if (!matches.length) results.innerHTML = '<p class="no-results">No results found.</p>';
+    });
+}
+
+// ── Init all features ─────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+    initEmergencyFAB();
+    initWhatsAppFAB();
+    initCookieConsent();
+    initSiteSearch();
+});
