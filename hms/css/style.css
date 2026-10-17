@@ -1909,3 +1909,194 @@ footer {
         page-break-after: always;
     }
 }
+
+/* ─── Department Service Cards (Services Page) ──────────────────────────────── */
+
+.dept-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    margin-top: 10px;
+}
+
+.dept-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 28px 24px 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: var(--transition);
+}
+
+.dept-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Emergency card accent */
+.dept-card--emergency {
+    border-top: 4px solid var(--emergency-red);
+}
+
+/* Top row: icon + badge */
+.dept-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.dept-icon {
+    font-size: 2.6rem;
+    line-height: 1;
+}
+
+/* Live status badge */
+.dept-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dept-status-badge--open {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.dept-status-badge--closed {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+/* Card heading */
+.dept-name {
+    font-size: 1.2rem;
+    color: var(--dark-blue);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Description */
+.dept-desc {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+    flex-grow: 1;
+}
+
+/* Meta block (hours, ext, insurance) */
+.dept-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--lighter-blue);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 0.88rem;
+}
+
+.dept-hours,
+.dept-ext,
+.dept-insurance {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dept-meta-label {
+    font-weight: 600;
+    color: var(--dark-blue);
+    margin-bottom: 3px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.dept-hours span,
+.dept-ext span {
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+/* Insurance tag pills */
+.insurance-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 3px;
+}
+
+.ins-tag {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 3px 9px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* Book appointment button */
+.dept-book-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--primary-blue);
+    color: var(--white) !important;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: auto;
+    transition: var(--transition);
+    min-height: 44px;
+}
+
+.dept-book-btn:hover {
+    background: var(--dark-blue);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+    color: var(--white) !important;
+}
+
+.dept-book-btn--emergency {
+    background: var(--emergency-red);
+}
+
+.dept-book-btn--emergency:hover {
+    background: #b02a37;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dept-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dept-card {
+        padding: 22px 18px 18px;
+    }
+
+    .dept-icon {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dept-status-badge {
+        font-size: 0.76rem;
+        padding: 4px 9px;
+    }
+}
+

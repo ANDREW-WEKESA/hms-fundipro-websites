@@ -79,162 +79,238 @@
         </div>
     </section>
 
-    <!-- Detailed Services -->
-    <section style="background: var(--lighter-blue);">
+    <!-- Department Service Cards -->
+    <section id="departments" style="background: var(--lighter-blue);">
         <div class="container">
-            <div class="cards-grid">
-                <!-- OPD Services -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🏥</div>
-                        <h3>Outpatient Department (OPD)</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>Comprehensive outpatient consultation services across all medical specialties with convenient appointment scheduling and minimal wait times.</p>
-                        <ul>
-                            <li>Specialist consultations</li>
-                            <li>Follow-up care and monitoring</li>
-                            <li>Preventive health check-ups</li>
-                            <li>Minor procedures and treatments</li>
-                            <li>Prescription management</li>
-                        </ul>
-                        <a href="appointments.html" class="btn">Book OPD Appointment</a>
-                    </div>
-                </div>
+            <h2 class="section-title">Our Departments</h2>
+            <p class="section-subtitle">Live status updates based on current Nairobi time</p>
 
-                <!-- IPD Services -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🛏️</div>
-                        <h3>Inpatient Department (IPD)</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>World-class inpatient care with comfortable rooms, 24/7 nursing care, and comprehensive medical monitoring for optimal recovery.</p>
-                        <ul>
-                            <li>Private and semi-private rooms</li>
-                            <li>ICU and critical care units</li>
-                            <li>24/7 nursing and medical care</li>
-                            <li>Specialized diet and nutrition</li>
-                            <li>Patient and family support</li>
-                        </ul>
-                        <a href="contact.html" class="btn">Learn More</a>
-                    </div>
-                </div>
+            <div class="dept-cards-grid">
 
-                <!-- Emergency Services -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🚑</div>
-                        <h3>Emergency & Trauma Care</h3>
+                <!-- OPD -->
+                <article class="dept-card" data-dept="opd">
+                    <div class="dept-card-top">
+                        <span class="dept-icon" aria-hidden="true">🏥</span>
+                        <span class="dept-status-badge" id="status-opd" aria-live="polite"></span>
                     </div>
-                    <div class="card-body">
-                        <p>Round-the-clock emergency services with advanced trauma care, ambulance services, and immediate response for life-threatening conditions.</p>
-                        <ul>
-                            <li>24/7 emergency department</li>
-                            <li>Advanced trauma center</li>
-                            <li>Ambulance services with paramedics</li>
-                            <li>Cardiac emergency care</li>
-                            <li>Poison control and management</li>
-                        </ul>
-                        <a href="contact.html" class="btn">Emergency Contact</a>
+                    <h3 class="dept-name">Outpatient Department (OPD)</h3>
+                    <p class="dept-desc">Our OPD provides specialist consultations across all medical disciplines with minimal waiting time. We offer follow-up care, preventive health check-ups, and minor procedures. Same-day appointments are available for urgent cases.</p>
+                    <div class="dept-meta">
+                        <div class="dept-hours">
+                            <span class="dept-meta-label">⏰ Hours</span>
+                            <span>Mon–Fri: 8:00 am – 5:00 pm</span>
+                            <span>Sat: 8:00 am – 1:00 pm</span>
+                            <span>Sun: Closed</span>
+                        </div>
+                        <div class="dept-ext">
+                            <span class="dept-meta-label">📞 Contact</span>
+                            <span>Ext. 201</span>
+                        </div>
+                        <div class="dept-insurance">
+                            <span class="dept-meta-label">🛡️ Insurance Accepted</span>
+                            <div class="insurance-tags">
+                                <span class="ins-tag">SHA</span><span class="ins-tag">NHIF</span><span class="ins-tag">AAR</span><span class="ins-tag">Jubilee</span><span class="ins-tag">Britam</span><span class="ins-tag">CIC</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <a href="appointments.html?dept=opd" class="btn dept-book-btn">Book Appointment</a>
+                </article>
 
-                <!-- Laboratory Services -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🔬</div>
-                        <h3>Laboratory Services</h3>
+                <!-- Emergency -->
+                <article class="dept-card dept-card--emergency" data-dept="emergency">
+                    <div class="dept-card-top">
+                        <span class="dept-icon" aria-hidden="true">🚨</span>
+                        <span class="dept-status-badge" id="status-emergency" aria-live="polite"></span>
                     </div>
-                    <div class="card-body">
-                        <p>State-of-the-art diagnostic laboratories offering comprehensive testing services with accurate results and quick turnaround times.</p>
-                        <ul>
-                            <li>Clinical pathology and biochemistry</li>
-                            <li>Hematology and blood banking</li>
-                            <li>Microbiology and serology</li>
-                            <li>Molecular diagnostics</li>
-                            <li>Home sample collection</li>
-                        </ul>
-                        <a href="appointments.html" class="btn">Book Lab Test</a>
+                    <h3 class="dept-name">Emergency Department</h3>
+                    <p class="dept-desc">Our Emergency Department operates around the clock to handle all life-threatening and critical medical situations. We have a fully equipped trauma bay, resuscitation team, and rapid-triage protocols. Ambulance services with trained paramedics are available 24/7.</p>
+                    <div class="dept-meta">
+                        <div class="dept-hours">
+                            <span class="dept-meta-label">⏰ Hours</span>
+                            <span>24 hours, 7 days a week</span>
+                        </div>
+                        <div class="dept-ext">
+                            <span class="dept-meta-label">📞 Contact</span>
+                            <span>Ext. 999 / Direct: +254 700 911 911</span>
+                        </div>
+                        <div class="dept-insurance">
+                            <span class="dept-meta-label">🛡️ Insurance Accepted</span>
+                            <div class="insurance-tags">
+                                <span class="ins-tag">SHA</span><span class="ins-tag">NHIF</span><span class="ins-tag">AAR</span><span class="ins-tag">Jubilee</span><span class="ins-tag">Britam</span><span class="ins-tag">CIC</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <a href="appointments.html?dept=emergency" class="btn dept-book-btn dept-book-btn--emergency">Walk-In / Call 999</a>
+                </article>
 
-                <!-- Radiology Services -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📡</div>
-                        <h3>Radiology & Imaging</h3>
+                <!-- Maternity -->
+                <article class="dept-card" data-dept="maternity">
+                    <div class="dept-card-top">
+                        <span class="dept-icon" aria-hidden="true">👶</span>
+                        <span class="dept-status-badge" id="status-maternity" aria-live="polite"></span>
                     </div>
-                    <div class="card-body">
-                        <p>Advanced imaging services with latest technology for accurate diagnosis including MRI, CT, X-Ray, ultrasound, and specialized imaging.</p>
-                        <ul>
-                            <li>MRI and CT scans</li>
-                            <li>Digital X-Ray and fluoroscopy</li>
-                            <li>Ultrasound and Doppler studies</li>
-                            <li>Mammography</li>
-                            <li>Interventional radiology</li>
-                        </ul>
-                        <a href="appointments.html" class="btn">Schedule Imaging</a>
+                    <h3 class="dept-name">Maternity Unit</h3>
+                    <p class="dept-desc">The HMS Maternity Unit provides comprehensive antenatal, labour, delivery, and postnatal care in a safe and supportive environment. Our experienced obstetricians and midwives are on hand around the clock. We offer private delivery suites and dedicated neonatal intensive care.</p>
+                    <div class="dept-meta">
+                        <div class="dept-hours">
+                            <span class="dept-meta-label">⏰ Hours</span>
+                            <span>24 hours, 7 days a week</span>
+                        </div>
+                        <div class="dept-ext">
+                            <span class="dept-meta-label">📞 Contact</span>
+                            <span>Ext. 210</span>
+                        </div>
+                        <div class="dept-insurance">
+                            <span class="dept-meta-label">🛡️ Insurance Accepted</span>
+                            <div class="insurance-tags">
+                                <span class="ins-tag">SHA</span><span class="ins-tag">NHIF</span><span class="ins-tag">AAR</span><span class="ins-tag">Jubilee</span><span class="ins-tag">Britam</span><span class="ins-tag">CIC</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <a href="appointments.html?dept=maternity" class="btn dept-book-btn">Book Appointment</a>
+                </article>
 
-                <!-- Pharmacy Services -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">💊</div>
-                        <h3>24-Hour Pharmacy</h3>
+                <!-- Pharmacy -->
+                <article class="dept-card" data-dept="pharmacy">
+                    <div class="dept-card-top">
+                        <span class="dept-icon" aria-hidden="true">💊</span>
+                        <span class="dept-status-badge" id="status-pharmacy" aria-live="polite"></span>
                     </div>
-                    <div class="card-body">
-                        <p>Fully stocked in-house pharmacy operating 24/7 with all prescribed medications, surgical supplies, and healthcare products.</p>
-                        <ul>
-                            <li>Prescription medications</li>
-                            <li>Over-the-counter medicines</li>
-                            <li>Specialized and rare drugs</li>
-                            <li>Home delivery services</li>
-                            <li>Medication counseling</li>
-                        </ul>
-                        <a href="contact.html" class="btn">Contact Pharmacy</a>
+                    <h3 class="dept-name">Pharmacy</h3>
+                    <p class="dept-desc">Our in-house pharmacy is fully stocked with prescription medications, over-the-counter products, and specialised drugs. Clinical pharmacists are available for medication counselling and drug interaction review. Home delivery is available within Nairobi.</p>
+                    <div class="dept-meta">
+                        <div class="dept-hours">
+                            <span class="dept-meta-label">⏰ Hours</span>
+                            <span>Mon–Sat: 7:00 am – 9:00 pm</span>
+                            <span>Sun: Closed</span>
+                        </div>
+                        <div class="dept-ext">
+                            <span class="dept-meta-label">📞 Contact</span>
+                            <span>Ext. 215</span>
+                        </div>
+                        <div class="dept-insurance">
+                            <span class="dept-meta-label">🛡️ Insurance Accepted</span>
+                            <div class="insurance-tags">
+                                <span class="ins-tag">SHA</span><span class="ins-tag">NHIF</span><span class="ins-tag">AAR</span><span class="ins-tag">Jubilee</span><span class="ins-tag">Britam</span><span class="ins-tag">CIC</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <a href="appointments.html?dept=pharmacy" class="btn dept-book-btn">Book Appointment</a>
+                </article>
 
-                <!-- Surgical Services -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">⚕️</div>
-                        <h3>Surgical Services</h3>
+                <!-- Laboratory -->
+                <article class="dept-card" data-dept="laboratory">
+                    <div class="dept-card-top">
+                        <span class="dept-icon" aria-hidden="true">🔬</span>
+                        <span class="dept-status-badge" id="status-laboratory" aria-live="polite"></span>
                     </div>
-                    <div class="card-body">
-                        <p>Comprehensive surgical services with modular operation theaters, advanced surgical technologies, and expert surgeons across all specialties.</p>
-                        <ul>
-                            <li>General and specialized surgery</li>
-                            <li>Minimally invasive procedures</li>
-                            <li>Robotic-assisted surgery</li>
-                            <li>Day care surgery</li>
-                            <li>Pre and post-operative care</li>
-                        </ul>
-                        <a href="doctors.html" class="btn">Find a Surgeon</a>
+                    <h3 class="dept-name">Laboratory Services</h3>
+                    <p class="dept-desc">Our accredited laboratory delivers fast, accurate diagnostic testing covering haematology, biochemistry, microbiology, and molecular diagnostics. Results for routine tests are available within 4–6 hours. Home sample collection can be arranged on request.</p>
+                    <div class="dept-meta">
+                        <div class="dept-hours">
+                            <span class="dept-meta-label">⏰ Hours</span>
+                            <span>Mon–Fri: 7:00 am – 5:00 pm</span>
+                            <span>Sat: 8:00 am – 1:00 pm</span>
+                            <span>Sun: Closed</span>
+                        </div>
+                        <div class="dept-ext">
+                            <span class="dept-meta-label">📞 Contact</span>
+                            <span>Ext. 220</span>
+                        </div>
+                        <div class="dept-insurance">
+                            <span class="dept-meta-label">🛡️ Insurance Accepted</span>
+                            <div class="insurance-tags">
+                                <span class="ins-tag">SHA</span><span class="ins-tag">NHIF</span><span class="ins-tag">AAR</span><span class="ins-tag">Jubilee</span><span class="ins-tag">Britam</span><span class="ins-tag">CIC</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <a href="appointments.html?dept=laboratory" class="btn dept-book-btn">Book Appointment</a>
+                </article>
 
-                <!-- Rehabilitation Services -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🏃</div>
-                        <h3>Rehabilitation Services</h3>
+                <!-- Radiology -->
+                <article class="dept-card" data-dept="radiology">
+                    <div class="dept-card-top">
+                        <span class="dept-icon" aria-hidden="true">🩻</span>
+                        <span class="dept-status-badge" id="status-radiology" aria-live="polite"></span>
                     </div>
-                    <div class="card-body">
-                        <p>Comprehensive rehabilitation and physiotherapy services to help patients regain strength, mobility, and independence after illness or injury.</p>
-                        <ul>
-                            <li>Physiotherapy and exercise therapy</li>
-                            <li>Occupational therapy</li>
-                            <li>Speech and language therapy</li>
-                            <li>Cardiac rehabilitation</li>
-                            <li>Sports injury rehabilitation</li>
-                        </ul>
-                        <a href="appointments.html" class="btn">Book Session</a>
+                    <h3 class="dept-name">Radiology &amp; Imaging</h3>
+                    <p class="dept-desc">HMS Radiology provides a full range of diagnostic imaging including MRI, CT, digital X-ray, ultrasound, mammography, and interventional radiology. Our radiologists issue same-day reports for urgent referrals. All imaging is performed on modern, calibrated equipment.</p>
+                    <div class="dept-meta">
+                        <div class="dept-hours">
+                            <span class="dept-meta-label">⏰ Hours</span>
+                            <span>Mon–Fri: 8:00 am – 5:00 pm</span>
+                            <span>Sat–Sun: Closed</span>
+                        </div>
+                        <div class="dept-ext">
+                            <span class="dept-meta-label">📞 Contact</span>
+                            <span>Ext. 225</span>
+                        </div>
+                        <div class="dept-insurance">
+                            <span class="dept-meta-label">🛡️ Insurance Accepted</span>
+                            <div class="insurance-tags">
+                                <span class="ins-tag">SHA</span><span class="ins-tag">NHIF</span><span class="ins-tag">AAR</span><span class="ins-tag">Jubilee</span><span class="ins-tag">Britam</span><span class="ins-tag">CIC</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <a href="appointments.html?dept=radiology" class="btn dept-book-btn">Book Appointment</a>
+                </article>
+
+                <!-- ICU -->
+                <article class="dept-card" data-dept="icu">
+                    <div class="dept-card-top">
+                        <span class="dept-icon" aria-hidden="true">🫀</span>
+                        <span class="dept-status-badge" id="status-icu" aria-live="polite"></span>
+                    </div>
+                    <h3 class="dept-name">Intensive Care Unit (ICU)</h3>
+                    <p class="dept-desc">Our ICU provides continuous monitoring and advanced life support for critically ill patients. The unit is staffed by specialist intensivists and critical-care nurses around the clock. It features 20 fully equipped beds with multi-parameter monitoring and ventilator support.</p>
+                    <div class="dept-meta">
+                        <div class="dept-hours">
+                            <span class="dept-meta-label">⏰ Hours</span>
+                            <span>24 hours, 7 days a week</span>
+                        </div>
+                        <div class="dept-ext">
+                            <span class="dept-meta-label">📞 Contact</span>
+                            <span>Ext. 230</span>
+                        </div>
+                        <div class="dept-insurance">
+                            <span class="dept-meta-label">🛡️ Insurance Accepted</span>
+                            <div class="insurance-tags">
+                                <span class="ins-tag">SHA</span><span class="ins-tag">NHIF</span><span class="ins-tag">AAR</span><span class="ins-tag">Jubilee</span><span class="ins-tag">Britam</span><span class="ins-tag">CIC</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="appointments.html?dept=icu" class="btn dept-book-btn">Book Appointment</a>
+                </article>
+
+                <!-- Surgery -->
+                <article class="dept-card" data-dept="surgery">
+                    <div class="dept-card-top">
+                        <span class="dept-icon" aria-hidden="true">🔪</span>
+                        <span class="dept-status-badge" id="status-surgery" aria-live="polite"></span>
+                    </div>
+                    <h3 class="dept-name">Surgical Services</h3>
+                    <p class="dept-desc">HMS Surgery encompasses general, laparoscopic, orthopaedic, and robotic-assisted procedures performed in state-of-the-art modular theatres. All elective surgeries are scheduled by appointment after a consultation with one of our specialist surgeons. Day-care surgery options reduce hospital stay and recovery time.</p>
+                    <div class="dept-meta">
+                        <div class="dept-hours">
+                            <span class="dept-meta-label">⏰ Hours</span>
+                            <span>By appointment (Mon–Fri)</span>
+                            <span>Emergency surgery: 24/7</span>
+                        </div>
+                        <div class="dept-ext">
+                            <span class="dept-meta-label">📞 Contact</span>
+                            <span>Ext. 235</span>
+                        </div>
+                        <div class="dept-insurance">
+                            <span class="dept-meta-label">🛡️ Insurance Accepted</span>
+                            <div class="insurance-tags">
+                                <span class="ins-tag">SHA</span><span class="ins-tag">NHIF</span><span class="ins-tag">AAR</span><span class="ins-tag">Jubilee</span><span class="ins-tag">Britam</span><span class="ins-tag">CIC</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="appointments.html?dept=surgery" class="btn dept-book-btn">Book Appointment</a>
+                </article>
+
+            </div><!-- /.dept-cards-grid -->
         </div>
     </section>
 

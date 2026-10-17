@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initBackToTop();
     initAnimateOnScroll();
     initStatsCounter();
+
+    // Services page — live open/closed badges
+    if (document.querySelector('.dept-cards-grid')) {
+        initServiceStatusBadges();
+    }
     
     // Page-specific functionality
     if (document.querySelector('.multi-step-form')) {
@@ -660,6 +665,101 @@ var DEPT_DOCTORS = {
         { value: 'pharm-rose-wanjiku',    label: 'Pharm. Rose Wanjiku — Clinical Pharmacist' }
     ]
 };
+
+// ─── Services Page — Live Open/Closed Status Badges ─────────────────────────
+
+/**
+ * Returns the current time in Africa/Nairobi (UTC+3) as { day, hour, minute }.
+ * day: 0 = Sunday … 6 = Saturday (same as Date.getDay()).
+ */
+function getNairobiTime() {
+    var now = new Date();
+    // Nairobi is UTC+3 with no DST
+    var utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+    var nairobiMs = utcMs + 3 * 3600000;
+    var n = new Date(nairobiMs);
+    return { day: n.getDay(), hour: n.getHours(), minute: n.getMinutes() };
+}
+
+/**
+ * Returns true if `time` falls within [openH:openM, closeH:closeM).
+ */
+function isWithinHours(time, openH, openM, closeH, closeM) {
+    var nowMins  = time.hour * 60 + time.minute;
+    var openMins = openH   * 60 + openM;
+    var closeMins = closeH * 60 + closeM;
+    return nowMins >= openMins && nowMins < closeMins;
+}
+
+/**
+ * Determines whether a department is currently open.
+ * Returns true (open) or false (closed).
+ */
+function isDeptOpen(dept) {
+    var t = getNairobiTime();
+    var day = t.day; // 0=Sun, 1=Mon … 6=Sat
+
+    switch (dept) {
+        // Always open
+        case 'emergency':
+        case 'maternity':
+        case 'icu':
+            return true;
+
+        // OPD: Mon–Fri 08:00–17:00, Sat 08:00–13:00
+        case 'opd':
+            if (day >= 1 && day <= 5) return isWithinHours(t, 8, 0, 17, 0);
+            if (day === 6)            return isWithinHours(t, 8, 0, 13, 0);
+            return false;
+
+        // Pharmacy: Mon–Sat 07:00–21:00
+        case 'pharmacy':
+            if (day >= 1 && day <= 6) return isWithinHours(t, 7, 0, 21, 0);
+            return false;
+
+        // Laboratory: Mon–Fri 07:00–17:00, Sat 08:00–13:00
+        case 'laboratory':
+            if (day >= 1 && day <= 5) return isWithinHours(t, 7, 0, 17, 0);
+            if (day === 6)            return isWithinHours(t, 8, 0, 13, 0);
+            return false;
+
+        // Radiology: Mon–Fri 08:00–17:00
+        case 'radiology':
+            if (day >= 1 && day <= 5) return isWithinHours(t, 8, 0, 17, 0);
+            return false;
+
+        // Surgery: Mon–Fri 08:00–17:00 (by appointment; emergency surgery 24/7)
+        case 'surgery':
+            if (day >= 1 && day <= 5) return isWithinHours(t, 8, 0, 17, 0);
+            return false;
+
+        default:
+            return false;
+    }
+}
+
+/**
+ * Stamps each department card's badge with Open / Closed.
+ * Refreshes every minute so the badge stays accurate without a page reload.
+ */
+function initServiceStatusBadges() {
+    var depts = ['opd', 'emergency', 'maternity', 'pharmacy', 'laboratory', 'radiology', 'icu', 'surgery'];
+
+    function updateBadges() {
+        depts.forEach(function(dept) {
+            var badge = document.getElementById('status-' + dept);
+            if (!badge) return;
+
+            var open = isDeptOpen(dept);
+            badge.textContent      = open ? '● Open Now' : '● Closed';
+            badge.className        = 'dept-status-badge ' + (open ? 'dept-status-badge--open' : 'dept-status-badge--closed');
+            badge.setAttribute('aria-label', dept + ' is currently ' + (open ? 'open' : 'closed'));
+        });
+    }
+
+    updateBadges();
+    setInterval(updateBadges, 60000); // refresh every minute
+}
 
 function initAppointmentBookingForm() {
     var form       = document.getElementById('appointmentBookingForm');
