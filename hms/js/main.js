@@ -2297,3 +2297,5 @@ document.addEventListener('DOMContentLoaded', function() {
     initCookieConsent();
     initSiteSearch();
 });
+
+// emergency modal v2 - improved accessibility
