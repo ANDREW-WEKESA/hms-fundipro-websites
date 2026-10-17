@@ -45,6 +45,17 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.portal-tabs')) {
         initPatientPortal();
     }
+
+    // Contact page enhancements
+    if (document.querySelector('#faqAccordion')) {
+        initFaqAccordion();
+    }
+    if (document.querySelector('#deptDirectoryTable')) {
+        initContactDeptStatus();
+    }
+    if (document.querySelector('#contactForm')) {
+        initContactFormToast();
+    }
 });
 
 // Mobile Menu Toggle
@@ -1223,4 +1234,217 @@ function initPatientPortal() {
             authSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     }
+}
+
+// ─── Contact Page — FAQ Accordion ────────────────────────────────────────────
+
+/**
+ * Accessible FAQ accordion.
+ * Each item has a <button.faq-question aria-expanded> and a
+ * <div.faq-answer hidden> panel.  Clicking a button toggles its
+ * own panel; all others collapse (single-open behaviour).
+ */
+function initFaqAccordion() {
+    var accordion = document.getElementById('faqAccordion');
+    if (!accordion) return;
+
+    var buttons = accordion.querySelectorAll('.faq-question');
+
+    buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var isExpanded = this.getAttribute('aria-expanded') === 'true';
+            var panelId    = this.getAttribute('aria-controls');
+            var panel      = document.getElementById(panelId);
+
+            // Collapse all
+            buttons.forEach(function(otherBtn) {
+                var otherId    = otherBtn.getAttribute('aria-controls');
+                var otherPanel = document.getElementById(otherId);
+                otherBtn.setAttribute('aria-expanded', 'false');
+                if (otherPanel) otherPanel.hidden = true;
+            });
+
+            // If this one was closed, open it now
+            if (!isExpanded) {
+                this.setAttribute('aria-expanded', 'true');
+                if (panel) panel.hidden = false;
+            }
+        });
+    });
+}
+
+// ─── Contact Page — Live Department Status ───────────────────────────────────
+
+/**
+ * Returns the current local time as Nairobi time (Africa/Nairobi = UTC+3,
+ * no DST) as { day, hour, minute }.
+ * day: 0 = Sunday … 6 = Saturday.
+ */
+function getContactNairobiTime() {
+    var now     = new Date();
+    var utcMs   = now.getTime() + now.getTimezoneOffset() * 60000;
+    var nairobi = new Date(utcMs + 3 * 3600000);
+    return {
+        day:    nairobi.getDay(),
+        hour:   nairobi.getHours(),
+        minute: nairobi.getMinutes()
+    };
+}
+
+/**
+ * Returns true when t.hour:t.minute falls within [openH:00, closeH:00).
+ */
+function contactIsWithinHours(t, openH, closeH) {
+    var now   = t.hour * 60 + t.minute;
+    var open  = openH  * 60;
+    var close = closeH * 60;
+    return now >= open && now < close;
+}
+
+/**
+ * Determines if a department is currently open.
+ * data-dept values map to opening schedules:
+ *   always-open      — 24/7
+ *   standard-weekday — Mon–Fri 08:00–17:00
+ *   reception        — Mon–Fri 08:00–17:00 (same as weekday)
+ *   pharmacy         — Mon–Sat 08:00–17:00
+ *   lab              — Mon–Fri 08:00–17:00, Sat 08:00–13:00
+ */
+function contactIsDeptOpen(dept) {
+    var t   = getContactNairobiTime();
+    var day = t.day; // 0=Sun, 1=Mon … 6=Sat
+
+    switch (dept) {
+        case 'always-open':
+            return true;
+
+        case 'standard-weekday':
+        case 'reception':
+            return (day >= 1 && day <= 5) && contactIsWithinHours(t, 8, 17);
+
+        case 'pharmacy':
+            return (day >= 1 && day <= 6) && contactIsWithinHours(t, 8, 17);
+
+        case 'lab':
+            if (day >= 1 && day <= 5) return contactIsWithinHours(t, 8, 17);
+            if (day === 6)            return contactIsWithinHours(t, 8, 13);
+            return false;
+
+        default:
+            return false;
+    }
+}
+
+/**
+ * Stamps each .contact-status-badge with an 'Open Now' (green) or
+ * 'Closed' (red) badge.  Refreshes every 60 seconds.
+ */
+function initContactDeptStatus() {
+    function updateBadges() {
+        document.querySelectorAll('.contact-status-badge').forEach(function(badge) {
+            var dept = badge.getAttribute('data-dept');
+            var open = contactIsDeptOpen(dept);
+
+            badge.textContent = open ? '● Open Now' : '● Closed';
+            badge.className   = 'contact-status-badge ' +
+                (open ? 'contact-status-badge--open' : 'contact-status-badge--closed');
+            badge.setAttribute('aria-label',
+                badge.closest('tr').querySelector('td strong').textContent +
+                ' is currently ' + (open ? 'open' : 'closed'));
+        });
+    }
+
+    updateBadges();
+    setInterval(updateBadges, 60000);
+}
+
+// ─── Contact Page — Form Submission Toast ────────────────────────────────────
+
+/**
+ * Handles the #contactForm submission:
+ * validates required fields, then shows a success toast.
+ */
+function initContactFormToast() {
+    var form  = document.getElementById('contactForm');
+    var toast = document.getElementById('contactToast');
+    if (!form || !toast) return;
+
+    var toastTimer = null;
+
+    // Show toast helper
+    function showToast(message, isError) {
+        clearTimeout(toastTimer);
+        toast.textContent        = message;
+        toast.style.background   = isError ? 'var(--emergency-red)' : 'var(--success-green)';
+        toast.classList.add('contact-toast--visible');
+
+        toastTimer = setTimeout(function() {
+            toast.classList.remove('contact-toast--visible');
+        }, 5000);
+    }
+
+    // Field-level helpers
+    function setError(field) {
+        var group = field.closest('.form-group');
+        if (group) group.classList.add('error');
+    }
+
+    function clearError(field) {
+        var group = field.closest('.form-group');
+        if (group) group.classList.remove('error');
+    }
+
+    // Real-time clear on input
+    form.querySelectorAll('input, select, textarea').forEach(function(el) {
+        el.addEventListener('input', function()  { clearError(this); });
+        el.addEventListener('change', function() { clearError(this); });
+    });
+
+    // Validate and submit
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var phoneRe = /^[\d\s\-\+\(\)]{7,}$/;
+        var valid   = true;
+
+        // Name
+        var name = form.querySelector('#contactName');
+        if (!name || !name.value.trim()) { setError(name); valid = false; }
+        else clearError(name);
+
+        // Phone
+        var phone = form.querySelector('#contactPhone');
+        if (!phone || !phone.value.trim() || !phoneRe.test(phone.value.trim())) {
+            setError(phone); valid = false;
+        } else clearError(phone);
+
+        // Email
+        var email = form.querySelector('#contactEmail');
+        if (!email || !emailRe.test(email.value.trim())) {
+            setError(email); valid = false;
+        } else clearError(email);
+
+        // Subject
+        var subject = form.querySelector('#contactSubject');
+        if (!subject || !subject.value) { setError(subject); valid = false; }
+        else clearError(subject);
+
+        // Message
+        var message = form.querySelector('#contactMessage');
+        if (!message || message.value.trim().length < 10) {
+            setError(message); valid = false;
+        } else clearError(message);
+
+        if (!valid) {
+            // Focus first error field for accessibility
+            var firstErr = form.querySelector('.form-group.error input, .form-group.error select, .form-group.error textarea');
+            if (firstErr) firstErr.focus();
+            return;
+        }
+
+        // Success — reset and toast
+        form.reset();
+        showToast('✔ Thank you! Your message has been sent. We will get back to you shortly.', false);
+    });
 }

@@ -2444,6 +2444,344 @@ footer {
     }
 }
 
+/* ─── Contact Page — Info Cards ─────────────────────────────────────────────── */
+
+/* Emergency variant */
+.contact-card--emergency {
+    border: 2px solid var(--emergency-red);
+    background: #fff5f5;
+}
+
+.contact-card--emergency .contact-card-icon {
+    color: var(--emergency-red);
+}
+
+.contact-card--emergency h3 {
+    color: var(--emergency-red);
+}
+
+.contact-card--emergency a {
+    color: var(--emergency-red);
+    font-weight: 700;
+}
+
+.contact-card-hours {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 8px;
+}
+
+/* ─── Contact Form ─────────────────────────────────────────────────────────── */
+
+.contact-form-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.contact-emergency-note {
+    color: #856404;
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 14px 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.contact-emergency-note a {
+    color: #664d03;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.contact-submit-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 6px;
+    min-height: 48px;
+}
+
+/* ─── Department Directory Table — Status Column ────────────────────────────── */
+
+.dept-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 10px;
+}
+
+.contact-dept-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.contact-dept-table th,
+.contact-dept-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.contact-dept-table th {
+    background: var(--dark-blue);
+    color: var(--white);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.contact-dept-table tr:last-child td {
+    border-bottom: none;
+}
+
+.contact-dept-table tbody tr:hover {
+    background: var(--lighter-blue);
+}
+
+/* Live status badges */
+.contact-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.contact-status-badge--open {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.contact-status-badge--closed {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+/* ─── FAQ Accordion ─────────────────────────────────────────────────────────── */
+
+.faq-accordion {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.faq-item {
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--white);
+    color: var(--dark-blue);
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    min-height: 48px;
+}
+
+.faq-question:hover,
+.faq-question[aria-expanded="true"] {
+    background: var(--lighter-blue);
+    color: var(--primary-blue);
+}
+
+.faq-icon {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--primary-blue);
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 24px 20px;
+    color: var(--text-light);
+    line-height: 1.8;
+    font-size: 0.97rem;
+    animation: fadeIn 0.25s ease;
+}
+
+.faq-answer[hidden] {
+    display: none;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+.faq-answer a {
+    color: var(--primary-blue);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.faq-answer a:hover {
+    color: var(--dark-blue);
+}
+
+/* ─── Map Section ───────────────────────────────────────────────────────────── */
+
+.contact-map-container {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin: 0 0 24px;
+    line-height: 0; /* remove bottom gap under iframe */
+}
+
+.contact-map-container iframe {
+    display: block;
+    width: 100%;
+}
+
+.contact-map-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* WhatsApp button */
+.contact-whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25d366;
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    min-height: 48px;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.contact-whatsapp-btn:hover {
+    background: #128c7e;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.contact-directions {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-directions h3 {
+    color: var(--dark-blue);
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.contact-directions p {
+    color: var(--text-light);
+    line-height: 1.9;
+}
+
+/* ─── Toast Notification ────────────────────────────────────────────────────── */
+
+.contact-toast {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    min-width: 260px;
+    max-width: 360px;
+    background: var(--success-green);
+    color: #fff;
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-size: 0.97rem;
+    font-weight: 500;
+    line-height: 1.5;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.contact-toast.contact-toast--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .contact-dept-table th,
+    .contact-dept-table td {
+        padding: 10px 12px;
+        font-size: 0.88rem;
+    }
+
+    .faq-question {
+        font-size: 0.95rem;
+        padding: 16px 18px;
+    }
+
+    .faq-answer {
+        padding: 0 18px 16px;
+    }
+
+    .contact-map-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .contact-whatsapp-btn,
+    .contact-map-cta .btn {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-toast {
+        right: 12px;
+        left: 12px;
+        min-width: unset;
+        max-width: unset;
+        bottom: 80px;
+    }
+}
+
 /* Print Styles */
 @media print {
     .top-bar,
