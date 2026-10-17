@@ -71,248 +71,123 @@
     <section>
         <div class="container">
             <div class="form-container">
-                <h2 style="text-align: center; margin-bottom: 40px; color: var(--dark-blue);">Schedule Your Visit</h2>
-                
-                <form class="multi-step-form">
-                    <!-- Progress Steps -->
-                    <div class="form-steps">
-                        <div class="form-step active" data-step="1">
-                            <div class="step-indicator">1</div>
-                            <div class="step-label">Select Department & Doctor</div>
+                <h2 class="appt-form-heading">Schedule Your Visit</h2>
+
+                <!-- Success Banner (hidden until form submits) -->
+                <div id="apptSuccessBanner" class="appt-success-banner" role="alert" aria-live="polite" hidden>
+                    <span class="appt-success-icon">✅</span>
+                    <p>Appointment booked! You will receive an SMS confirmation on your +254 number within 5 minutes.</p>
+                </div>
+
+                <form id="appointmentBookingForm" class="appointment-booking-form" novalidate>
+
+                    <!-- Patient Name -->
+                    <div class="form-group">
+                        <label for="apptPatientName">Patient Name <span aria-hidden="true">*</span></label>
+                        <input type="text" id="apptPatientName" name="patientName"
+                               placeholder="Full name" required autocomplete="name">
+                        <span class="error-message" id="apptPatientNameError">Please enter the patient's full name.</span>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="form-group">
+                        <label for="apptPhone">Phone Number <span aria-hidden="true">*</span></label>
+                        <input type="tel" id="apptPhone" name="phone"
+                               placeholder="+254 700 000 000"
+                               pattern="^\+254[0-9]{9}$"
+                               required autocomplete="tel">
+                        <span class="appt-field-hint">Format: +254 followed by 9 digits (e.g. +254712345678)</span>
+                        <span class="error-message" id="apptPhoneError">Please enter a valid +254 phone number.</span>
+                    </div>
+
+                    <!-- Email (optional) -->
+                    <div class="form-group">
+                        <label for="apptEmail">Email Address <span class="appt-optional">(optional)</span></label>
+                        <input type="email" id="apptEmail" name="email"
+                               placeholder="your.email@example.com" autocomplete="email">
+                        <span class="error-message" id="apptEmailError">Please enter a valid email address.</span>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="form-group">
+                        <label for="apptDepartment">Department <span aria-hidden="true">*</span></label>
+                        <select id="apptDepartment" name="department" required>
+                            <option value="">— Select a department —</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="general">General Medicine</option>
+                            <option value="maternity">Maternity</option>
+                            <option value="emergency">Emergency</option>
+                            <option value="radiology">Radiology</option>
+                            <option value="laboratory">Laboratory</option>
+                            <option value="pharmacy">Pharmacy</option>
+                        </select>
+                        <span class="error-message" id="apptDepartmentError">Please select a department.</span>
+                    </div>
+
+                    <!-- Doctor (populated by JS) -->
+                    <div class="form-group">
+                        <label for="apptDoctor">Doctor <span aria-hidden="true">*</span></label>
+                        <select id="apptDoctor" name="doctor" required disabled>
+                            <option value="">— Select a department first —</option>
+                        </select>
+                        <span class="error-message" id="apptDoctorError">Please select a doctor.</span>
+                    </div>
+
+                    <!-- Date & Time row -->
+                    <div class="form-row">
+                        <!-- Appointment Date -->
+                        <div class="form-group">
+                            <label for="apptDate">Appointment Date <span aria-hidden="true">*</span></label>
+                            <input type="date" id="apptDate" name="appointmentDate" required>
+                            <span class="error-message" id="apptDateError">Please select a valid date (no past dates or Sundays).</span>
                         </div>
-                        <div class="form-step" data-step="2">
-                            <div class="step-indicator">2</div>
-                            <div class="step-label">Choose Date & Time</div>
-                        </div>
-                        <div class="form-step" data-step="3">
-                            <div class="step-indicator">3</div>
-                            <div class="step-label">Patient Information</div>
-                        </div>
-                        <div class="form-step" data-step="4">
-                            <div class="step-indicator">4</div>
-                            <div class="step-label">Confirmation</div>
+
+                        <!-- Appointment Time -->
+                        <div class="form-group">
+                            <label for="apptTime">Appointment Time <span aria-hidden="true">*</span></label>
+                            <select id="apptTime" name="appointmentTime" required>
+                                <option value="">— Select a time —</option>
+                                <option value="08:00">08:00 AM</option>
+                                <option value="08:30">08:30 AM</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="09:30">09:30 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="10:30">10:30 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="12:30">12:30 PM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="13:30">01:30 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="14:30">02:30 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="15:30">03:30 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="16:30">04:30 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                            </select>
+                            <span class="error-message" id="apptTimeError">Please select an appointment time.</span>
                         </div>
                     </div>
 
-                    <!-- Step 1: Select Department and Doctor -->
-                    <div class="step-content active" data-step="1">
-                        <h3 style="margin-bottom: 25px; color: var(--dark-blue);">Select Department & Doctor</h3>
-                        
-                        <div class="form-group">
-                            <label for="department">Department *</label>
-                            <select id="department" name="department" required>
-                                <option value="">Choose a department</option>
-                                <option value="cardiology">Cardiology</option>
-                                <option value="neurology">Neurology</option>
-                                <option value="orthopedics">Orthopedics</option>
-                                <option value="pediatrics">Pediatrics</option>
-                                <option value="oncology">Oncology</option>
-                                <option value="gynecology">Gynecology & Obstetrics</option>
-                                <option value="dermatology">Dermatology</option>
-                                <option value="ophthalmology">Ophthalmology</option>
-                                <option value="ent">ENT</option>
-                                <option value="general">General Medicine</option>
-                            </select>
-                            <span class="error-message">Please select a department</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="doctor">Select Doctor *</label>
-                            <select id="doctor" name="doctor" required>
-                                <option value="">Choose a doctor</option>
-                                <option value="dr-john-davis">Dr. John Davis - Cardiologist</option>
-                                <option value="dr-anna-martinez">Dr. Anna Martinez - Interventional Cardiologist</option>
-                                <option value="dr-sarah-wilson">Dr. Sarah Wilson - Neurologist</option>
-                                <option value="dr-rajesh-kumar">Dr. Rajesh Kumar - Neurosurgeon</option>
-                                <option value="dr-michael-patel">Dr. Michael Patel - Orthopedic Surgeon</option>
-                                <option value="dr-lisa-thompson">Dr. Lisa Thompson - Sports Medicine</option>
-                                <option value="dr-emily-lee">Dr. Emily Lee - Pediatrician</option>
-                                <option value="dr-james-brown">Dr. James Brown - Pediatric Surgeon</option>
-                                <option value="dr-david-garcia">Dr. David Garcia - Medical Oncologist</option>
-                                <option value="dr-maria-johnson">Dr. Maria Johnson - Gynecologist</option>
-                            </select>
-                            <span class="error-message">Please select a doctor</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="reason">Reason for Visit</label>
-                            <textarea id="reason" name="reason" rows="4" placeholder="Brief description of your health concern or reason for appointment"></textarea>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="button" class="btn" disabled style="opacity: 0.5;">Back</button>
-                            <button type="button" class="btn btn-primary btn-next">Next</button>
-                        </div>
+                    <!-- Reason for Visit -->
+                    <div class="form-group">
+                        <label for="apptReason">Reason for Visit <span aria-hidden="true">*</span></label>
+                        <textarea id="apptReason" name="reasonForVisit" rows="4"
+                                  placeholder="Briefly describe your health concern or the purpose of your visit"
+                                  required></textarea>
+                        <span class="error-message" id="apptReasonError">Please describe the reason for your visit.</span>
                     </div>
 
-                    <!-- Step 2: Choose Date and Time -->
-                    <div class="step-content" data-step="2">
-                        <h3 style="margin-bottom: 25px; color: var(--dark-blue);">Choose Date & Time</h3>
-                        
-                        <div class="form-group">
-                            <label for="appointmentDate">Preferred Date *</label>
-                            <input type="date" id="appointmentDate" name="appointmentDate" required>
-                            <span class="error-message">Please select a date</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Select Time Slot *</label>
-                            <div class="time-slots">
-                                <input type="radio" name="timeSlot" id="time1" value="09:00 AM" class="time-slot">
-                                <label for="time1" class="time-slot-label">09:00 AM</label>
-                                
-                                <input type="radio" name="timeSlot" id="time2" value="10:00 AM" class="time-slot">
-                                <label for="time2" class="time-slot-label">10:00 AM</label>
-                                
-                                <input type="radio" name="timeSlot" id="time3" value="11:00 AM" class="time-slot">
-                                <label for="time3" class="time-slot-label">11:00 AM</label>
-                                
-                                <input type="radio" name="timeSlot" id="time4" value="12:00 PM" class="time-slot">
-                                <label for="time4" class="time-slot-label">12:00 PM</label>
-                                
-                                <input type="radio" name="timeSlot" id="time5" value="02:00 PM" class="time-slot">
-                                <label for="time5" class="time-slot-label">02:00 PM</label>
-                                
-                                <input type="radio" name="timeSlot" id="time6" value="03:00 PM" class="time-slot">
-                                <label for="time6" class="time-slot-label">03:00 PM</label>
-                                
-                                <input type="radio" name="timeSlot" id="time7" value="04:00 PM" class="time-slot">
-                                <label for="time7" class="time-slot-label">04:00 PM</label>
-                                
-                                <input type="radio" name="timeSlot" id="time8" value="05:00 PM" class="time-slot">
-                                <label for="time8" class="time-slot-label">05:00 PM</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="appointmentType">Appointment Type *</label>
-                            <select id="appointmentType" name="appointmentType" required>
-                                <option value="">Select appointment type</option>
-                                <option value="new">New Consultation</option>
-                                <option value="followup">Follow-up Visit</option>
-                                <option value="routine">Routine Check-up</option>
-                                <option value="emergency">Urgent Care</option>
-                            </select>
-                            <span class="error-message">Please select appointment type</span>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="button" class="btn btn-back">Back</button>
-                            <button type="button" class="btn btn-primary btn-next">Next</button>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Patient Information -->
-                    <div class="step-content" data-step="3">
-                        <h3 style="margin-bottom: 25px; color: var(--dark-blue);">Patient Information</h3>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" required>
-                                <span class="error-message">Please enter first name</span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" required>
-                                <span class="error-message">Please enter last name</span>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="dob">Date of Birth *</label>
-                                <input type="date" id="dob" name="dob" required>
-                                <span class="error-message">Please enter date of birth</span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="gender">Gender *</label>
-                                <select id="gender" name="gender" required>
-                                    <option value="">Select gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="other">Other</option>
-                                    <option value="prefer-not-to-say">Prefer not to say</option>
-                                </select>
-                                <span class="error-message">Please select gender</span>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+254 700 000 000" required>
-                                <span class="error-message">Please enter valid phone number</span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-                                <span class="error-message">Please enter valid email</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <textarea id="address" name="address" rows="3" placeholder="Street address, City, County"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="insurance">Insurance Provider</label>
-                            <select id="insurance" name="insurance">
-                                <option value="">Select insurance (if applicable)</option>
-                                <option value="sha">SHA (Social Health Authority)</option>
-                                <option value="nhif">NHIF</option>
-                                <option value="aar">AAR Insurance</option>
-                                <option value="jubilee">Jubilee Insurance</option>
-                                <option value="britam">Britam</option>
-                                <option value="cic">CIC Insurance</option>
-                                <option value="madison">Madison Insurance</option>
-                                <option value="resolution">Resolution Health</option>
-                                <option value="other">Other</option>
-                                <option value="none">No Insurance</option>
-                            </select>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="button" class="btn btn-back">Back</button>
-                            <button type="button" class="btn btn-primary btn-next">Next</button>
-                        </div>
-                    </div>
-
-                    <!-- Step 4: Confirmation -->
-                    <div class="step-content" data-step="4">
-                        <h3 style="margin-bottom: 25px; color: var(--dark-blue);">Confirm Your Appointment</h3>
-                        
-                        <div style="background: var(--lighter-blue); padding: 30px; border-radius: 10px; margin-bottom: 30px;">
-                            <h4 style="color: var(--dark-blue); margin-bottom: 20px;">Appointment Summary</h4>
-                            <p style="margin: 10px 0;"><strong>Department:</strong> <span id="summaryDepartment">-</span></p>
-                            <p style="margin: 10px 0;"><strong>Doctor:</strong> <span id="summaryDoctor">-</span></p>
-                            <p style="margin: 10px 0;"><strong>Date:</strong> <span id="summaryDate">-</span></p>
-                            <p style="margin: 10px 0;"><strong>Time:</strong> <span id="summaryTime">-</span></p>
-                            <p style="margin: 10px 0;"><strong>Patient:</strong> <span id="summaryPatient">-</span></p>
-                            <p style="margin: 10px 0;"><strong>Contact:</strong> <span id="summaryContact">-</span></p>
-                        </div>
-
-                        <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 4px solid #ffc107; margin-bottom: 25px;">
-                            <p style="margin: 0; color: #856404; line-height: 1.6;">
-                                <strong>Important:</strong> Please arrive 15 minutes before your scheduled appointment time. Bring a valid ID and your insurance card (if applicable).
-                            </p>
-                        </div>
-
-                        <div class="form-group">
-                            <label style="display: flex; align-items: center; cursor: pointer;">
-                                <input type="checkbox" name="terms" required style="margin-right: 10px; width: auto;">
-                                <span>I agree to the terms and conditions and acknowledge the cancellation policy *</span>
-                            </label>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="button" class="btn btn-back">Back</button>
-                            <button type="button" class="btn btn-primary btn-submit">Confirm & Book</button>
-                        </div>
+                    <!-- Submit -->
+                    <div class="appt-submit-row">
+                        <button type="submit" class="btn appt-submit-btn">
+                            Book Appointment
+                        </button>
                     </div>
                 </form>
             </div>
@@ -441,40 +316,5 @@
     <button class="back-to-top" aria-label="Back to top">↑</button>
 
     <script src="js/main.js"></script>
-    <script>
-        // Populate summary on step 4
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.querySelector('.multi-step-form');
-            if (!form) return;
-            
-            const nextButtons = form.querySelectorAll('.btn-next');
-            nextButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const currentStep = parseInt(form.querySelector('.form-step.active').dataset.step);
-                    if (currentStep === 3) {
-                        updateSummary();
-                    }
-                });
-            });
-            
-            function updateSummary() {
-                const department = form.querySelector('[name="department"]').selectedOptions[0]?.text || '-';
-                const doctor = form.querySelector('[name="doctor"]').selectedOptions[0]?.text || '-';
-                const date = form.querySelector('[name="appointmentDate"]').value || '-';
-                const time = form.querySelector('[name="timeSlot"]:checked')?.value || '-';
-                const firstName = form.querySelector('[name="firstName"]').value || '';
-                const lastName = form.querySelector('[name="lastName"]').value || '';
-                const phone = form.querySelector('[name="phone"]').value || '';
-                const email = form.querySelector('[name="email"]').value || '';
-                
-                document.getElementById('summaryDepartment').textContent = department;
-                document.getElementById('summaryDoctor').textContent = doctor;
-                document.getElementById('summaryDate').textContent = date;
-                document.getElementById('summaryTime').textContent = time;
-                document.getElementById('summaryPatient').textContent = `${firstName} ${lastName}`;
-                document.getElementById('summaryContact').textContent = `${phone} | ${email}`;
-            }
-        });
-    </script>
 </body>
 </html>

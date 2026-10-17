@@ -15,6 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.multi-step-form')) {
         initMultiStepForm();
     }
+
+    if (document.querySelector('#appointmentBookingForm')) {
+        initAppointmentBookingForm();
+    }
     
     if (document.querySelector('.filter-tabs')) {
         initDoctorFilters();
@@ -582,3 +586,253 @@ document.addEventListener('DOMContentLoaded', function() {
         yearSpan.textContent = new Date().getFullYear();
     }
 });
+
+// ─── Appointment Booking Form ────────────────────────────────────────────────
+
+/**
+ * Department → Doctor mapping.
+ * Each entry: { value, label }
+ */
+var DEPT_DOCTORS = {
+    cardiology: [
+        { value: 'dr-john-davis',    label: 'Dr. John Davis — Cardiologist' },
+        { value: 'dr-anna-martinez', label: 'Dr. Anna Martinez — Interventional Cardiologist' }
+    ],
+    neurology: [
+        { value: 'dr-sarah-wilson',  label: 'Dr. Sarah Wilson — Neurologist' },
+        { value: 'dr-rajesh-kumar',  label: 'Dr. Rajesh Kumar — Neurosurgeon' }
+    ],
+    orthopedics: [
+        { value: 'dr-michael-patel',   label: 'Dr. Michael Patel — Orthopedic Surgeon' },
+        { value: 'dr-lisa-thompson',   label: 'Dr. Lisa Thompson — Sports Medicine' }
+    ],
+    pediatrics: [
+        { value: 'dr-emily-lee',   label: 'Dr. Emily Lee — Pediatrician' },
+        { value: 'dr-james-brown', label: 'Dr. James Brown — Pediatric Surgeon' }
+    ],
+    general: [
+        { value: 'dr-patricia-waweru', label: 'Dr. Patricia Waweru — General Practitioner' },
+        { value: 'dr-kevin-omondi',    label: 'Dr. Kevin Omondi — General Practitioner' }
+    ],
+    maternity: [
+        { value: 'dr-grace-mwangi',  label: 'Dr. Grace Mwangi — Obstetrician/Gynaecologist' },
+        { value: 'dr-esther-kamau',  label: 'Dr. Esther Kamau — Midwife Specialist' }
+    ],
+    emergency: [
+        { value: 'dr-tom-otieno',    label: 'Dr. Tom Otieno — Emergency Medicine' },
+        { value: 'dr-nancy-njoroge', label: 'Dr. Nancy Njoroge — Trauma Surgeon' }
+    ],
+    radiology: [
+        { value: 'dr-ben-kariuki',  label: 'Dr. Ben Kariuki — Diagnostic Radiologist' },
+        { value: 'dr-alice-mutua',  label: 'Dr. Alice Mutua — Interventional Radiologist' }
+    ],
+    laboratory: [
+        { value: 'dr-samuel-gitau',  label: 'Dr. Samuel Gitau — Clinical Pathologist' },
+        { value: 'dr-diana-chebet',  label: 'Dr. Diana Chebet — Haematologist' }
+    ],
+    pharmacy: [
+        { value: 'pharm-joseph-ndung\'u', label: 'Pharm. Joseph Ndung\'u — Clinical Pharmacist' },
+        { value: 'pharm-rose-wanjiku',    label: 'Pharm. Rose Wanjiku — Clinical Pharmacist' }
+    ]
+};
+
+function initAppointmentBookingForm() {
+    var form       = document.getElementById('appointmentBookingForm');
+    var deptSelect = document.getElementById('apptDepartment');
+    var docSelect  = document.getElementById('apptDoctor');
+    var dateInput  = document.getElementById('apptDate');
+    var banner     = document.getElementById('apptSuccessBanner');
+
+    if (!form) return;
+
+    // ── Set min date to today ──────────────────────────────────────────────
+    var today = new Date();
+    var yyyy  = today.getFullYear();
+    var mm    = String(today.getMonth() + 1).padStart(2, '0');
+    var dd    = String(today.getDate()).padStart(2, '0');
+    dateInput.setAttribute('min', yyyy + '-' + mm + '-' + dd);
+
+    // ── Populate doctor dropdown when department changes ───────────────────
+    deptSelect.addEventListener('change', function() {
+        var dept    = this.value;
+        var doctors = DEPT_DOCTORS[dept] || [];
+
+        // Reset doctor select
+        docSelect.innerHTML = '';
+        docSelect.disabled  = true;
+
+        var placeholder = document.createElement('option');
+        placeholder.value       = '';
+        placeholder.textContent = doctors.length ? '— Select a doctor —' : '— Select a department first —';
+        docSelect.appendChild(placeholder);
+
+        doctors.forEach(function(doc) {
+            var opt       = document.createElement('option');
+            opt.value     = doc.value;
+            opt.textContent = doc.label;
+            docSelect.appendChild(opt);
+        });
+
+        if (doctors.length) {
+            docSelect.disabled = false;
+        }
+
+        clearFieldError('apptDepartment');
+        clearFieldError('apptDoctor');
+    });
+
+    // ── Real-time Sunday check on date input ──────────────────────────────
+    dateInput.addEventListener('change', function() {
+        validateDateField();
+    });
+
+    // ── Clear error on interaction ─────────────────────────────────────────
+    ['apptPatientName', 'apptPhone', 'apptEmail', 'apptDoctor',
+     'apptTime', 'apptReason'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('input', function() { clearFieldError(id); });
+        el.addEventListener('change', function() { clearFieldError(id); });
+    });
+
+    // ── Form submit ────────────────────────────────────────────────────────
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (validateBookingForm()) {
+            // Show success banner, hide form
+            form.hidden        = true;
+            banner.hidden      = false;
+            banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    });
+
+    // ── Helpers ────────────────────────────────────────────────────────────
+
+    function validateBookingForm() {
+        var valid = true;
+
+        // Patient Name
+        var name = document.getElementById('apptPatientName').value.trim();
+        if (!name) {
+            setFieldError('apptPatientName'); valid = false;
+        } else {
+            clearFieldError('apptPatientName');
+        }
+
+        // Phone — must start with +254 followed by exactly 9 digits
+        var phone    = document.getElementById('apptPhone').value.trim();
+        var phoneRe  = /^\+254[0-9]{9}$/;
+        if (!phone || !phoneRe.test(phone)) {
+            setFieldError('apptPhone'); valid = false;
+        } else {
+            clearFieldError('apptPhone');
+        }
+
+        // Email — optional, but validate format if provided
+        var email   = document.getElementById('apptEmail').value.trim();
+        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email && !emailRe.test(email)) {
+            setFieldError('apptEmail'); valid = false;
+        } else {
+            clearFieldError('apptEmail');
+        }
+
+        // Department
+        if (!deptSelect.value) {
+            setFieldError('apptDepartment'); valid = false;
+        } else {
+            clearFieldError('apptDepartment');
+        }
+
+        // Doctor
+        if (!docSelect.value) {
+            setFieldError('apptDoctor'); valid = false;
+        } else {
+            clearFieldError('apptDoctor');
+        }
+
+        // Date
+        if (!validateDateField()) {
+            valid = false;
+        }
+
+        // Time
+        if (!document.getElementById('apptTime').value) {
+            setFieldError('apptTime'); valid = false;
+        } else {
+            clearFieldError('apptTime');
+        }
+
+        // Reason
+        var reason = document.getElementById('apptReason').value.trim();
+        if (!reason) {
+            setFieldError('apptReason'); valid = false;
+        } else {
+            clearFieldError('apptReason');
+        }
+
+        return valid;
+    }
+
+    /**
+     * Validates the date field.
+     * Returns true if valid, false otherwise (and sets inline error).
+     */
+    function validateDateField() {
+        var val = dateInput.value;
+        var dateGroup = dateInput.closest('.form-group');
+
+        if (!val) {
+            setFieldError('apptDate');
+            updateDateErrorMessage('Please select an appointment date.');
+            return false;
+        }
+
+        // Parse date as local (YYYY-MM-DD) to avoid timezone shifts
+        var parts = val.split('-');
+        var selected = new Date(
+            parseInt(parts[0], 10),
+            parseInt(parts[1], 10) - 1,
+            parseInt(parts[2], 10)
+        );
+
+        // No past dates
+        var todayMidnight = new Date();
+        todayMidnight.setHours(0, 0, 0, 0);
+        if (selected < todayMidnight) {
+            setFieldError('apptDate');
+            updateDateErrorMessage('Please select a date from today onwards.');
+            return false;
+        }
+
+        // No Sundays (day === 0)
+        if (selected.getDay() === 0) {
+            setFieldError('apptDate');
+            updateDateErrorMessage('We are closed on Sundays. Please choose another day.');
+            return false;
+        }
+
+        clearFieldError('apptDate');
+        return true;
+    }
+
+    function updateDateErrorMessage(msg) {
+        var errEl = document.getElementById('apptDateError');
+        if (errEl) errEl.textContent = msg;
+    }
+
+    function setFieldError(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var group = el.closest('.form-group');
+        if (group) group.classList.add('error');
+    }
+
+    function clearFieldError(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var group = el.closest('.form-group');
+        if (group) group.classList.remove('error');
+    }
+}

@@ -1681,6 +1681,109 @@ footer {
     display: block !important;
 }
 
+/* ─── Appointment Booking Form ─────────────────────────────────────────────── */
+
+.appt-form-heading {
+    text-align: center;
+    margin-bottom: 35px;
+    color: var(--dark-blue);
+}
+
+/* Success banner */
+.appt-success-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #e8f5e9;
+    border: 2px solid var(--success-green);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 30px;
+    color: var(--success-green);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.appt-success-banner[hidden] {
+    display: none;
+}
+
+.appt-success-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.appt-success-banner p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Optional label tag */
+.appt-optional {
+    font-weight: 400;
+    color: var(--text-light);
+    font-size: 0.88rem;
+}
+
+/* Hint text below inputs */
+.appt-field-hint {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+/* Submit row */
+.appt-submit-row {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.appt-submit-btn {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 14px 40px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    min-height: 48px;
+    transition: var(--transition);
+}
+
+.appt-submit-btn:hover,
+.appt-submit-btn:focus-visible {
+    background: var(--dark-blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    outline: 3px solid var(--light-blue);
+    outline-offset: 3px;
+}
+
+/* Field error state — overrides base .form-group.error for inline error IDs */
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+    border-color: var(--emergency-red);
+    background-color: #fff8f8;
+}
+
+/* Show the correct sibling error span when parent has .error */
+.form-group.error .error-message {
+    display: block;
+    color: var(--emergency-red);
+    font-size: 0.88rem;
+    margin-top: 5px;
+}
+
+/* Responsive tweaks for the booking form */
+@media (max-width: 480px) {
+    .appt-submit-btn {
+        width: 100%;
+    }
+}
+
+
 /* Accessibility */
 .sr-only {
     position: absolute;
