@@ -39,18 +39,25 @@ function initMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
     
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.toggle('active');
             
-            // Animate hamburger
+            // Animate hamburger spans into X
             const spans = hamburger.querySelectorAll('span');
             spans.forEach(span => span.classList.toggle('active'));
+            
+            // Update ARIA for accessibility
+            hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
         
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
                 navLinks.classList.remove('active');
+                const spans = hamburger.querySelectorAll('span');
+                spans.forEach(span => span.classList.remove('active'));
+                hamburger.setAttribute('aria-expanded', 'false');
             }
         });
         
@@ -59,8 +66,14 @@ function initMobileMenu() {
         links.forEach(link => {
             link.addEventListener('click', function() {
                 navLinks.classList.remove('active');
+                const spans = hamburger.querySelectorAll('span');
+                spans.forEach(span => span.classList.remove('active'));
+                hamburger.setAttribute('aria-expanded', 'false');
             });
         });
+        
+        // Set initial aria state
+        hamburger.setAttribute('aria-expanded', 'false');
     }
 }
 
