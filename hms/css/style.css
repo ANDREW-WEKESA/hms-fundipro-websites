@@ -2797,6 +2797,207 @@ footer {
     }
 }
 
+/* ─── About Page — History Timeline ────────────────────────────────────────── */
+
+.timeline {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+/* Vertical spine */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--primary-blue), var(--light-blue));
+    border-radius: 3px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 64px;
+    margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Dot on the spine */
+.timeline-dot {
+    position: absolute;
+    left: 9px;
+    top: 6px;
+    width: 24px;
+    height: 24px;
+    background: var(--white);
+    border: 3px solid var(--primary-blue);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-dot {
+    background: var(--primary-blue);
+    transform: scale(1.15);
+}
+
+/* Card */
+.timeline-content {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 22px 26px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-content {
+    box-shadow: var(--shadow-hover);
+    transform: translateX(4px);
+}
+
+.timeline-year {
+    display: inline-block;
+    background: var(--primary-blue);
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+}
+
+.timeline-content h3 {
+    font-size: 1.15rem;
+    color: var(--dark-blue);
+    margin-bottom: 8px;
+}
+
+.timeline-content p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        width: 50%;
+        padding-left: 0;
+        padding-right: 56px;
+        text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+        margin-left: 50%;
+        padding-right: 0;
+        padding-left: 56px;
+        text-align: left;
+    }
+
+    .timeline-dot {
+        left: auto;
+        right: -12px;
+        top: 14px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: -12px;
+        right: auto;
+    }
+
+    .timeline-item:hover .timeline-content {
+        transform: translateX(0) translateY(-2px);
+    }
+}
+
+@media (max-width: 639px) {
+    .timeline::before {
+        left: 14px;
+    }
+
+    .timeline-item {
+        padding-left: 50px;
+    }
+
+    .timeline-dot {
+        left: 3px;
+    }
+}
+
+/* ─── About Page — Accreditation Badge Cards ────────────────────────────────── */
+
+.accreditation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    margin-top: 10px;
+}
+
+.accreditation-badge-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 30px 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.accreditation-badge-card:hover {
+    border-color: var(--primary-blue);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.accreditation-badge-icon {
+    font-size: 3rem;
+    margin-bottom: 14px;
+    line-height: 1;
+}
+
+.accreditation-badge-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 6px;
+}
+
+.accreditation-badge-full {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+}
+
+.accreditation-badge-desc {
+    color: var(--text-light);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .accreditation-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
 /* ─── Department Service Cards (Services Page) ──────────────────────────────── */
 
 .dept-cards-grid {
