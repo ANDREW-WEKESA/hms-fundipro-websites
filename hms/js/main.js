@@ -188,18 +188,21 @@ function initStatsCounter() {
 }
 
 function animateCounter(element) {
-    const target = parseInt(element.textContent);
+    const target = parseInt(element.getAttribute('data-target') || element.textContent, 10);
     const duration = 2000;
-    const step = target / (duration / 16);
+    const steps = duration / 16;
+    const step = target / steps;
     let current = 0;
-    
+
+    element.textContent = '0+';
+
     const timer = setInterval(function() {
         current += step;
         if (current >= target) {
-            element.textContent = target + '+';
+            element.textContent = target.toLocaleString() + '+';
             clearInterval(timer);
         } else {
-            element.textContent = Math.floor(current) + '+';
+            element.textContent = Math.floor(current).toLocaleString() + '+';
         }
     }, 16);
 }

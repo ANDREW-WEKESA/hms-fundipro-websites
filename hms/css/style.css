@@ -18,6 +18,11 @@
     --transition: all 0.3s ease;
 }
 
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -255,12 +260,30 @@ nav.scrolled {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+    background-color: var(--dark-blue);
+    background-image: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
     color: var(--white);
-    padding: 100px 20px;
+    padding: 0;
     text-align: center;
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark-to-transparent gradient overlay */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.15) 60%,
+        transparent 100%
+    );
+    z-index: 0;
 }
 
 .hero::before {
@@ -272,6 +295,7 @@ nav.scrolled {
     bottom: 0;
     background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect fill="%23ffffff" fill-opacity="0.03" width="50" height="50"/></svg>');
     opacity: 0.5;
+    z-index: 0;
 }
 
 .hero-content {
@@ -279,6 +303,7 @@ nav.scrolled {
     margin: 0 auto;
     position: relative;
     z-index: 1;
+    padding: 120px 20px 80px;
 }
 
 .hero h1 {
@@ -296,19 +321,24 @@ nav.scrolled {
 
 .cta-buttons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
     animation: fadeInUp 1.2s ease;
+    margin-bottom: 10px;
 }
 
 .btn {
-    padding: 15px 35px;
+    padding: 15px 28px;
     border-radius: 30px;
     font-weight: 500;
     font-size: 1rem;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
     transition: var(--transition);
+    min-height: 48px;
 }
 
 .btn-primary {
@@ -331,6 +361,35 @@ nav.scrolled {
 .btn-secondary:hover {
     background: var(--white);
     color: var(--primary-blue);
+}
+
+/* Emergency quick-action button */
+.btn-emergency {
+    background: var(--emergency-red);
+    color: var(--white);
+    border: 2px solid var(--emergency-red);
+    animation: pulse 2s infinite;
+}
+
+.btn-emergency:hover {
+    background: #b02a37;
+    border-color: #b02a37;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Outline (Patient Portal) quick-action button */
+.btn-outline {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(4px);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: var(--white);
+    transform: translateY(-2px);
 }
 
 .hero-stats {
@@ -1517,22 +1576,33 @@ footer {
     }
     
     .hero {
-        padding: 60px 20px;
+        padding: 0;
+        min-height: 100vh;
     }
-    
+
+    .hero-content {
+        padding: 100px 20px 60px;
+    }
+
     .hero h1 {
         font-size: 2rem;
     }
-    
+
     .hero p {
         font-size: 1rem;
     }
-    
+
     .cta-buttons {
         flex-direction: column;
         align-items: stretch;
+        gap: 12px;
     }
-    
+
+    .cta-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
     .hero-stats {
         grid-template-columns: repeat(2, 1fr);
     }
